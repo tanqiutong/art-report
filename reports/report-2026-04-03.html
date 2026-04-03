@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>未来美术坊 · 每日美育产品竞品分析简报 2026-04-03</title>
+<style>
+  :root {
+    --ink: #1a1a2e;
+    --paper: #faf9f6;
+    --accent: #c0392b;
+    --accent2: #e67e22;
+    --accent3: #2980b9;
+    --muted: #7f8c8d;
+    --border: #e0ddd8;
+    --card: #ffffff;
+    --tag-green: #27ae60;
+    --tag-yellow: #f39c12;
+    --tag-red: #e74c3c;
+    --tag-blue: #2980b9;
+    --tag-purple: #8e44ad;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.7;
+    font-size: 14px;
+  }
+  a { color: var(--accent3); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* ── Header ── */
+  .site-header {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
+    color: #fff;
+    padding: 40px 24px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .site-header::before {
+    content: '';
+    position: absolute;
+    right: -60px; top: -60px;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(192,57,43,0.18) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .header-inner { max-width: 1080px; margin: 0 auto; position: relative; }
+  .header-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
+  .badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  .badge-date { background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.9); }
+  .badge-product { background: var(--accent); color: #fff; }
+  .badge-daily { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.7); border: 1px solid rgba(255,255,255,0.2); }
+  .site-header h1 { font-size: 26px; font-weight: 700; letter-spacing: 1px; margin-bottom: 4px; }
+  .site-header .subtitle { font-size: 13px; color: rgba(255,255,255,0.6); }
+
+  /* ── Layout ── */
+  .container { max-width: 1080px; margin: 0 auto; padding: 24px 16px 64px; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 720px) { .grid-2 { grid-template-columns: 1fr; } }
+
+  /* ── Section ── */
+  .section { margin-bottom: 32px; }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border);
+  }
+  .section-icon {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+  .icon-red { background: rgba(192,57,43,0.12); }
+  .icon-orange { background: rgba(230,126,34,0.12); }
+  .icon-blue { background: rgba(41,128,185,0.12); }
+  .icon-green { background: rgba(39,174,96,0.12); }
+  .icon-purple { background: rgba(142,68,173,0.12); }
+  .icon-teal { background: rgba(26,188,156,0.12); }
+  .section-title { font-size: 16px; font-weight: 700; color: var(--ink); }
+  .section-count { font-size: 11px; color: var(--muted); background: var(--border); padding: 2px 8px; border-radius: 10px; }
+
+  /* ── One-line conclusion ── */
+  .conclusion-card {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: #fff;
+    padding: 20px 24px;
+    border-radius: 12px;
+    border-left: 4px solid var(--accent);
+    margin-bottom: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .conclusion-card::after {
+    content: '今日结论';
+    position: absolute;
+    right: 20px; top: 14px;
+    font-size: 10px;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .conclusion-text { font-size: 15px; line-height: 1.8; color: rgba(255,255,255,0.92); }
+
+  /* ── Summary items ── */
+  .summary-list { display: flex; flex-direction: column; gap: 10px; }
+  .summary-item {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .summary-num {
+    width: 22px; height: 22px; min-width: 22px;
+    border-radius: 50%;
+    background: var(--ink);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    margin-top: 2px;
+  }
+
+  /* ── Competitor cards ── */
+  .competitor-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 720px) { .competitor-grid { grid-template-columns: 1fr; } }
+  .competitor-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: box-shadow 0.2s;
+  }
+  .competitor-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+  .competitor-header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 6px; }
+  .competitor-name { font-weight: 700; font-size: 14px; }
+  .impact-badge {
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .impact-high { background: rgba(231,76,60,0.1); color: #c0392b; }
+  .impact-medium { background: rgba(243,156,18,0.1); color: #d68910; }
+  .impact-low { background: rgba(127,140,141,0.1); color: #7f8c8d; }
+  .competitor-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+  .tag {
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 11px;
+  }
+  .tag-region { background: #eaf4fb; color: #2980b9; }
+  .tag-cat { background: #f0f0f0; color: #555; }
+  .competitor-title { font-size: 13px; font-weight: 600; color: var(--ink); }
+  .competitor-summary { font-size: 13px; color: #444; line-height: 1.7; }
+  .insight-box {
+    background: #fffbf0;
+    border-left: 3px solid var(--accent2);
+    padding: 10px 12px;
+    border-radius: 0 6px 6px 0;
+    font-size: 12px;
+    color: #5d4037;
+    line-height: 1.6;
+  }
+  .insight-label { font-size: 10px; font-weight: 700; color: var(--accent2); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px; }
+  .source-link { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+  /* ── Trend cards ── */
+  .trend-list { display: flex; flex-direction: column; gap: 14px; }
+  .trend-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .trend-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+  .trend-title { font-size: 14px; font-weight: 700; flex: 1; }
+  .trend-cat { padding: 2px 8px; border-radius: 10px; font-size: 11px; white-space: nowrap; }
+  .cat-policy { background: rgba(192,57,43,0.1); color: #c0392b; }
+  .cat-market { background: rgba(39,174,96,0.1); color: #27ae60; }
+  .cat-research { background: rgba(142,68,173,0.1); color: #8e44ad; }
+  .cat-platform { background: rgba(41,128,185,0.1); color: #2980b9; }
+  .trend-summary { font-size: 13px; color: #444; line-height: 1.7; }
+  .trend-meaning {
+    background: #f0f9f4;
+    border-left: 3px solid var(--tag-green);
+    padding: 10px 12px;
+    border-radius: 0 6px 6px 0;
+    font-size: 12px;
+    color: #2e7d32;
+    line-height: 1.6;
+  }
+  .meaning-label { font-size: 10px; font-weight: 700; color: var(--tag-green); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px; }
+
+  /* ── Tencent section ── */
+  .tencent-intro {
+    background: linear-gradient(135deg, #0f3460 0%, #16213e 100%);
+    color: #fff;
+    padding: 16px 20px;
+    border-radius: 10px;
+    margin-bottom: 16px;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  .tencent-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 720px) { .tencent-grid { grid-template-columns: 1fr; } }
+  .tencent-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .tencent-dir-header { display: flex; align-items: center; justify-content: space-between; }
+  .tencent-dir-name { font-weight: 700; font-size: 13px; color: var(--ink); flex: 1; padding-right: 8px; }
+  .priority-badge {
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .pri-high { background: rgba(192,57,43,0.1); color: #c0392b; }
+  .pri-medium { background: rgba(243,156,18,0.1); color: #d68910; }
+  .tencent-cap { font-size: 12px; color: #555; line-height: 1.6; }
+  .tencent-cap strong { color: var(--ink); }
+  .product-box {
+    background: #f0f4ff;
+    border-left: 3px solid var(--accent3);
+    padding: 10px 12px;
+    border-radius: 0 6px 6px 0;
+    font-size: 12px;
+    color: #1a3a5c;
+    line-height: 1.6;
+  }
+  .product-label { font-size: 10px; font-weight: 700; color: var(--accent3); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px; }
+  .teacher-val { font-size: 12px; color: #555; line-height: 1.6; border-top: 1px dashed var(--border); padding-top: 8px; }
+  .tv-label { font-size: 10px; font-weight: 700; color: #666; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 3px; }
+
+  /* ── Recommendations ── */
+  .rec-list { display: flex; flex-direction: column; gap: 14px; }
+  .rec-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .rec-header {
+    padding: 14px 16px 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .rec-p0 .rec-header { background: linear-gradient(90deg, rgba(192,57,43,0.08) 0%, transparent 100%); border-left: 4px solid var(--accent); }
+  .rec-p1 .rec-header { background: linear-gradient(90deg, rgba(230,126,34,0.08) 0%, transparent 100%); border-left: 4px solid var(--accent2); }
+  .rec-p2 .rec-header { background: linear-gradient(90deg, rgba(41,128,185,0.08) 0%, transparent 100%); border-left: 4px solid var(--accent3); }
+  .rec-priority {
+    font-size: 13px; font-weight: 800; min-width: 30px;
+  }
+  .color-p0 { color: var(--accent); }
+  .color-p1 { color: var(--accent2); }
+  .color-p2 { color: var(--accent3); }
+  .rec-name { font-weight: 700; font-size: 14px; }
+  .rec-body { padding: 0 16px 16px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+  @media (max-width: 720px) { .rec-body { grid-template-columns: 1fr; } }
+  .rec-field { font-size: 12px; color: #444; line-height: 1.6; }
+  .rec-field-label { font-size: 10px; font-weight: 700; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px; }
+
+  /* ── Watchlist ── */
+  .watchlist-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 600px) { .watchlist-grid { grid-template-columns: 1fr; } }
+  .watch-item {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 14px;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .watch-icon { font-size: 16px; line-height: 1.5; flex-shrink: 0; }
+  .watch-text { font-size: 12px; color: #444; line-height: 1.6; }
+
+  /* ── Footer ── */
+  .site-footer {
+    border-top: 1px solid var(--border);
+    padding: 20px 16px;
+    text-align: center;
+    font-size: 11px;
+    color: var(--muted);
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+
+  /* ── Divider ── */
+  .divider { height: 1px; background: var(--border); margin: 4px 0 16px; }
+</style>
+</head>
+<body>
+
+<!-- ══ HEADER ══ -->
+<div class="site-header">
+  <div class="header-inner">
+    <div class="header-meta">
+      <span class="badge badge-product">未来美术坊</span>
+      <span class="badge badge-date">2026-04-03</span>
+      <span class="badge badge-daily">每日简报</span>
+    </div>
+    <h1>每日美育产品竞品分析简报</h1>
+    <p class="subtitle">覆盖竞品动态 · 行业趋势 · 腾讯游戏美术力 · 产品动作建议 · 风险观察</p>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- ══ ONE LINE CONCLUSION ══ -->
+  <div class="conclusion-card">
+    <div class="conclusion-text">
+      腾讯「触梦计划」刚发布2026年度AI乡村教育成果、腾讯混元图像3.0开源落地，同期教育部「十五五」首次将美育列为独立板块——三重利好同时到来，未来美术坊进入从0到1最佳窗口期，<strong style="color:#f5a623">必须在Q2锁定腾讯生态内容资产并率先推出AI备课+国风素材双核MVP。</strong>
+    </div>
+  </div>
+
+  <!-- ══ SUMMARY ══ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon icon-orange">📋</div>
+      <span class="section-title">核心摘要</span>
+      <span class="section-count">6 条要点</span>
+    </div>
+    <div class="summary-list">
+      <div class="summary-item">
+        <div class="summary-num">1</div>
+        <div>2026年3月27日腾讯「触梦计划」年度小会发布「腾讯未来教室AI共建平台」，累计覆盖1842所乡村学校、5860万人次，同期「未来调色盘计划」第二期开放申领——<strong>未来美术坊需定位为「教师侧工具层」而非与触梦重叠。</strong></div>
+      </div>
+      <div class="summary-item">
+        <div class="summary-num">2</div>
+        <div>Canva for Education在2025年Canva Create大会推出AI课程生成、作业追踪等深度教师工具，2026年3月再强化「Classroom Magic」套件——其「AI辅助备课→学生作品→家长分享」完整闭环对未来美术坊产品设计<strong>有最高参考价值。</strong></div>
+      </div>
+      <div class="summary-item">
+        <div class="summary-num">3</div>
+        <div>清华伟新第十期（9省43人）、央音+央美授渔计划第四期（24省325人）——线下精英培训覆盖规模受物理限制，<strong>线上数字化平台有明确补充空间，且历届参训教师是最佳种子用户。</strong></div>
+      </div>
+      <div class="summary-item">
+        <div class="summary-num">4</div>
+        <div>腾讯混元图像3.0于2025年9月开源，支持国风/水墨/工笔等20+美术风格，腾讯云AI图像API已商业化——<strong>为未来美术坊AI美术助教提供技术底座，内部接入成本可控。</strong></div>
+      </div>
+      <div class="summary-item">
+        <div class="summary-num">5</div>
+        <div>「十五五」首次将美育列为独立板块；教育部2025年7月发布《数字化赋能教师发展行动》；2026年4月再部署「AI+教育」十五五重点工作——<strong>政策方向与未来美术坊定位高度一致，是获取背书与渠道合作的历史窗口。</strong></div>
+      </div>
+      <div class="summary-item">
+        <div class="summary-num">6</div>
+        <div>Artsonia持续验证「作品展示+家长传播+纪念品变现」商业闭环可持续；AOEU FLEX课程体系验证「课程包+职业认证+社区」三角结构——两者共同为美术坊作品展示模块和教师成长体系提供<strong>可参考的商业化路径。</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ COMPETITOR UPDATES ══ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon icon-red">🔍</div>
+      <span class="section-title">竞品动态</span>
+      <span class="section-count">7 条</span>
+    </div>
+    <div class="competitor-grid">
+
+      <!-- 触梦计划 -->
+      <div class="competitor-card">
+        <div class="competitor-header">
+          <span class="competitor-name">腾讯触梦计划·未来调色盘</span>
+          <span class="impact-badge impact-high">高影响</span>
+        </div>
+        <div class="competitor-tags">
+          <span class="tag tag-region">中国</span>
+          <span class="tag tag-cat">教育公益项目</span>
+        </div>
+        <div class="competitor-title">2026年度小会：「腾讯未来教室AI共建平台」正式发布，「未来调色盘计划」第二期开放申领</div>
+        <div class="competitor-summary">2026年3月27日，腾讯成长守护主办「触梦计划」年度小会，正式发布「腾讯未来教室AI共建平台」。截至2025年底累计支持1842所乡村学校，触达5860万人次。「未来调色盘计划」第二期于2026年1月开放申领，首期已覆盖广东、云南、贵州、湖南、河南等多省，以「乡土美育」为核心研发融合地方文化的美育课程。</div>
+        <div class="insight-box">
+          <div class="insight-label">对未来美术坊的启发</div>
+          触梦计划专注于「硬件/课程/活动」供给侧，未来美术坊应明确定位在「教师日常使用的数字工具层」。可积极申请触梦计划合作伙伴资格，借助其已覆盖的1842所学校做冷启动渠道。
+        </div>
+        <div class="source-link"><a href="https://www.news.cn/tech/20260331/559276576dd047c6999013ddd2ac5364/c.html" target="_blank">来源：新华网科技</a></div>
+      </div>
+
+      <!-- Canva -->
+      <div class="competitor-card">
+        <div class="competitor-header">
+          <span class="competitor-name">Canva for Education</span>
+          <span class="impact-badge impact-high">高影响</span>
+        </div>
+        <div class="competitor-tags">
+          <span class="tag tag-region">全球</span>
+          <span class="tag tag-cat">AI美育平台</span>
+        </div>
+        <div class="competitor-title">Canva Create 2025发布深度AI教师套件；2026年3月再强化「Classroom Magic」免费AI工具包</div>
+        <div class="competitor-summary">2025年5月Canva Create大会推出「为教师而生」系列AI更新，含AI课程内容生成、Code Widget学生数据追踪、实时进度追踪等深度教学功能；Dream Lab AI图像生成工具支持多风格生图。2026年3月再度强化Classroom Magic免费套件，50万+学生可免费使用。</div>
+        <div class="insight-box">
+          <div class="insight-label">对未来美术坊的启发</div>
+          Canva验证了「AI辅助备课→学生创作→成果展示→家长参与」四环节闭环的高粘性价值。未来美术坊需要在美术这一垂直场景中复现此路径，且加入乡村化/国风化内容特色形成差异。
+        </div>
+        <div class="source-link"><a href="https://www.canva.com/newsroom/news/canva-create-2025-education/" target="_blank">来源：Canva官方新闻室</a></div>
+      </div>
+
+      <!-- 腾讯混元 -->
+      <div class="competitor-card">
+        <div class="competitor-header">
+          <span class="competitor-name">腾讯混元图像3.0</span>
+          <span class="impact-badge impact-high">高影响</span>
+        </div>
+        <div class="competitor-tags">
+          <span class="tag tag-region">中国</span>
+          <span class="tag tag-cat">AI美育平台</span>
+        </div>
+        <div class="competitor-title">2025年9月开源：全球首个商用级原生多模态生图模型，支持国风/水墨/工笔等20+美术风格</div>
+        <div class="competitor-summary">腾讯于2025年9月28日开源混元图像3.0，支持原生2K生图，提供国风/水墨/工笔/日漫等20+预置美术风格，支持图生图。腾讯云AI图像API提供文生图、风格迁移等商业接入；2026年1月进一步引入图生图多任务指令微调。</div>
+        <div class="insight-box">
+          <div class="insight-label">对未来美术坊的启发</div>
+          混元图像3.0是AI美术助教功能的核心技术底座。落地路径：国风/水墨风格生成用于备课灵感板；图生图让学生手稿自动风格化；腾讯内部API接入免去第三方依赖。
+        </div>
+        <div class="source-link"><a href="https://hunyuan.tencent.com/image" target="_blank">来源：腾讯混元官网</a></div>
+      </div>
+
+      <!-- 清华伟新 -->
+      <div class="competitor-card">
+        <div class="competitor-header">
+          <span class="competitor-name">清华伟新乡村美术教师培养计划</span>
+          <span class="impact-badge impact-medium">中影响</span>
+        </div>
+        <div class="competitor-tags">
+          <span class="tag tag-region">中国</span>
+          <span class="tag tag-cat">公益项目</span>
+        </div>
+        <div class="competitor-title">第十期结业：9省43名教师完成两周清华研培，远程教学站延伸至县域</div>
+        <div class="competitor-summary">2024年9月，清华伟新乡村美术教师培养计划第十期举行，43名乡村美术教师完成为期两周深度学习。同期在高阳县设立「远程教学站」，将培训延伸至县域。采用「精英遴选+高校资源输出」模式，对参与教师职业成长具有高影响力，但覆盖规模每期约数十人。</div>
+        <div class="insight-box">
+          <div class="insight-label">对未来美术坊的启发</div>
+          清华培训的「校友教师」是高质量种子用户。平台可为其提供培训后的持续交流圈和成果展示空间，形成「官方培训引流→平台社区留存」的互补生态。
+        </div>
+        <div class="source-link"><a href="https://www.tsinghua.edu.cn/info/1180/113779.htm" target="_blank">来源：清华大学官网</a></div>
+      </div>
+
+      <!-- Artsonia -->
+      <div class="competitor-card">
+        <div class="competitor-header">
+          <span class="competitor-name">Artsonia</span>
+          <span class="impact-badge impact-medium">中影响</span>
+        </div>
+        <div class="competitor-tags">
+          <span class="tag tag-region">美国</span>
+          <span class="tag tag-cat">作品展示平台</span>
+        </div>
+        <div class="competitor-title">持续稳定运营：全球最大学生数字艺术作品集，「每周最佳艺术家」社区机制持续激活传播</div>
+        <div class="competitor-summary">Artsonia维持全球最大学生数字美术作品集平台地位，通过「教师发布→学生上传→家长评论→购买纪念品」商业闭环实现可持续运营。Artist of the Week栏目持续激活社区传播。2026年相关文章显示其持续聚焦K-12美术教师工具。</div>
+        <div class="insight-box">
+          <div class="insight-label">对未来美术坊的启发</div>
+          Artsonia证明了作品展示+家长参与的商业可持续性。未来美术坊需本土化：用「学生作品海报生成→家长朋友圈分享」替代购买纪念品，以微信关系链驱动自然裂变。
+        </div>
+        <div class="source-link"><a href="https://www.artsonia.com/" target="_blank">来源：Artsonia官网</a></div>
+      </div>
+
+      <!-- AOEU -->
+      <div class="competitor-card">
+        <div class="competitor-header">
+          <span class="competitor-name">AOEU (Art of Education University)</span>
+          <span class="impact-badge impact-medium">中影响</span>
+        </div>
+        <div class="competitor-tags">
+          <span class="tag tag-region">美国</span>
+          <span class="tag tag-cat">教师社区</span>
+        </div>
+        <div class="competitor-title">推出FLEX课程体系：与州立标准对齐的K-12视觉艺术完整课程包+FLEX Artist Bio Toolkit</div>
+        <div class="competitor-summary">AOEU推出FLEX Curriculum，将K-12视觉艺术课程与美国国家艺术标准精准对齐，为美术教师提供「开箱即用」完整课程包体系（含教学脚本/评价标准/视觉资源）。同时推出FLEX Artist Bio Toolkit辅助教师建立职业档案。</div>
+        <div class="insight-box">
+          <div class="insight-label">对未来美术坊的启发</div>
+          AOEU的核心价值是「帮老师省时间、建立专业认可」——与乡村美术老师核心诉求高度一致。未来美术坊可参考其「课程包+职业认证+社区」三角结构。
+        </div>
+        <div class="source-link"><a href="https://theartofeducation.edu/" target="_blank">来源：AOEU官网</a></div>
+      </div>
+
+      <!-- 央美授渔计划 -->
+      <div class="competitor-card">
+        <div class="competitor-header">
+          <span class="competitor-name">央音+央美「授渔计划」</span>
+          <span class="impact-badge impact-medium">中影响</span>
+        </div>
+        <div class="competitor-tags">
+          <span class="tag tag-region">中国</span>
+          <span class="tag tag-cat">公益项目</span>
+        </div>
+        <div class="competitor-title">第四期：全国24省325名乡村「音乐+美术」教师联合培训落幕</div>
+        <div class="competitor-summary">2025年10月，央音+央美授渔计划第四期在中央美术学院举行，来自全国24省区325名乡村音乐+美术教师完成培训。由中国儿童少年福利基金会主办，中央美院、中央音乐学院联合承办，是国内规模最大的乡村音美合并培训项目之一。</div>
+        <div class="insight-box">
+          <div class="insight-label">对未来美术坊的启发</div>
+          历届参训教师超千人，是高质量种子用户群体。可探索与主办方合作，在培训中引入平台作为「课后持续交流工具」，实现「线下培训引流→线上社区留存」路径。
+        </div>
+        <div class="source-link"><a href="https://www.cswef.org/cswef/news/detail/id/1546.html" target="_blank">来源：中国儿童少年福利基金会</a></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══ INDUSTRY TRENDS ══ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon icon-blue">📡</div>
+      <span class="section-title">行业趋势与政策动态</span>
+      <span class="section-count">5 条</span>
+    </div>
+    <div class="trend-list">
+
+      <div class="trend-card">
+        <div class="trend-header">
+          <div class="trend-title">「十五五」首次将美育列为独立板块，「美育浸润行动」升级为国家战略</div>
+          <span class="trend-cat cat-policy">政策动态</span>
+        </div>
+        <div class="trend-summary">2025年10月「十五五」规划建议发布，首次将「体育、美育、劳动教育」作为独立板块着重强调，美育地位空前提高。2026年1月广东省政协提案呼吁「落实十五五美育部署，解决校园美育课程落实不均问题」。教育部2023年《学校美育浸润行动通知》成为长期政策基础。</div>
+        <div class="trend-meaning">
+          <div class="meaning-label">对未来美术坊的意义</div>
+          美育从「配套项目」升格为「国家战略」，乡村美育预算、编制、评价体系将显著改善；申报政府项目、获取教育部/文旅部扶持资金的成功率大幅提升；以「响应十五五美育政策」为定位可助力获取地方教育局背书。
+        </div>
+        <div class="source-link"><a href="https://www.sohu.com/a/949498769_120700014" target="_blank">来源：搜狐财经·十五五美育政策分析</a></div>
+      </div>
+
+      <div class="trend-card">
+        <div class="trend-header">
+          <div class="trend-title">教育部发布《数字化赋能教师发展行动》，「人工智能+教育」成2026年教育数字化核心主题</div>
+          <span class="trend-cat cat-policy">政策动态</span>
+        </div>
+        <div class="trend-summary">2025年7月教育部发布《数字化赋能教师发展行动》（教师厅函〔2025〕13号），推动教师AI素养培育和数字化教学能力提升。2026年4月2日，国家教育数字化战略行动2026年部署会将「人工智能+教育」列为十五五重点工作，乡村教师数字化工具使用能力建设被明确纳入重点议程。</div>
+        <div class="trend-meaning">
+          <div class="meaning-label">对未来美术坊的意义</div>
+          乡村教师「主动使用AI工具」有政策护航，降低推广阻力；平台可以「响应数字化赋能教师发展行动」为由纳入地方教育培训体系；优先将AI美育助教设计得「适合低数字素养用户」，符合政策「普惠下沉」导向。
+        </div>
+        <div class="source-link"><a href="https://www.moe.gov.cn/srcsite/A10/s7034/202507/t20250704_1196586.html" target="_blank">来源：教育部官网</a></div>
+      </div>
+
+      <div class="trend-card">
+        <div class="trend-header">
+          <div class="trend-title">AI赋能小学美术课堂成学术与实践热点，2025年多地集中开展教师AI培训</div>
+          <span class="trend-cat cat-research">研究洞察</span>
+        </div>
+        <div class="trend-summary">2025年华东师范大学、浙江万里学院、宁波市等多地密集开展「AI赋能美术教师课堂能力提升」培训。研究方向聚焦于教案生成、风格迁移、作品评价三大场景。AI美术教学已从「城市实验学校」向全国扩散，但乡村学校仍是明显盲区。</div>
+        <div class="trend-meaning">
+          <div class="meaning-label">对未来美术坊的意义</div>
+          教师对AI美术工具接受度从「观望」转向「主动探索」，推广阻力在降低。「教案生成+风格迁移+作品评价」三场景已获一线教师验证，AI功能优先聚焦这三点。乡村美术老师仍是盲区——先发优势窗口期明确。
+        </div>
+        <div class="source-link"><a href="https://www.ecnu.edu.cn/info/1426/69264.htm" target="_blank">来源：华东师范大学官网</a></div>
+      </div>
+
+      <div class="trend-card">
+        <div class="trend-header">
+          <div class="trend-title">腾讯「未来调色盘计划」第二期开放申领，乡土美育课程体系向全国规模化扩张</div>
+          <span class="trend-cat cat-market">市场数据</span>
+        </div>
+        <div class="trend-summary">2025年9月「未来调色盘计划」启动，以「乡土美育」为核心研发融合地方文化的美育课程。首期覆盖广东、云南、贵州、湖南、河南及新疆，服务乡村儿童超10万人次。2026年1月第二期开放申领。腾讯游戏触梦计划累计已覆盖1842所乡村学校。</div>
+        <div class="trend-meaning">
+          <div class="meaning-label">对未来美术坊的意义</div>
+          「未来调色盘」覆盖学生侧（内容供给），美术坊聚焦教师侧（工具赋能），形成互补非竞争关系。触梦已建立的1842所学校网络是美术坊天然BD渠道，需确保定位明确区分避免内部资源重叠。
+        </div>
+        <div class="source-link"><a href="https://news.qq.com/rain/a/20250901A074FB00" target="_blank">来源：腾讯新闻</a></div>
+      </div>
+
+      <div class="trend-card">
+        <div class="trend-header">
+          <div class="trend-title">线下精英培训覆盖量级受限，乡村美育教师「培训后无平台持续赋能」问题突出</div>
+          <span class="trend-cat cat-research">研究洞察</span>
+        </div>
+        <div class="trend-summary">清华伟新计划10期累计覆盖约400余名乡村美术教师，央美授渔计划四期覆盖约1000人，相对于全国估计超15万名乡村美术教师，精英培训渗透率不足1%。培训结束后教师缺乏持续支持工具，形成「培训—回乡—回到原点」的周期性断层。</div>
+        <div class="trend-meaning">
+          <div class="meaning-label">对未来美术坊的意义</div>
+          这是平台最核心的市场空白。定位为「培训延伸平台」——承接培训成果的数字化沉淀，不替代高质量培训。对从未接受过培训的绝大多数乡村老师，「AI降低专业门槛」是第一优先级功能方向。
+        </div>
+        <div class="source-link"><a href="https://www.cswef.org/cswef/news/detail/id/1546.html" target="_blank">来源：中国儿童少年福利基金会</a></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══ TENCENT GAME ART POWER ══ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon icon-purple">🎮</div>
+      <span class="section-title">美育/美术 × 腾讯的美术力（游戏）</span>
+    </div>
+    <div class="tencent-intro">
+      腾讯游戏在国风内容、AIGC生图、游戏化激励、微信生态四大方向已具备直接可接入的产品能力，未来美术坊的差异化护城河恰在于将这四套能力打包成「乡村美术老师专用工具」——这是任何非腾讯背景的竞品都无法复制的结构性优势。
+    </div>
+    <div class="tencent-grid">
+
+      <div class="tencent-card">
+        <div class="tencent-dir-header">
+          <div class="tencent-dir-name">游戏美术流程课：工业级方法论拆解为乡村可用微课</div>
+          <span class="priority-badge pri-high">High</span>
+        </div>
+        <div class="tencent-cap"><strong>腾讯能力：</strong>天美/光子/魔方工作室的标准化美术生产管线——角色三视图设计、色彩脚本（Color Script）、场景分层构图、UI视觉规范、美术圣经（Art Bible）体系。腾讯游戏学院已对外发布部分美术课程内容。</div>
+        <div class="product-box">
+          <div class="product-label">产品化方式</div>
+          「游戏美术流程工坊」模块：角色设计6步微课（每步5-8分钟）；色彩脚本填写模板（晴天/黄昏/夜晚三版本）；场景分层画布工具（近/中/远景三层）；角色设定卡模板；每模块配老师备课包（脚本+PPT+练习单）。
+        </div>
+        <div class="teacher-val">
+          <div class="tv-label">对乡村老师的价值</div>
+          不需要懂游戏也能掌握专业教学路径；色彩脚本等专业工具首次进入乡村课堂，显著提升美育天花板；备课包大幅降低兼课老师备课时间。
+        </div>
+        <div class="source-link"><a href="https://gamecamp.qq.com/" target="_blank">参考：腾讯游戏学院</a></div>
+      </div>
+
+      <div class="tencent-card">
+        <div class="tencent-dir-header">
+          <div class="tencent-dir-name">国风与非遗内容库：腾讯文化IP转化为课堂素材</div>
+          <span class="priority-badge pri-high">High</span>
+        </div>
+        <div class="tencent-cap"><strong>腾讯能力：</strong>王者荣耀国风皮肤系列（长恨歌/山海经/敦煌飞天等）每款含文化考证报告；腾讯互娱与故宫博物院/敦煌研究院合作数字文创内容；传统纹样数字资产库；春节/中秋等节庆年度视觉档案。</div>
+        <div class="product-box">
+          <div class="product-label">产品化方式</div>
+          「国风素材库 + 节气美术课」：24节气主题课包（每节气1节课，含传统纹样参考图/节气色卡/手工步骤）；传统纹样临摹库（按朝代/地域分类，支持打印）；国风配色卡（基于故宫色谱/敦煌色谱）；非遗手工课包（支持本地化定制）。
+        </div>
+        <div class="teacher-val">
+          <div class="tv-label">对乡村老师的价值</div>
+          乡村周边非遗资源丰富但老师缺转化工具；腾讯国风内容经商业验证，质量远高于自行搜索；节气美术课与语文/传统文化跨学科联动，帮助争取更多课时。
+        </div>
+        <div class="source-link"><a href="https://www.honorofkings.com/honor/" target="_blank">参考：王者荣耀文化遗产保护行动</a></div>
+      </div>
+
+      <div class="tencent-card">
+        <div class="tencent-dir-header">
+          <div class="tencent-dir-name">AIGC美术助手：混元图像3.0直接赋能备课与创作</div>
+          <span class="priority-badge pri-high">High</span>
+        </div>
+        <div class="tencent-cap"><strong>腾讯能力：</strong>混元图像3.0（2025年9月开源）：全球首个开源商用级原生多模态生图模型，支持原生2K生图，提供国风/水墨/工笔等20+预置风格，支持图生图；腾讯云AI图像API商业接入；腾讯智影AI视频生成可用于教学演示。</div>
+        <div class="product-box">
+          <div class="product-label">产品化方式</div>
+          「AI美术助教」四功能：①灵感板生成器（输入课题→含参考图/配色/构图建议的备课灵感板，可导出PPT）；②风格体验器（学生手稿→水墨/版画/国风效果）；③配色建议助手（上传作品→AI生成可视化建议）；④备课辅助生成（输入课题→教学大纲+课堂问题+延伸活动）。
+        </div>
+        <div class="teacher-val">
+          <div class="tv-label">对乡村老师的价值</div>
+          直接弥补兼课老师专业能力缺口；灵感板生成解决备课时间长（日均>2小时）、找素材难的核心痛点；风格体验器显著提升低年级学生美术兴趣。
+        </div>
+        <div class="source-link"><a href="https://hunyuan.tencent.com/image" target="_blank">参考：腾讯混元官网</a></div>
+      </div>
+
+      <div class="tencent-card">
+        <div class="tencent-dir-header">
+          <div class="tencent-dir-name">游戏化课堂机制：任务系统+赛季制构建持续使用飞轮</div>
+          <span class="priority-badge pri-high">High</span>
+        </div>
+        <div class="tencent-cap"><strong>腾讯能力：</strong>王者荣耀/和平精英的日常+周常+赛季三层激励结构；收集型成就+里程碑成就+稀有成就多层勋章体系；赛季制主题更新（制造仪式感与时间压力）；组队副本共创机制；公开排行榜与社群传播机制。</div>
+        <div class="product-box">
+          <div class="product-label">产品化方式</div>
+          「美育成长地图」：可视化学习路径图（完成课程单元解锁下一区域）；老师积分体系（备课/上传作品/教研获积分，兑换素材包）；季度主题活动（如「春季·生命美育季」含课程包+全国作品征集）；村校联创挑战；课堂数据仪表盘（展示完成率/作品数/活跃时段）。
+        </div>
+        <div class="teacher-val">
+          <div class="tv-label">对乡村老师的价值</div>
+          乡村美术老师长期缺乏职业成就感，积分体系和勋章墙提供可量化的专业认可；赛季制让老师无需自主策划课程节奏，大幅降低备课压力；数据仪表盘帮助老师向校长展示美术课价值。
+        </div>
+        <div class="source-link"><a href="https://pvp.qq.com/" target="_blank">参考：王者荣耀官网</a></div>
+      </div>
+
+      <div class="tencent-card" style="grid-column: 1 / -1;">
+        <div class="tencent-dir-header">
+          <div class="tencent-dir-name">社交传播与内容生态：微信生态驱动低成本冷启动与规模化传播</div>
+          <span class="priority-badge pri-medium">Medium</span>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;flex:1">
+          <div>
+            <div class="tencent-cap"><strong>腾讯能力：</strong>微信订阅消息（小程序定向推送）；小程序精美分享卡片（参考微信读书年度报告/王者荣耀战报）；微信视频号（课堂视频+小程序跳转打通）；企业微信（教师社群管理）；腾讯公益99公益日传播链路；附近的小程序（地理位置发现同区域教师）。</div>
+            <div class="teacher-val" style="margin-top:10px">
+              <div class="tv-label">对乡村老师的价值</div>
+              教师主页解决职业认同感低问题；作品分享卡让家长自发传播，冷启动成本极低；全国挑战赛帮助乡村老师学生进入全国视野，带来超出想象的职业成就感。
+            </div>
+          </div>
+          <div>
+            <div class="product-box" style="height:100%">
+              <div class="product-label">产品化方式</div>
+              「美育传播生态」功能链：<br>
+              ① 作品展览馆+专属展示卡（学生作品→精美卡→一键朋友圈，家长成为传播节点）<br>
+              ② 课堂成就海报（完成挑战生成个性化海报）<br>
+              ③ 教师主页（课程/作品集展示，可分享给家长/校长）<br>
+              ④ 订阅提醒（开课/获赞/赛季倒计时精准触达）<br>
+              ⑤ 全国美育挑战赛（「画我家乡」+微信关系链投票裂变）
+            </div>
+          </div>
+        </div>
+        <div class="source-link"><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/subscribe-message.html" target="_blank">参考：微信小程序开发者文档</a></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══ ACTION RECOMMENDATIONS ══ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon icon-green">🎯</div>
+      <span class="section-title">对未来美术坊的产品动作建议</span>
+      <span class="section-count">P0 / P1 / P2</span>
+    </div>
+    <div class="rec-list">
+
+      <div class="rec-card rec-p0">
+        <div class="rec-header">
+          <span class="rec-priority color-p0">P0</span>
+          <span class="rec-name">锁定腾讯混元AIGC接入，率先上线「AI备课灵感板」MVP功能</span>
+        </div>
+        <div class="rec-body">
+          <div class="rec-field">
+            <div class="rec-field-label">为什么现在做</div>
+            腾讯混元图像3.0已开源并完成API商业化，内部接入路径清晰；Canva已在全球用「AI帮老师备课」建立极强心智，乡村美术垂直场景先发优势窗口期有限；「十五五」AI+教育政策窗口正在打开，越早上线越容易获得政策背书。
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">建议怎么落地</div>
+            Q2立项混元API接入申请；产品侧定义最小功能集：老师输入课题关键词→AI生成含参考图/配色/构图建议的一页灵感板→支持微信分享；技术侧优先使用混元图像API+预置国风/水墨/儿童画风格参数；目标6周上线可测版，邀请10-20位种子老师内测。
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">预期价值</div>
+            解决乡村老师最高频痛点（备课找素材耗时），直接驱动首日留存率；成为平台第一个标志性差异化功能，形成「未来美术坊=AI备课工具」的用户心智；为申报教育部数字化赋能项目提供可演示案例。
+          </div>
+        </div>
+      </div>
+
+      <div class="rec-card rec-p1">
+        <div class="rec-header">
+          <span class="rec-priority color-p1">P1</span>
+          <span class="rec-name">建立「教师主页+作品展览馆」社交传播体系，打通微信分享链路</span>
+        </div>
+        <div class="rec-body">
+          <div class="rec-field">
+            <div class="rec-field-label">为什么现在做</div>
+            Artsonia已证明「作品展示+家长传播」商业闭环可持续；微信生态分享卡片裂变成本极低；触梦计划/清华伟新/央美授渔历届参训教师培训后缺乏持续展示平台，现在是接入这批种子用户的最佳时机。
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">建议怎么落地</div>
+            设计「教师主页」（含课程列表/学生作品集展示）；设计「学生作品展示卡」生成器（适配朋友圈/微信群尺寸）；接入微信订阅消息；BD侧主动联系清华伟新和央美授渔计划，申请成为「培训后数字化支持平台」合作方，将参训教师导入平台。
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">预期价值</div>
+            家长朋友圈分享带来自然裂变，日均新增用户成本接近0；教师主页显著提升用户留存和平台粘性；清华伟新10期约400人+授渔计划4期超千人的种子用户，用户质量高、传播力强。
+          </div>
+        </div>
+      </div>
+
+      <div class="rec-card rec-p2">
+        <div class="rec-header">
+          <span class="rec-priority color-p2">P2</span>
+          <span class="rec-name">接入触梦计划BD渠道，申请「腾讯未来教室AI共建平台」合作伙伴资格</span>
+        </div>
+        <div class="rec-body">
+          <div class="rec-field">
+            <div class="rec-field-label">为什么现在做</div>
+            触梦计划刚于2026年3月27日发布AI共建平台，合作伙伴生态正在搭建中，现在申请是最早入局时机；触梦计划已覆盖1842所乡村学校，是短期内无法自建的渠道网络。
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">建议怎么落地</div>
+            整理产品定位文档，明确与触梦的互补关系（触梦=内容/硬件供给侧，美术坊=教师日常工具侧）；撰写合作方案以「帮助乡村美术教师进一步提升日常教研效率」为切入点；通过腾讯成长守护/腾讯游戏内部渠道申请对接；中期目标：纳入「腾讯未来教室」推荐工具清单。
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">预期价值</div>
+            获得访问触梦计划1842所学校教师的合法渠道，解决最难的冷启动问题；腾讯内部背书大幅提升学校和地方教育局信任度；有机会获得腾讯内部资源（内容、技术、运营）协同支持。
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══ WATCHLIST ══ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon icon-teal">👁</div>
+      <span class="section-title">风险与持续观察清单</span>
+      <span class="section-count">7 个观察点</span>
+    </div>
+    <div class="watchlist-grid">
+      <div class="watch-item">
+        <div class="watch-icon">⚠️</div>
+        <div class="watch-text">腾讯「未来调色盘计划」第三期申领时间及学校覆盖范围——若其向<strong>教师工具侧延伸</strong>（如为老师提供备课工具），将与未来美术坊产生直接竞争，需立即调整产品定位策略。</div>
+      </div>
+      <div class="watch-item">
+        <div class="watch-icon">⚠️</div>
+        <div class="watch-text">Canva for Education<strong>国内版本本土化进展</strong>及微信小程序形态——若Canva推出微信小程序版或与国内教育平台深度合作，将对未来美术坊产生高强度竞争威胁。</div>
+      </div>
+      <div class="watch-item">
+        <div class="watch-icon">🔔</div>
+        <div class="watch-text">教育部「数字化赋能教师发展行动」的<strong>实施细则及专项资金分配</strong>——是否有美育垂类的专项资金和项目申报通道，直接关系到未来美术坊获取政策资源的可行性。</div>
+      </div>
+      <div class="watch-item">
+        <div class="watch-icon">🔔</div>
+        <div class="watch-text">腾讯混元图像<strong>API的调用成本变化</strong>及国风/水墨风格的迭代质量——AI图像生成质量和成本是「AI备课灵感板」功能的技术底线，需持续关注混元更新节奏。</div>
+      </div>
+      <div class="watch-item">
+        <div class="watch-icon">📌</div>
+        <div class="watch-text">湖南师大「识-导-创」<strong>数智美育平台的商业化进展</strong>及推广范围——作为唯一高校自研的数智美育平台，若其向乡村学校推广将形成直接竞争，目前尚未检索到足够公开信息，需持续追踪。</div>
+      </div>
+      <div class="watch-item">
+        <div class="watch-icon">📌</div>
+        <div class="watch-text">清华伟新计划<strong>第十一期招募信息</strong>及参训教师数据库开放合作可能性——历届参训教师是最高质量的种子用户池，合作窗口期有限，需尽早接洽。</div>
+      </div>
+      <div class="watch-item">
+        <div class="watch-icon">📌</div>
+        <div class="watch-text">中国美院「乡村艺课」项目的<strong>数字化工具建设进展</strong>——目前暂未检索到其开发独立教师数字化工具的信息，但若其推出数字产品将具备极强权威性竞争优势。</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ FOOTER ══ -->
+<div class="site-footer">
+  <p>未来美术坊 · 每日美育产品竞品分析简报 · 2026-04-03 · 数据基于公开可检索信息，仅供产品决策参考</p>
+  <p style="margin-top:4px">生成工具：布丁 · 工作区：WorkBuddy</p>
+</div>
+
+</body>
+</html>

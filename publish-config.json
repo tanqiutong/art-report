@@ -1,0 +1,4 @@
+{
+  "githubPagesUrl": "https://YOUR_GITHUB_USERNAME.github.io/art-report",
+  "wecomWebhookUrl": "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=YOUR_WEBHOOK_KEY"
+}

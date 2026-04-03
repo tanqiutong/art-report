@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>未来美术坊 · 每日美育竞品简报</title>
+<style>
+  :root {
+    --ink: #1a1a2e;
+    --paper: #faf9f6;
+    --accent: #c0392b;
+    --border: #e0ddd8;
+    --muted: #7f8c8d;
+    --card: #ffffff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    min-height: 100vh;
+  }
+  .header {
+    background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
+    color: #fff;
+    padding: 48px 24px 40px;
+    text-align: center;
+  }
+  .header h1 { font-size: 24px; font-weight: 700; margin-bottom: 8px; letter-spacing: 1px; }
+  .header p { font-size: 14px; color: rgba(255,255,255,0.6); }
+  .container { max-width: 680px; margin: 0 auto; padding: 32px 16px 64px; }
+  .section-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .report-list { display: flex; flex-direction: column; gap: 12px; }
+  .report-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+    color: var(--ink);
+    transition: box-shadow 0.2s, border-color 0.2s;
+  }
+  .report-card:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    border-color: var(--accent);
+  }
+  .report-card.latest {
+    border-left: 4px solid var(--accent);
+  }
+  .report-left { display: flex; flex-direction: column; gap: 4px; }
+  .report-date { font-size: 16px; font-weight: 700; }
+  .report-tag {
+    display: inline-block;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    background: rgba(192,57,43,0.1);
+    color: var(--accent);
+    width: fit-content;
+  }
+  .report-arrow { font-size: 18px; color: var(--muted); }
+  .empty {
+    text-align: center;
+    padding: 48px 0;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  .footer {
+    text-align: center;
+    padding: 24px;
+    font-size: 12px;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+  }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>未来美术坊 · 每日美育竞品简报</h1>
+  <p>每日自动更新 · 覆盖竞品动态、行业政策、腾讯美术力、产品建议</p>
+</div>
+<div class="container">
+  <div class="section-title">历史简报存档</div>
+  <div class="report-list" id="reportList">
+    <div class="empty">加载中...</div>
+  </div>
+</div>
+<div class="footer">未来美术坊内部使用 · 由 WorkBuddy 自动生成</div>
+
+<script>
+// 从 reports-index.json 读取简报列表
+fetch('./reports-index.json')
+  .then(r => r.json())
+  .then(data => {
+    const list = document.getElementById('reportList');
+    if (!data || data.length === 0) {
+      list.innerHTML = '<div class="empty">暂无简报，第一期将在明天早上10点发布。</div>';
+      return;
+    }
+    list.innerHTML = data.map((item, i) => `
+      <a class="report-card ${i === 0 ? 'latest' : ''}" href="./reports/${item.file}">
+        <div class="report-left">
+          <div class="report-date">${item.date} 简报</div>
+          <span class="report-tag">${i === 0 ? '最新一期' : '历史存档'}</span>
+        </div>
+        <div class="report-arrow">→</div>
+      </a>
+    `).join('');
+  })
+  .catch(() => {
+    document.getElementById('reportList').innerHTML =
+      '<div class="empty">暂无简报记录，第一期将在下次自动任务运行后发布。</div>';
+  });
+</script>
+</body>
+</html>
