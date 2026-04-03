@@ -4,7 +4,7 @@
 
 ## 查看简报
 
-访问：[GitHub Pages 首页](https://YOUR_GITHUB_USERNAME.github.io/art-report)
+访问：[GitHub Pages 首页](https://tanqiutong.github.io/art-report)
 
 ## 目录结构
 
