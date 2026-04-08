@@ -7,120 +7,288 @@
 <style>
   :root {
     --ink: #1a1a2e;
-    --paper: #faf9f6;
-    --accent: #c0392b;
-    --border: #e0ddd8;
-    --muted: #7f8c8d;
+    --paper: #f4f5f9;
+    --accent: #e94560;
+    --accent2: #0f3460;
+    --gold: #e8a838;
+    --border: #e2e6f0;
+    --muted: #6b7280;
     --card: #ffffff;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
-    font-family: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
     background: var(--paper);
     color: var(--ink);
     min-height: 100vh;
   }
+
+  /* ── Header ── */
   .header {
     background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
     color: #fff;
-    padding: 48px 24px 40px;
+    padding: 36px 24px 28px;
     text-align: center;
+    position: relative;
+    overflow: hidden;
   }
-  .header h1 { font-size: 24px; font-weight: 700; margin-bottom: 8px; letter-spacing: 1px; }
-  .header p { font-size: 14px; color: rgba(255,255,255,0.6); }
-  .container { max-width: 680px; margin: 0 auto; padding: 32px 16px 64px; }
-  .section-title {
-    font-size: 12px;
-    font-weight: 700;
-    color: var(--muted);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 16px;
+  .header::before {
+    content: "";
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 80% 20%, rgba(233,69,96,.15) 0%, transparent 55%);
+    pointer-events: none;
   }
-  .report-list { display: flex; flex-direction: column; gap: 12px; }
-  .report-card {
+  .header h1 { font-size: 22px; font-weight: 700; letter-spacing: .04em; margin-bottom: 6px; }
+  .header p { font-size: 13px; color: rgba(255,255,255,.55); }
+
+  /* ── Container ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 28px 16px 60px; }
+
+  /* ── Today Banner ── */
+  .today-section { margin-bottom: 32px; }
+  .today-label {
+    font-size: 11px; font-weight: 700; letter-spacing: .12em;
+    color: var(--muted); text-transform: uppercase;
+    margin-bottom: 10px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .today-label::after {
+    content: ""; flex: 1; height: 1px; background: var(--border);
+  }
+  .today-tag {
+    display: inline-block;
+    background: var(--accent); color: #fff;
+    font-size: 10px; font-weight: 700; padding: 2px 8px;
+    border-radius: 10px; letter-spacing: .04em;
+  }
+
+  /* ── Iframe wrapper ── */
+  .iframe-wrap {
+    background: var(--card);
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    box-shadow: 0 4px 20px rgba(0,0,0,.08);
+    overflow: hidden;
+  }
+  .iframe-wrap iframe {
+    display: block;
+    width: 100%;
+    height: 1200px;
+    border: none;
+  }
+  .iframe-expand-bar {
+    padding: 10px 20px;
+    background: #f8f9fc;
+    border-top: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .iframe-expand-bar span { font-size: 12px; color: var(--muted); }
+  .btn-expand {
+    font-size: 12px; font-weight: 600;
+    color: var(--accent2); background: none; border: 1px solid var(--border);
+    border-radius: 6px; padding: 5px 12px; cursor: pointer;
+    transition: background .15s;
+  }
+  .btn-expand:hover { background: var(--border); }
+
+  /* ── Archive Section ── */
+  .archive-section { margin-top: 8px; }
+  .archive-label {
+    font-size: 11px; font-weight: 700; letter-spacing: .12em;
+    color: var(--muted); text-transform: uppercase;
+    margin-bottom: 10px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .archive-label::after {
+    content: ""; flex: 1; height: 1px; background: var(--border);
+  }
+  .archive-list { display: flex; flex-direction: column; gap: 8px; }
+
+  /* ── Accordion Card ── */
+  .acc-card {
     background: var(--card);
     border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 18px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    text-decoration: none;
-    color: var(--ink);
-    transition: box-shadow 0.2s, border-color 0.2s;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,.04);
   }
-  .report-card:hover {
-    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-    border-color: var(--accent);
+  .acc-head {
+    display: flex; align-items: center;
+    padding: 14px 18px;
+    cursor: pointer;
+    user-select: none;
+    transition: background .15s;
+    gap: 12px;
   }
-  .report-card.latest {
-    border-left: 4px solid var(--accent);
+  .acc-head:hover { background: #f8f9fc; }
+  .acc-date { font-size: 15px; font-weight: 700; color: var(--ink); }
+  .acc-meta { font-size: 12px; color: var(--muted); }
+  .acc-spacer { flex: 1; }
+  .acc-arrow {
+    font-size: 13px; color: var(--muted);
+    transition: transform .25s;
+    flex-shrink: 0;
   }
-  .report-left { display: flex; flex-direction: column; gap: 4px; }
-  .report-date { font-size: 16px; font-weight: 700; }
-  .report-tag {
-    display: inline-block;
-    font-size: 11px;
-    padding: 2px 8px;
-    border-radius: 10px;
-    background: rgba(192,57,43,0.1);
-    color: var(--accent);
-    width: fit-content;
-  }
-  .report-arrow { font-size: 18px; color: var(--muted); }
-  .empty {
-    text-align: center;
-    padding: 48px 0;
-    color: var(--muted);
-    font-size: 14px;
-  }
-  .footer {
-    text-align: center;
-    padding: 24px;
-    font-size: 12px;
-    color: var(--muted);
+  .acc-card.open .acc-arrow { transform: rotate(90deg); }
+  .acc-body {
+    display: none;
     border-top: 1px solid var(--border);
+  }
+  .acc-card.open .acc-body { display: block; }
+  .acc-body iframe {
+    display: block; width: 100%; height: 1100px; border: none;
+  }
+  .acc-open-link {
+    display: block; padding: 10px 18px;
+    background: #f8f9fc; border-top: 1px solid var(--border);
+    font-size: 12px; color: var(--accent2);
+    text-decoration: none; text-align: right;
+  }
+  .acc-open-link:hover { text-decoration: underline; }
+
+  /* ── Empty ── */
+  .empty {
+    text-align: center; padding: 40px 0;
+    color: var(--muted); font-size: 14px;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center; padding: 20px 16px;
+    font-size: 11px; color: var(--muted);
+    border-top: 1px solid var(--border);
+    margin-top: 8px;
   }
 </style>
 </head>
 <body>
+
 <div class="header">
   <h1>未来美术坊 · 每日美育竞品简报</h1>
   <p>每日自动更新 · 覆盖竞品动态、行业政策、腾讯美术力、产品建议</p>
 </div>
+
 <div class="container">
-  <div class="section-title">历史简报存档</div>
-  <div class="report-list" id="reportList">
-    <div class="empty">加载中...</div>
+
+  <!-- 今日简报 -->
+  <div class="today-section">
+    <div class="today-label">
+      <span class="today-tag">TODAY</span>
+      今日简报
+    </div>
+    <div class="iframe-wrap" id="todayWrap">
+      <div class="empty" id="todayLoading">加载中…</div>
+    </div>
   </div>
+
+  <!-- 历史存档（折叠） -->
+  <div class="archive-section">
+    <div class="archive-label">历史存档</div>
+    <div class="archive-list" id="archiveList">
+      <div class="empty">加载中…</div>
+    </div>
+  </div>
+
 </div>
+
 <div class="footer">未来美术坊内部使用 · 由 WorkBuddy 自动生成</div>
 
 <script>
-// 从 reports-index.json 读取简报列表
-fetch('./reports-index.json')
-  .then(r => r.json())
-  .then(data => {
-    const list = document.getElementById('reportList');
-    if (!data || data.length === 0) {
-      list.innerHTML = '<div class="empty">暂无简报，第一期将在明天早上10点发布。</div>';
-      return;
+(function () {
+  // 获取今天日期字符串 YYYY-MM-DD（本地时间）
+  function todayStr() {
+    var d = new Date();
+    return d.getFullYear() + '-'
+      + String(d.getMonth() + 1).padStart(2, '0') + '-'
+      + String(d.getDate()).padStart(2, '0');
+  }
+
+  var TODAY = todayStr();
+
+  fetch('./reports-index.json?_=' + Date.now())
+    .then(function (r) { return r.json(); })
+    .then(function (data) {
+      if (!data || data.length === 0) {
+        document.getElementById('todayLoading').textContent = '暂无简报，第一期将在明天早上10点发布。';
+        document.getElementById('archiveList').innerHTML = '';
+        return;
+      }
+
+      // 最新一期 = 第一条
+      var latest = data[0];
+      var archiveItems = data.slice(1);
+
+      // ── 今日简报：直接内嵌 ──
+      var todayWrap = document.getElementById('todayWrap');
+      todayWrap.innerHTML =
+        '<iframe src="./reports/' + latest.file + '" title="' + latest.date + ' 简报" loading="lazy"></iframe>' +
+        '<div class="iframe-expand-bar">' +
+          '<span>' + latest.date + ' · 最新一期</span>' +
+          '<button class="btn-expand" onclick="window.open(\'./reports/' + latest.file + '\',\'_blank\')">在新标签页打开 ↗</button>' +
+        '</div>';
+
+      // iframe 自适应高度
+      var iframe = todayWrap.querySelector('iframe');
+      iframe.addEventListener('load', function () {
+        try {
+          var h = iframe.contentWindow.document.body.scrollHeight;
+          if (h > 400) iframe.style.height = (h + 40) + 'px';
+        } catch (e) { /* 跨域忽略 */ }
+      });
+
+      // ── 历史存档：折叠手风琴 ──
+      var archiveList = document.getElementById('archiveList');
+      if (archiveItems.length === 0) {
+        archiveList.innerHTML = '<div class="empty" style="padding:20px 0;">暂无更多历史简报</div>';
+        return;
+      }
+
+      archiveList.innerHTML = archiveItems.map(function (item, i) {
+        return (
+          '<div class="acc-card" id="acc-' + i + '">' +
+            '<div class="acc-head" onclick="toggleAcc(' + i + ')">' +
+              '<div>' +
+                '<div class="acc-date">' + item.date + ' 简报</div>' +
+                '<div class="acc-meta">历史存档</div>' +
+              '</div>' +
+              '<div class="acc-spacer"></div>' +
+              '<span class="acc-arrow">▶</span>' +
+            '</div>' +
+            '<div class="acc-body">' +
+              '<iframe src="./reports/' + item.file + '" title="' + item.date + ' 简报" loading="lazy"></iframe>' +
+              '<a class="acc-open-link" href="./reports/' + item.file + '" target="_blank">在新标签页打开 ↗</a>' +
+            '</div>' +
+          '</div>'
+        );
+      }).join('');
+    })
+    .catch(function () {
+      document.getElementById('todayWrap').innerHTML = '<div class="empty">暂无简报记录，第一期将在下次自动任务运行后发布。</div>';
+      document.getElementById('archiveList').innerHTML = '';
+    });
+
+  // 手风琴切换
+  window.toggleAcc = function (i) {
+    var card = document.getElementById('acc-' + i);
+    var isOpen = card.classList.contains('open');
+    // 关闭其他
+    document.querySelectorAll('.acc-card.open').forEach(function (c) { c.classList.remove('open'); });
+    if (!isOpen) {
+      card.classList.add('open');
+      // 自适应高度
+      var iframe = card.querySelector('iframe');
+      if (iframe && !iframe.dataset.loaded) {
+        iframe.dataset.loaded = '1';
+        iframe.addEventListener('load', function () {
+          try {
+            var h = iframe.contentWindow.document.body.scrollHeight;
+            if (h > 400) iframe.style.height = (h + 40) + 'px';
+          } catch (e) {}
+        });
+      }
     }
-    list.innerHTML = data.map((item, i) => `
-      <a class="report-card ${i === 0 ? 'latest' : ''}" href="./reports/${item.file}">
-        <div class="report-left">
-          <div class="report-date">${item.date} 简报</div>
-          <span class="report-tag">${i === 0 ? '最新一期' : '历史存档'}</span>
-        </div>
-        <div class="report-arrow">→</div>
-      </a>
-    `).join('');
-  })
-  .catch(() => {
-    document.getElementById('reportList').innerHTML =
-      '<div class="empty">暂无简报记录，第一期将在下次自动任务运行后发布。</div>';
-  });
+  };
+})();
 </script>
 </body>
 </html>

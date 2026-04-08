@@ -19,6 +19,11 @@
     --muted: #6b7280;
     --tag-bg: #eef2ff;
     --tag-color: #4f46e5;
+    /* 新增高亮色 */
+    --new-bg: #fff7e6;
+    --new-border: #f39c12;
+    --new-label-bg: #f39c12;
+    --new-label-color: #fff;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -26,6 +31,64 @@
     background: var(--bg);
     color: var(--ink);
     line-height: 1.7;
+  }
+
+  /* ── NEW badge ── */
+  .new-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: var(--new-label-bg);
+    color: var(--new-label-color);
+    font-size: 10px;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 10px;
+    letter-spacing: .06em;
+    vertical-align: middle;
+    margin-left: 4px;
+    flex-shrink: 0;
+  }
+  /* 新增内容卡片高亮 */
+  .item-card.is-new {
+    background: var(--new-bg) !important;
+    border-left-color: var(--new-border) !important;
+    border-color: var(--new-border) !important;
+    box-shadow: 0 0 0 1px rgba(243,156,18,.18), 0 2px 8px rgba(243,156,18,.12);
+  }
+  .action-card.is-new {
+    background: #fff9ec !important;
+    border: 1px solid var(--new-border) !important;
+    box-shadow: 0 0 0 1px rgba(243,156,18,.18);
+  }
+  .tencent-card.is-new {
+    background: linear-gradient(135deg, #3d2800 0%, #1a1000 100%) !important;
+    border: 1px solid var(--new-border) !important;
+    box-shadow: 0 0 0 2px rgba(243,156,18,.25);
+  }
+  .risk-item.is-new {
+    background: #fff9ec !important;
+    border: 1px solid var(--new-border) !important;
+  }
+  /* 新增内容条标签 */
+  .new-stripe {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--new-border);
+    margin-bottom: 6px;
+    letter-spacing: .04em;
+  }
+  .new-stripe::before {
+    content: "★ 今日新增";
+    background: var(--new-label-bg);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 800;
+    padding: 1px 7px;
+    border-radius: 8px;
   }
 
   /* ── Header ── */
@@ -136,7 +199,11 @@
   .item-left { flex-shrink: 0; }
   .item-emoji { font-size: 22px; }
   .item-body { flex: 1; min-width: 0; }
-  .item-title { font-size: 14px; font-weight: 700; color: var(--ink); margin-bottom: 3px; }
+  .item-title {
+    font-size: 14px; font-weight: 700; color: var(--ink);
+    margin-bottom: 3px;
+    display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
+  }
   .item-desc { font-size: 13px; color: #4b5563; line-height: 1.6; }
   .item-source { font-size: 11px; color: var(--muted); margin-top: 5px; }
 
@@ -179,7 +246,11 @@
   .p0 { background: #fee2e2; color: #991b1b; }
   .p1 { background: #fef3c7; color: #92400e; }
   .p2 { background: #dbeafe; color: #1e40af; }
-  .action-content .action-title { font-size: 14px; font-weight: 700; color: var(--ink); margin-bottom: 3px; }
+  .action-content .action-title {
+    font-size: 14px; font-weight: 700; color: var(--ink);
+    margin-bottom: 3px;
+    display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
+  }
   .action-content .action-desc { font-size: 13px; color: #4b5563; line-height: 1.6; }
 
   /* ── Tencent Power ── */
@@ -201,7 +272,11 @@
     border-radius: 50%;
   }
   .tencent-card .tc-icon { font-size: 20px; margin-bottom: 6px; }
-  .tencent-card .tc-title { font-size: 13px; font-weight: 700; margin-bottom: 4px; color: #e2e8f0; }
+  .tencent-card .tc-title {
+    font-size: 13px; font-weight: 700; margin-bottom: 4px;
+    color: #e2e8f0;
+    display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
+  }
   .tencent-card .tc-desc { font-size: 12px; color: rgba(255,255,255,.65); line-height: 1.55; }
   .tencent-card .tc-tag {
     display: inline-block;
@@ -212,6 +287,11 @@
     border-radius: 8px;
     margin-top: 6px;
     color: rgba(255,255,255,.8);
+  }
+  /* new badge on dark bg */
+  .tencent-card .new-badge {
+    background: var(--new-label-bg);
+    color: #fff;
   }
 
   /* ── Risk ── */
@@ -279,7 +359,7 @@
     <div class="summary-card">
       <p>本周教育部最重磅信号落地：3月31日国家教育数字化战略部署会明确"十五五"将推动AI进入中小学课程标准与日常教学，并宣布2026年出台人工智能赋能教育相关政策，AI通识课成全学段必修趋势已无悬念。</p>
       <p>腾讯侧，混元3.0计划4月正式对外发布（从"大模型"到"强智能体"跃迁，百万字上下文，多模态全域），叠加混元图像3.0-Instruct（800亿参数，图生图+多图融合）已上线元宝全端，腾讯AI美术创作能力进入商用爆发期。</p>
-      <p>竞品侧，字节即梦AI深度渗透教师圈（DeepSeek+即梦AI教学指南大量传播），ModelScope乡村美术AI助教项目已形成课程级产品；OpenClaw v2026.4.5快速迭代（AI Agent框架），工具链进化速度加快，对未来美术坊的技术整合形成压力窗口。</p>
+      <p>竞品侧，字节即梦AI深度渗透教师圈（DeepSeek+即梦AI教学指南大量传播），ModelScope乡村美术AI助教项目已形成课程级产品；<strong style="color:var(--new-border);">OpenClaw v2026.4.5快速迭代（AI Agent框架）</strong>，工具链进化速度加快，对未来美术坊的技术整合形成压力窗口。</p>
       <p><strong>核心机会：</strong>乡村教师"有政策有工具但缺专属平台"的断层依然存在，未来美术坊可在政策落地期抢占"乡村美育AI专属工具"的心智标签，时间窗口预计6个月。</p>
     </div>
   </div>
@@ -323,31 +403,46 @@
         </div>
       </div>
 
-      <div class="item-card medium">
+      <!-- 🆕 新增：OpenClaw -->
+      <div class="item-card medium is-new">
         <div class="item-left"><div class="item-emoji">🤖</div></div>
         <div class="item-body">
+          <div class="new-stripe"></div>
           <div class="badge badge-medium">中影响 · 技术竞品</div>
-          <div class="item-title">OpenClaw v2026.4.5——AI Agent框架极速迭代，工具链压力上升</div>
+          <div class="item-title">
+            OpenClaw v2026.4.5——AI Agent框架极速迭代，工具链压力上升
+            <span class="new-badge">NEW</span>
+          </div>
           <div class="item-desc">开源AI Agent框架OpenClaw本月连续发布4.1→4.2→4.5版本，AI Agent从"对话工具"向"生产级应用"跃迁，支持多模型（DeepSeek+混元双驱动）、多渠道部署、插件扩展。未来美术坊若不尽快确定技术栈，将面临第三方工具以更低门槛实现相似功能的竞争压力。</div>
           <div class="item-source">来源：51cto.com / zhuanlan.zhihu.com | 影响评级：🟡 中</div>
         </div>
       </div>
 
-      <div class="item-card medium">
+      <!-- 🆕 新增：华东师大 -->
+      <div class="item-card medium is-new">
         <div class="item-left"><div class="item-emoji">🌐</div></div>
         <div class="item-body">
+          <div class="new-stripe"></div>
           <div class="badge badge-medium">中影响 · 平台竞品</div>
-          <div class="item-title">华东师大"AI+美术教育"研究框架落地——学术机构抢先卡位</div>
-          <div class="item-desc">华东师范大学发布"以AI为支点，撬动美育无限可能"实践框架（2025.4），系统梳理AI与美术教育的融合路径，包括课堂实践→跨学科→人文素养培育三层结构。学术机构的课程设计话语权正在形成，未来若与平台合并将产生强力竞品。</div>
+          <div class="item-title">
+            华东师大"AI+美术教育"研究框架落地——学术机构抢先卡位
+            <span class="new-badge">NEW</span>
+          </div>
+          <div class="item-desc">华东师范大学发布"以AI为支点，撬动美育无限可能"实践框架，系统梳理AI与美术教育的融合路径，包括课堂实践→跨学科→人文素养培育三层结构。学术机构的课程设计话语权正在形成，未来若与平台合并将产生强力竞品。</div>
           <div class="item-source">来源：ecnu.edu.cn | 影响评级：🟡 中</div>
         </div>
       </div>
 
-      <div class="item-card low">
+      <!-- 🆕 新增：西部乡村教师自组织 -->
+      <div class="item-card low is-new">
         <div class="item-left"><div class="item-emoji">🦾</div></div>
         <div class="item-body">
+          <div class="new-stripe"></div>
           <div class="badge badge-low">观察 · 间接竞品</div>
-          <div class="item-title">西部乡村教师AI实践案例增多——用户自组织先于平台</div>
+          <div class="item-title">
+            西部乡村教师AI实践案例增多——用户自组织先于平台
+            <span class="new-badge">NEW</span>
+          </div>
           <div class="item-desc">21经济网报道（2026.2）：西部乡村教师用AI图像识别剪纸纹样、结合3D打印开发校本课程、对接草原生态站探究，已有成熟的"AI+乡土资源"实践路径。这类自组织实践无需产品平台，若不及时介入，未来美术坊将错过最活跃的种子用户。</div>
           <div class="item-source">来源：21jingji.com | 影响评级：⚪ 观察</div>
         </div>
@@ -384,12 +479,17 @@
         </div>
       </div>
 
-      <div class="item-card positive">
+      <!-- 🆕 升级：AI通识课必修化新进展 -->
+      <div class="item-card positive is-new">
         <div class="item-left"><div class="item-emoji">📱</div></div>
         <div class="item-body">
+          <div class="new-stripe"></div>
           <div class="badge badge-new">市场趋势</div>
-          <div class="item-title">AI通识课必修化，小程序类轻工具成教师首选接入形态</div>
-          <div class="item-desc">AI通识课从试点走向全学段必修，教师工具需求从"会用"升级为"日常嵌入课堂"。微信小程序因无需安装、教室直接使用、家长易分享，正在成为乡村教师首选的AI工具接入形态，完美契合未来美术坊的产品形态。</div>
+          <div class="item-title">
+            AI通识课必修化确认，小程序类轻工具成教师首选接入形态
+            <span class="new-badge">NEW</span>
+          </div>
+          <div class="item-desc">2026年3月，教育部正式宣布AI通识课从试点走向全学段必修，教师工具需求从"会用"升级为"日常嵌入课堂"。微信小程序因无需安装、教室直接使用、家长易分享，正在成为乡村教师首选的AI工具接入形态，完美契合未来美术坊的产品形态。</div>
         </div>
       </div>
 
@@ -402,11 +502,16 @@
         </div>
       </div>
 
-      <div class="item-card medium">
+      <!-- 🆕 新增：大模型Agent化 -->
+      <div class="item-card medium is-new">
         <div class="item-left"><div class="item-emoji">🤝</div></div>
         <div class="item-body">
+          <div class="new-stripe"></div>
           <div class="badge badge-medium">生态趋势</div>
-          <div class="item-title">大模型进入"强智能体"时代，教育Agent成商业化核心场景</div>
+          <div class="item-title">
+            大模型进入"强智能体"时代，教育Agent成商业化核心场景
+            <span class="new-badge">NEW</span>
+          </div>
           <div class="item-desc">混元3.0、OpenClaw等均将"Agent化"定为核心方向，从"对话助手"变为"任务执行者"。对未来美术坊意味着：AI备课不再是"生成文字"，而是"自动生成完整教案+配套图片+评分表"的一站式Agent，技术栈选择需提前对齐。</div>
         </div>
       </div>
@@ -453,11 +558,15 @@
         <span class="tc-tag">🟡 合作申请中</span>
       </div>
 
-      <div class="tencent-card">
+      <!-- 🆕 新增：腾讯元器 -->
+      <div class="tencent-card is-new">
         <div class="tc-icon">⚙️</div>
-        <div class="tc-title">腾讯元器 · AI Agent平台</div>
+        <div class="tc-title">
+          腾讯元器 · AI Agent平台
+          <span class="new-badge">NEW</span>
+        </div>
         <div class="tc-desc">DeepSeek+混元双引擎驱动，DAU增长超20倍（2025年2-3月），API生态赋能教育行业。未来美术坊备课Agent可优先基于元器平台快速落地，降低研发门槛。</div>
-        <span class="tc-tag">🟢 低门槛接入</span>
+        <span class="tc-tag" style="border-color:var(--new-border);color:var(--new-border);">🟢 低门槛接入</span>
       </div>
 
       <div class="tencent-card">
@@ -495,10 +604,14 @@
         </div>
       </div>
 
-      <div class="action-card">
+      <!-- 🆕 P2 变化 -->
+      <div class="action-card is-new">
         <div class="action-priority p2">P2</div>
         <div class="action-content">
-          <div class="action-title">起草"AI辅助美育，不替代老师"价值主张白皮书（1000字）</div>
+          <div class="action-title">
+            起草"AI辅助美育，不替代老师"价值主张白皮书（1000字）
+            <span class="new-badge" style="color:#fff;background:#f39c12;">NEW</span>
+          </div>
           <div class="action-desc">AI伦理争议升温，乡村教师"AI会替代我吗"的焦虑成为用户留存隐患。本周输出一份轻量白皮书，明确产品立场（AI是老师的助教，不是替代者），可用于公众号传播、教研群分享，同时作为后续PR素材和政府对接的价值主张底稿。</div>
         </div>
       </div>
@@ -515,9 +628,13 @@
     </div>
     <div class="risk-list">
 
-      <div class="risk-item">
+      <!-- 🆕 新增风险 -->
+      <div class="risk-item is-new">
         <span class="risk-level risk-high">🔴 高</span>
-        <span><strong>混元3.0发布延期风险：</strong>若混元3.0本月无法发布，未来美术坊AI备课Agent的技术底座时间表需向后推移，建议同步评估直接接入元器平台（当前混元2.0+DeepSeek）的备选方案。</span>
+        <div style="flex:1;">
+          <div class="new-stripe" style="margin-bottom:4px;"></div>
+          <span><strong>混元3.0发布延期风险：</strong>若混元3.0本月无法发布，未来美术坊AI备课Agent的技术底座时间表需向后推移，建议同步评估直接接入元器平台（当前混元2.0+DeepSeek）的备选方案。</span>
+        </div>
       </div>
 
       <div class="risk-item">
@@ -553,6 +670,7 @@
 <div class="footer">
   <p>未来美术坊 · 每日竞品智能简报 | 2026-04-08 09:20 生成</p>
   <p style="margin-top:4px;">GitHub Pages：<a href="https://tanqiutong.github.io/art-report" target="_blank">tanqiutong.github.io/art-report</a> &nbsp;|&nbsp; 数据来源：公开网络信息，仅供内部参考</p>
+  <p style="margin-top:4px;color:var(--new-border);font-weight:600;">★ 橙色高亮 = 今日新增内容（相较昨日简报）</p>
 </div>
 
 </body>
