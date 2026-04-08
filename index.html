@@ -5,197 +5,466 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>未来美术坊 · 每日美育竞品简报</title>
 <style>
-  :root {
-    --ink: #1a1a2e;
-    --paper: #f4f5f9;
-    --accent: #e94560;
-    --accent2: #0f3460;
-    --gold: #e8a838;
-    --border: #e2e6f0;
-    --muted: #6b7280;
-    --card: #ffffff;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
-    background: var(--paper);
-    color: var(--ink);
-    min-height: 100vh;
-  }
+/* ════════════════════════════════════════
+   未来美术坊 · 美育简报门户
+   视觉主题：水墨·宣纸·非遗纹样
+   ════════════════════════════════════════ */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&display=swap');
 
-  /* ── Header ── */
-  .header {
-    background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
-    color: #fff;
-    padding: 36px 24px 28px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .header::before {
-    content: "";
-    position: absolute; inset: 0;
-    background: radial-gradient(ellipse at 80% 20%, rgba(233,69,96,.15) 0%, transparent 55%);
-    pointer-events: none;
-  }
-  .header h1 { font-size: 22px; font-weight: 700; letter-spacing: .04em; margin-bottom: 6px; }
-  .header p { font-size: 13px; color: rgba(255,255,255,.55); }
+:root {
+  /* 宣纸调色板 */
+  --xuan:        #f5f0e8;   /* 宣纸底色 */
+  --xuan-dark:   #ede5d0;   /* 深宣纸 */
+  --ink:         #1c1408;   /* 浓墨 */
+  --ink-mid:     #3a3020;   /* 中墨 */
+  --ink-light:   #7a6e58;   /* 淡墨 */
+  --zhu:         #c0392b;   /* 朱砂红 */
+  --zhu-light:   #e74c3c;
+  --zhu-bg:      #fdf0ee;
+  --jin:         #b8860b;   /* 金线色 */
+  --jin-light:   #d4a017;
+  --qing:        #2c6e6c;   /* 青色（青花） */
+  --qing-bg:     #edf6f5;
+  --border:      #d4c9a8;   /* 宣纸边线 */
+  --border-light:#ede5d0;
+  --shadow:      rgba(28,20,8,.08);
+}
 
-  /* ── Container ── */
-  .container { max-width: 960px; margin: 0 auto; padding: 28px 16px 60px; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-  /* ── Today Banner ── */
-  .today-section { margin-bottom: 32px; }
-  .today-label {
-    font-size: 11px; font-weight: 700; letter-spacing: .12em;
-    color: var(--muted); text-transform: uppercase;
-    margin-bottom: 10px;
-    display: flex; align-items: center; gap: 8px;
-  }
-  .today-label::after {
-    content: ""; flex: 1; height: 1px; background: var(--border);
-  }
-  .today-tag {
-    display: inline-block;
-    background: var(--accent); color: #fff;
-    font-size: 10px; font-weight: 700; padding: 2px 8px;
-    border-radius: 10px; letter-spacing: .04em;
-  }
+body {
+  font-family: 'Noto Serif SC', 'PingFang SC', 'Hiragino Mincho ProN', 'Microsoft YaHei', serif;
+  background: var(--xuan);
+  color: var(--ink);
+  min-height: 100vh;
+  /* 宣纸纹理叠加 */
+  background-image:
+    url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+}
 
-  /* ── Iframe wrapper ── */
-  .iframe-wrap {
-    background: var(--card);
-    border-radius: 14px;
-    border: 1px solid var(--border);
-    box-shadow: 0 4px 20px rgba(0,0,0,.08);
-    overflow: hidden;
-  }
-  .iframe-wrap iframe {
-    display: block;
-    width: 100%;
-    height: 1200px;
-    border: none;
-  }
-  .iframe-expand-bar {
-    padding: 10px 20px;
-    background: #f8f9fc;
-    border-top: 1px solid var(--border);
-    display: flex; align-items: center; justify-content: space-between;
-  }
-  .iframe-expand-bar span { font-size: 12px; color: var(--muted); }
-  .btn-expand {
-    font-size: 12px; font-weight: 600;
-    color: var(--accent2); background: none; border: 1px solid var(--border);
-    border-radius: 6px; padding: 5px 12px; cursor: pointer;
-    transition: background .15s;
-  }
-  .btn-expand:hover { background: var(--border); }
+/* ══ SVG 装饰元素 ══ */
+.deco-divider {
+  width: 100%; overflow: visible;
+  display: block; margin: 0;
+}
 
-  /* ── Archive Section ── */
-  .archive-section { margin-top: 8px; }
-  .archive-label {
-    font-size: 11px; font-weight: 700; letter-spacing: .12em;
-    color: var(--muted); text-transform: uppercase;
-    margin-bottom: 10px;
-    display: flex; align-items: center; gap: 8px;
-  }
-  .archive-label::after {
-    content: ""; flex: 1; height: 1px; background: var(--border);
-  }
-  .archive-list { display: flex; flex-direction: column; gap: 8px; }
+/* ══ HEADER ══ */
+.site-header {
+  position: relative;
+  background: var(--ink);
+  color: #fff;
+  overflow: hidden;
+  padding: 0;
+}
+/* 水墨晕染背景层 */
+.header-ink-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 15% 50%, rgba(192,57,43,.22) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 85% 20%, rgba(44,110,108,.18) 0%, transparent 55%),
+    radial-gradient(ellipse 100% 100% at 50% 100%, rgba(184,134,11,.10) 0%, transparent 50%),
+    linear-gradient(160deg, #1c1408 0%, #2a1e0a 40%, #1c2a1a 100%);
+  pointer-events: none;
+}
+/* 泼墨晕染blob */
+.ink-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: .18;
+  pointer-events: none;
+}
+.ink-blob-1 { width: 400px; height: 300px; background: #c0392b; top: -80px; left: -60px; }
+.ink-blob-2 { width: 300px; height: 400px; background: #2c6e6c; top: 20px; right: -80px; }
+.ink-blob-3 { width: 500px; height: 200px; background: #b8860b; bottom: -60px; left: 30%; }
 
-  /* ── Accordion Card ── */
-  .acc-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 1px 4px rgba(0,0,0,.04);
-  }
-  .acc-head {
-    display: flex; align-items: center;
-    padding: 14px 18px;
-    cursor: pointer;
-    user-select: none;
-    transition: background .15s;
-    gap: 12px;
-  }
-  .acc-head:hover { background: #f8f9fc; }
-  .acc-date { font-size: 15px; font-weight: 700; color: var(--ink); }
-  .acc-meta { font-size: 12px; color: var(--muted); }
-  .acc-spacer { flex: 1; }
-  .acc-arrow {
-    font-size: 13px; color: var(--muted);
-    transition: transform .25s;
-    flex-shrink: 0;
-  }
-  .acc-card.open .acc-arrow { transform: rotate(90deg); }
-  .acc-body {
-    display: none;
-    border-top: 1px solid var(--border);
-  }
-  .acc-card.open .acc-body { display: block; }
-  .acc-body iframe {
-    display: block; width: 100%; height: 1100px; border: none;
-  }
-  .acc-open-link {
-    display: block; padding: 10px 18px;
-    background: #f8f9fc; border-top: 1px solid var(--border);
-    font-size: 12px; color: var(--accent2);
-    text-decoration: none; text-align: right;
-  }
-  .acc-open-link:hover { text-decoration: underline; }
+/* 非遗回纹边框 SVG */
+.header-border-top {
+  position: absolute; top: 0; left: 0; right: 0; height: 6px;
+  background: linear-gradient(90deg, var(--zhu) 0%, var(--jin) 50%, var(--zhu) 100%);
+}
+.header-border-bot {
+  position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, transparent 0%, var(--jin-light) 30%, var(--jin-light) 70%, transparent 100%);
+  opacity: .5;
+}
 
-  /* ── Empty ── */
-  .empty {
-    text-align: center; padding: 40px 0;
-    color: var(--muted); font-size: 14px;
-  }
+.header-inner {
+  position: relative; z-index: 2;
+  max-width: 900px; margin: 0 auto;
+  padding: 44px 24px 36px;
+  text-align: center;
+}
 
-  /* ── Footer ── */
-  .footer {
-    text-align: center; padding: 20px 16px;
-    font-size: 11px; color: var(--muted);
-    border-top: 1px solid var(--border);
-    margin-top: 8px;
-  }
+/* 印章元素 */
+.header-seal {
+  display: inline-block;
+  border: 2px solid var(--zhu);
+  color: var(--zhu);
+  font-size: 11px; font-weight: 700;
+  letter-spacing: .18em;
+  padding: 4px 14px;
+  margin-bottom: 18px;
+  position: relative;
+  text-transform: uppercase;
+}
+.header-seal::before, .header-seal::after {
+  content: ""; position: absolute;
+  width: 6px; height: 6px;
+  border: 1px solid var(--zhu);
+}
+.header-seal::before { top: -4px; left: -4px; border-right: none; border-bottom: none; }
+.header-seal::after  { bottom: -4px; right: -4px; border-left: none; border-top: none; }
+
+/* 主标题 */
+.header-zh {
+  font-size: 32px; font-weight: 900;
+  letter-spacing: .12em;
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: 8px;
+  text-shadow: 0 2px 20px rgba(0,0,0,.4);
+}
+.header-zh .accent-char { color: var(--zhu-light); }
+
+.header-en {
+  font-size: 12px; letter-spacing: .22em;
+  color: rgba(255,255,255,.4);
+  font-family: 'Segoe UI', sans-serif;
+  font-weight: 400;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+/* 副标题标签组 */
+.header-tags {
+  display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
+  margin-top: 4px;
+}
+.header-tag {
+  font-size: 11px; font-family: 'PingFang SC', sans-serif;
+  color: rgba(255,255,255,.55);
+  border: 1px solid rgba(255,255,255,.15);
+  padding: 3px 12px; border-radius: 2px;
+  letter-spacing: .06em;
+}
+
+/* 非遗纹样分隔线（SVG 云纹） */
+.yunwen-divider {
+  width: 100%; height: 28px; display: block;
+  background: var(--ink);
+}
+
+/* ══ 纸张容器 ══ */
+.page-body {
+  max-width: 900px; margin: 0 auto; padding: 32px 16px 60px;
+}
+
+/* ══ 板块标题 ══ */
+.block-title {
+  display: flex; align-items: center; gap: 14px;
+  margin-bottom: 16px;
+}
+.block-title-line {
+  flex: 1; height: 1px;
+  background: linear-gradient(90deg, var(--jin) 0%, var(--border-light) 100%);
+}
+.block-title-line.left {
+  background: linear-gradient(270deg, var(--jin) 0%, var(--border-light) 100%);
+}
+.block-title-text {
+  font-size: 13px; font-weight: 700; letter-spacing: .16em;
+  color: var(--jin);
+  white-space: nowrap;
+  display: flex; align-items: center; gap: 8px;
+}
+.block-title-icon {
+  width: 20px; height: 20px; display: flex; align-items: center; justify-content: center;
+  background: var(--zhu); border-radius: 2px;
+  font-size: 11px; color: #fff; flex-shrink: 0;
+}
+/* 今日标签 */
+.today-chip {
+  background: var(--zhu); color: #fff;
+  font-size: 10px; font-weight: 700;
+  padding: 2px 9px; letter-spacing: .08em;
+  border-radius: 2px;
+  font-family: 'PingFang SC', sans-serif;
+}
+
+/* ══ 今日简报卡片 ══ */
+.today-frame {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--zhu);
+  border-radius: 2px;
+  box-shadow:
+    0 2px 0 var(--xuan-dark),
+    0 4px 20px var(--shadow),
+    inset 0 0 0 1px rgba(184,134,11,.06);
+  overflow: hidden;
+  margin-bottom: 32px;
+  position: relative;
+}
+/* 左侧金线装饰 */
+.today-frame::before {
+  content: "";
+  position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+  background: linear-gradient(180deg, var(--jin) 0%, var(--jin-light) 100%);
+}
+.today-frame iframe {
+  display: block; width: 100%;
+  height: 1200px; border: none;
+}
+.today-frame-foot {
+  padding: 11px 20px 11px 24px;
+  background: var(--xuan-dark);
+  border-top: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.today-frame-foot .foot-date {
+  font-size: 12px; color: var(--ink-light);
+  font-family: 'PingFang SC', sans-serif;
+  letter-spacing: .04em;
+}
+.btn-new-tab {
+  font-size: 12px; font-weight: 600;
+  color: var(--qing); background: none;
+  border: 1px solid var(--qing);
+  border-radius: 2px; padding: 5px 14px;
+  cursor: pointer; letter-spacing: .04em;
+  font-family: 'PingFang SC', sans-serif;
+  transition: background .15s, color .15s;
+}
+.btn-new-tab:hover { background: var(--qing); color: #fff; }
+
+/* ══ 历史存档 ══ */
+.archive-stack { display: flex; flex-direction: column; gap: 6px; }
+
+.acc-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px var(--shadow);
+  transition: border-left-color .2s;
+}
+.acc-card:hover, .acc-card.open { border-left-color: var(--jin); }
+
+.acc-head {
+  display: flex; align-items: center; gap: 14px;
+  padding: 14px 18px;
+  cursor: pointer; user-select: none;
+  transition: background .15s;
+}
+.acc-head:hover { background: var(--xuan); }
+.acc-card.open .acc-head { background: var(--xuan-dark); }
+
+/* 回纹圆点 */
+.acc-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--border); flex-shrink: 0;
+  transition: background .2s;
+}
+.acc-card.open .acc-dot { background: var(--zhu); }
+
+.acc-date { font-size: 15px; font-weight: 700; letter-spacing: .04em; color: var(--ink); }
+.acc-sub  { font-size: 11px; color: var(--ink-light); font-family: 'PingFang SC', sans-serif; margin-top: 1px; }
+.acc-spacer { flex: 1; }
+.acc-arrow {
+  font-size: 10px; color: var(--ink-light);
+  transition: transform .25s;
+  font-style: normal; flex-shrink: 0;
+  letter-spacing: 0;
+}
+.acc-card.open .acc-arrow { transform: rotate(90deg); }
+
+.acc-body { display: none; border-top: 1px solid var(--border-light); }
+.acc-card.open .acc-body { display: block; }
+.acc-body iframe { display: block; width: 100%; height: 1100px; border: none; }
+.acc-body-foot {
+  padding: 10px 18px; background: var(--xuan-dark);
+  border-top: 1px solid var(--border-light);
+  text-align: right;
+}
+.acc-body-foot a {
+  font-size: 12px; color: var(--qing);
+  font-family: 'PingFang SC', sans-serif;
+  text-decoration: none;
+}
+.acc-body-foot a:hover { text-decoration: underline; }
+
+/* ══ 空态 ══ */
+.empty {
+  text-align: center; padding: 48px 0;
+  color: var(--ink-light); font-size: 14px;
+  font-family: 'PingFang SC', sans-serif;
+}
+
+/* ══ Footer ══ */
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 24px 16px;
+  text-align: center;
+  background: var(--xuan-dark);
+}
+.footer-seal {
+  display: inline-block;
+  width: 48px; height: 48px;
+  border: 2px solid var(--zhu);
+  color: var(--zhu);
+  font-size: 14px; font-weight: 900;
+  line-height: 44px;
+  text-align: center;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  letter-spacing: .1em;
+}
+.footer-text {
+  font-size: 11px; color: var(--ink-light);
+  font-family: 'PingFang SC', sans-serif;
+  letter-spacing: .06em;
+  line-height: 1.8;
+}
+.footer-text a { color: var(--qing); text-decoration: none; }
+.footer-text a:hover { text-decoration: underline; }
+
+/* ══ 云纹 SVG 装饰 ══ */
+.svg-yunwen {
+  display: block; width: 100%;
+  overflow: visible;
+}
+
+/* ══ 响应式 ══ */
+@media (max-width: 600px) {
+  .header-zh { font-size: 24px; }
+  .page-body { padding: 20px 12px 40px; }
+}
 </style>
 </head>
 <body>
 
-<div class="header">
-  <h1>未来美术坊 · 每日美育竞品简报</h1>
-  <p>每日自动更新 · 覆盖竞品动态、行业政策、腾讯美术力、产品建议</p>
-</div>
+<!-- ══ HEADER ══ -->
+<header class="site-header">
+  <div class="header-border-top"></div>
+  <div class="header-ink-bg"></div>
+  <div class="ink-blob ink-blob-1"></div>
+  <div class="ink-blob ink-blob-2"></div>
+  <div class="ink-blob ink-blob-3"></div>
 
-<div class="container">
+  <div class="header-inner">
+    <div class="header-seal">ART · EDUCATION · INTELLIGENCE</div>
+    <div class="header-zh">
+      未来<span class="accent-char">美术坊</span>
+    </div>
+    <div class="header-en">Daily Art Education Product Intelligence</div>
+    <div class="header-tags">
+      <span class="header-tag">乡村美术教师</span>
+      <span class="header-tag">竞品动态</span>
+      <span class="header-tag">非遗美育</span>
+      <span class="header-tag">AI工具</span>
+      <span class="header-tag">腾讯生态</span>
+    </div>
+  </div>
+
+  <!-- 云纹分隔 SVG -->
+  <svg class="svg-yunwen" viewBox="0 0 900 28" height="28" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,28 L0,14
+      Q15,2 30,14 Q45,26 60,14 Q75,2 90,14
+      Q105,26 120,14 Q135,2 150,14
+      Q165,26 180,14 Q195,2 210,14
+      Q225,26 240,14 Q255,2 270,14
+      Q285,26 300,14 Q315,2 330,14
+      Q345,26 360,14 Q375,2 390,14
+      Q405,26 420,14 Q435,2 450,14
+      Q465,26 480,14 Q495,2 510,14
+      Q525,26 540,14 Q555,2 570,14
+      Q585,26 600,14 Q615,2 630,14
+      Q645,26 660,14 Q675,2 690,14
+      Q705,26 720,14 Q735,2 750,14
+      Q765,26 780,14 Q795,2 810,14
+      Q825,26 840,14 Q855,2 870,14
+      Q885,26 900,14
+      L900,28 Z"
+      fill="#f5f0e8"/>
+    <path d="M0,14
+      Q15,2 30,14 Q45,26 60,14 Q75,2 90,14
+      Q105,26 120,14 Q135,2 150,14
+      Q165,26 180,14 Q195,2 210,14
+      Q225,26 240,14 Q255,2 270,14
+      Q285,26 300,14 Q315,2 330,14
+      Q345,26 360,14 Q375,2 390,14
+      Q405,26 420,14 Q435,2 450,14
+      Q465,26 480,14 Q495,2 510,14
+      Q525,26 540,14 Q555,2 570,14
+      Q585,26 600,14 Q615,2 630,14
+      Q645,26 660,14 Q675,2 690,14
+      Q705,26 720,14 Q735,2 750,14
+      Q765,26 780,14 Q795,2 810,14
+      Q825,26 840,14 Q855,2 870,14
+      Q885,26 900,14"
+      fill="none" stroke="#b8860b" stroke-width="1" stroke-opacity=".5"/>
+  </svg>
+</header>
+
+<!-- ══ 主体 ══ -->
+<main class="page-body">
 
   <!-- 今日简报 -->
-  <div class="today-section">
-    <div class="today-label">
-      <span class="today-tag">TODAY</span>
-      今日简报
+  <section style="margin-bottom:36px;">
+    <div class="block-title">
+      <div class="block-title-line left"></div>
+      <div class="block-title-text">
+        <span class="block-title-icon">今</span>
+        今日简报
+        <span class="today-chip">LATEST</span>
+      </div>
+      <div class="block-title-line"></div>
     </div>
-    <div class="iframe-wrap" id="todayWrap">
-      <div class="empty" id="todayLoading">加载中…</div>
-    </div>
-  </div>
 
-  <!-- 历史存档（折叠） -->
-  <div class="archive-section">
-    <div class="archive-label">历史存档</div>
-    <div class="archive-list" id="archiveList">
+    <div class="today-frame" id="todayWrap">
+      <div class="empty">正在展开今日简报…</div>
+    </div>
+  </section>
+
+  <!-- 历史存档 -->
+  <section>
+    <div class="block-title">
+      <div class="block-title-line left"></div>
+      <div class="block-title-text">
+        <span class="block-title-icon">档</span>
+        历史存档
+      </div>
+      <div class="block-title-line"></div>
+    </div>
+
+    <div class="archive-stack" id="archiveList">
       <div class="empty">加载中…</div>
     </div>
+  </section>
+
+</main>
+
+<!-- ══ FOOTER ══ -->
+<footer class="site-footer">
+  <!-- 回纹分隔线 -->
+  <svg width="200" height="12" viewBox="0 0 200 12" style="display:block;margin:0 auto 14px;" xmlns="http://www.w3.org/2000/svg">
+    <line x1="0" y1="6" x2="75" y2="6" stroke="#d4c9a8" stroke-width="1"/>
+    <rect x="80" y="2" width="8" height="8" fill="none" stroke="#b8860b" stroke-width="1"/>
+    <rect x="96" y="2" width="8" height="8" fill="none" stroke="#b8860b" stroke-width="1"/>
+    <line x1="110" y1="6" x2="200" y2="6" stroke="#d4c9a8" stroke-width="1"/>
+  </svg>
+  <div class="footer-seal">艺</div>
+  <div class="footer-text">
+    未来美术坊内部使用 · 每日自动生成<br>
+    <a href="https://tanqiutong.github.io/art-report" target="_blank">tanqiutong.github.io/art-report</a>
+    &nbsp;·&nbsp; 由布丁驱动
   </div>
-
-</div>
-
-<div class="footer">未来美术坊内部使用 · 由 WorkBuddy 自动生成</div>
+</footer>
 
 <script>
 (function () {
-  // 获取今天日期字符串 YYYY-MM-DD（本地时间）
   function todayStr() {
     var d = new Date();
     return d.getFullYear() + '-'
@@ -203,60 +472,58 @@
       + String(d.getDate()).padStart(2, '0');
   }
 
-  var TODAY = todayStr();
-
   fetch('./reports-index.json?_=' + Date.now())
     .then(function (r) { return r.json(); })
     .then(function (data) {
       if (!data || data.length === 0) {
-        document.getElementById('todayLoading').textContent = '暂无简报，第一期将在明天早上10点发布。';
+        document.getElementById('todayWrap').innerHTML = '<div class="empty">暂无简报，第一期将在明天早上10点发布。</div>';
         document.getElementById('archiveList').innerHTML = '';
         return;
       }
 
-      // 最新一期 = 第一条
       var latest = data[0];
-      var archiveItems = data.slice(1);
+      var archives = data.slice(1);
 
-      // ── 今日简报：直接内嵌 ──
+      /* ── 今日简报内嵌 ── */
       var todayWrap = document.getElementById('todayWrap');
       todayWrap.innerHTML =
         '<iframe src="./reports/' + latest.file + '" title="' + latest.date + ' 简报" loading="lazy"></iframe>' +
-        '<div class="iframe-expand-bar">' +
-          '<span>' + latest.date + ' · 最新一期</span>' +
-          '<button class="btn-expand" onclick="window.open(\'./reports/' + latest.file + '\',\'_blank\')">在新标签页打开 ↗</button>' +
+        '<div class="today-frame-foot">' +
+          '<span class="foot-date">📅 ' + latest.date + ' &nbsp;·&nbsp; 最新一期</span>' +
+          '<button class="btn-new-tab" onclick="window.open(\'./reports/' + latest.file + '\',\'_blank\')">新标签页打开 ↗</button>' +
         '</div>';
 
-      // iframe 自适应高度
-      var iframe = todayWrap.querySelector('iframe');
-      iframe.addEventListener('load', function () {
+      /* iframe 自适应高度 */
+      var ifr = todayWrap.querySelector('iframe');
+      ifr.addEventListener('load', function () {
         try {
-          var h = iframe.contentWindow.document.body.scrollHeight;
-          if (h > 400) iframe.style.height = (h + 40) + 'px';
-        } catch (e) { /* 跨域忽略 */ }
+          var h = ifr.contentWindow.document.body.scrollHeight;
+          if (h > 400) ifr.style.height = (h + 40) + 'px';
+        } catch (e) {}
       });
 
-      // ── 历史存档：折叠手风琴 ──
+      /* ── 历史存档折叠 ── */
       var archiveList = document.getElementById('archiveList');
-      if (archiveItems.length === 0) {
+      if (archives.length === 0) {
         archiveList.innerHTML = '<div class="empty" style="padding:20px 0;">暂无更多历史简报</div>';
         return;
       }
 
-      archiveList.innerHTML = archiveItems.map(function (item, i) {
+      archiveList.innerHTML = archives.map(function (item, i) {
         return (
           '<div class="acc-card" id="acc-' + i + '">' +
             '<div class="acc-head" onclick="toggleAcc(' + i + ')">' +
+              '<span class="acc-dot"></span>' +
               '<div>' +
-                '<div class="acc-date">' + item.date + ' 简报</div>' +
-                '<div class="acc-meta">历史存档</div>' +
+                '<div class="acc-date">' + item.date + '</div>' +
+                '<div class="acc-sub">历史存档 · 点击展开阅读</div>' +
               '</div>' +
               '<div class="acc-spacer"></div>' +
               '<span class="acc-arrow">▶</span>' +
             '</div>' +
             '<div class="acc-body">' +
-              '<iframe src="./reports/' + item.file + '" title="' + item.date + ' 简报" loading="lazy"></iframe>' +
-              '<a class="acc-open-link" href="./reports/' + item.file + '" target="_blank">在新标签页打开 ↗</a>' +
+              '<iframe src="./reports/' + item.file + '" title="' + item.date + '" loading="lazy"></iframe>' +
+              '<div class="acc-body-foot"><a href="./reports/' + item.file + '" target="_blank">在新标签页打开 ↗</a></div>' +
             '</div>' +
           '</div>'
         );
@@ -267,22 +534,19 @@
       document.getElementById('archiveList').innerHTML = '';
     });
 
-  // 手风琴切换
   window.toggleAcc = function (i) {
     var card = document.getElementById('acc-' + i);
     var isOpen = card.classList.contains('open');
-    // 关闭其他
     document.querySelectorAll('.acc-card.open').forEach(function (c) { c.classList.remove('open'); });
     if (!isOpen) {
       card.classList.add('open');
-      // 自适应高度
-      var iframe = card.querySelector('iframe');
-      if (iframe && !iframe.dataset.loaded) {
-        iframe.dataset.loaded = '1';
-        iframe.addEventListener('load', function () {
+      var ifr = card.querySelector('iframe');
+      if (ifr && !ifr.dataset.loaded) {
+        ifr.dataset.loaded = '1';
+        ifr.addEventListener('load', function () {
           try {
-            var h = iframe.contentWindow.document.body.scrollHeight;
-            if (h > 400) iframe.style.height = (h + 40) + 'px';
+            var h = ifr.contentWindow.document.body.scrollHeight;
+            if (h > 400) ifr.style.height = (h + 40) + 'px';
           } catch (e) {}
         });
       }
