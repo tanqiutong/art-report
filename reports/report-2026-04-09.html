@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>未来美术坊 · 每日竞品简报 2026-04-09</title>
+  <style>
+    :root {
+      --ink: #1a1a2e;
+      --accent: #e8602c;
+      --accent2: #2c6be8;
+      --gold: #c89a2a;
+      --bg: #f7f5f0;
+      --card: #ffffff;
+      --border: #e8e4dc;
+      --tag-p0: #e8602c;
+      --tag-p1: #c89a2a;
+      --tag-p2: #2c6be8;
+      --tag-high: #d94f4f;
+      --tag-mid: #d97c2e;
+      --tag-low: #2e9e6b;
+      --muted: #6b6b7a;
+      --radius: 12px;
+      --shadow: 0 2px 16px rgba(0,0,0,0.07);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.7;
+      padding: 0 0 60px;
+    }
+
+    /* ── Header ── */
+    .header {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
+      color: #fff;
+      padding: 40px 24px 32px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .header::before {
+      content: "";
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .header-badge {
+      display: inline-block;
+      background: rgba(232,96,44,0.85);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      padding: 3px 12px;
+      border-radius: 20px;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+    }
+    .header h1 {
+      font-size: clamp(20px, 4vw, 28px);
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      margin-bottom: 8px;
+    }
+    .header h1 span { color: #f5a623; }
+    .header-meta {
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      margin-top: 4px;
+    }
+
+    /* ── Layout ── */
+    .container { max-width: 860px; margin: 0 auto; padding: 0 16px; }
+
+    /* ── One-liner conclusion ── */
+    .conclusion-banner {
+      background: linear-gradient(135deg, #e8602c 0%, #c84820 100%);
+      color: #fff;
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin: 28px 0 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      box-shadow: 0 4px 20px rgba(232,96,44,0.3);
+    }
+    .conclusion-banner .icon { font-size: 26px; flex-shrink: 0; margin-top: 2px; }
+    .conclusion-banner .label {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+      opacity: 0.8; text-transform: uppercase; margin-bottom: 4px;
+    }
+    .conclusion-banner .text { font-size: 16px; font-weight: 700; line-height: 1.5; }
+
+    /* ── Section ── */
+    .section { margin-top: 28px; }
+    .section-title {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 13px; font-weight: 800;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--border);
+    }
+    .section-title .dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--accent); flex-shrink: 0;
+    }
+    .section-title .dot.blue { background: var(--accent2); }
+    .section-title .dot.gold { background: var(--gold); }
+
+    /* ── Summary card ── */
+    .summary-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+    .summary-card p { color: var(--ink); font-size: 15px; margin-bottom: 10px; }
+    .summary-card p:last-child { margin-bottom: 0; }
+    .summary-card strong { color: var(--accent); }
+
+    /* ── Item cards ── */
+    .item-list { display: flex; flex-direction: column; gap: 12px; }
+    .item-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .item-card .item-icon {
+      font-size: 22px; flex-shrink: 0; margin-top: 2px;
+      width: 36px; height: 36px;
+      background: var(--bg); border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .item-card .item-body { flex: 1; min-width: 0; }
+    .item-card .item-title {
+      font-size: 15px; font-weight: 700;
+      margin-bottom: 4px; color: var(--ink);
+      display: flex; flex-wrap: wrap; gap: 6px; align-items: center;
+    }
+    .item-card .item-desc { font-size: 13.5px; color: #444; line-height: 1.65; }
+    .item-card .item-insight {
+      font-size: 12.5px; color: var(--accent);
+      margin-top: 7px; font-weight: 600;
+      background: rgba(232,96,44,0.06);
+      border-left: 3px solid var(--accent);
+      padding: 4px 8px;
+      border-radius: 0 4px 4px 0;
+    }
+
+    /* ── Tags ── */
+    .tag {
+      display: inline-flex; align-items: center;
+      font-size: 11px; font-weight: 700;
+      padding: 2px 8px; border-radius: 20px;
+      letter-spacing: 0.06em; white-space: nowrap;
+    }
+    .tag-high { background: rgba(217,79,79,0.12); color: var(--tag-high); }
+    .tag-mid  { background: rgba(217,124,46,0.12); color: var(--tag-mid); }
+    .tag-low  { background: rgba(46,158,107,0.12); color: var(--tag-low); }
+    .tag-new  { background: rgba(44,107,232,0.12); color: var(--accent2); }
+    .tag-tencent { background: rgba(5,170,95,0.12); color: #05aa5f; }
+    .tag-p0 { background: rgba(232,96,44,0.15); color: var(--tag-p0); }
+    .tag-p1 { background: rgba(200,154,42,0.15); color: var(--gold); }
+    .tag-p2 { background: rgba(44,107,232,0.15); color: var(--accent2); }
+
+    /* ── Priority action cards ── */
+    .action-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+    @media (min-width: 640px) { .action-grid { grid-template-columns: repeat(3, 1fr); } }
+    .action-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 18px 18px 16px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+    .action-card .ac-header {
+      display: flex; align-items: center; gap: 8px; margin-bottom: 10px;
+    }
+    .action-card .ac-badge {
+      width: 32px; height: 32px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 800; color: #fff;
+      flex-shrink: 0;
+    }
+    .ac-badge-p0 { background: var(--tag-p0); }
+    .ac-badge-p1 { background: var(--gold); }
+    .ac-badge-p2 { background: var(--accent2); }
+    .action-card .ac-title { font-size: 14px; font-weight: 700; color: var(--ink); }
+    .action-card .ac-body { font-size: 13px; color: #555; line-height: 1.6; }
+    .action-card .ac-metric {
+      margin-top: 10px; font-size: 12px; font-weight: 700;
+      color: var(--muted);
+      border-top: 1px solid var(--border); padding-top: 8px;
+    }
+
+    /* ── Risk list ── */
+    .risk-list { display: flex; flex-direction: column; gap: 10px; }
+    .risk-item {
+      background: var(--card);
+      border-radius: 10px;
+      padding: 14px 18px;
+      border: 1px solid var(--border);
+      display: flex; gap: 12px; align-items: flex-start;
+      box-shadow: var(--shadow);
+    }
+    .risk-item .risk-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+    .risk-item .risk-body { flex: 1; }
+    .risk-item .risk-title { font-size: 14px; font-weight: 700; margin-bottom: 3px; }
+    .risk-item .risk-desc { font-size: 13px; color: #555; line-height: 1.6; }
+
+    /* ── Trend list ── */
+    .trend-list { display: flex; flex-direction: column; gap: 10px; }
+    .trend-item {
+      background: var(--card);
+      border-radius: 10px;
+      padding: 14px 18px;
+      border-left: 4px solid var(--accent2);
+      border-top: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+    .trend-item .trend-title { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+    .trend-item .trend-desc { font-size: 13px; color: #555; line-height: 1.6; }
+    .trend-item .trend-signal {
+      font-size: 12px; font-weight: 700;
+      color: var(--accent2); margin-top: 6px;
+    }
+
+    /* ── Tencent section ── */
+    .tencent-grid { display: grid; gap: 12px; grid-template-columns: 1fr; }
+    @media (min-width: 560px) { .tencent-grid { grid-template-columns: repeat(2, 1fr); } }
+    .tencent-card {
+      background: linear-gradient(135deg, #f0f7ff 0%, #e8f4fd 100%);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+      border: 1px solid #c8dff8;
+      box-shadow: var(--shadow);
+    }
+    .tencent-card .tc-title {
+      font-size: 14px; font-weight: 700; color: #1a4a8a; margin-bottom: 6px;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .tencent-card .tc-desc { font-size: 13px; color: #345; line-height: 1.6; }
+    .tencent-card .tc-action {
+      font-size: 12px; font-weight: 700; color: #2c6be8;
+      margin-top: 8px; background: rgba(44,107,232,0.08);
+      padding: 3px 8px; border-radius: 4px; display: inline-block;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      text-align: center;
+      margin-top: 48px;
+      color: var(--muted);
+      font-size: 12px;
+      padding: 0 16px;
+    }
+    .footer a { color: var(--accent); text-decoration: none; }
+    .footer .divider { margin: 0 8px; opacity: 0.4; }
+
+    /* ── Scroll hint ── */
+    @media (max-width: 600px) {
+      .action-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════ HEADER ════════ -->
+<div class="header">
+  <div class="header-badge">未来美术坊 · 每日简报</div>
+  <h1>美育产品<span>竞品分析</span>简报</h1>
+  <div class="header-meta">2026年4月9日（周四）&nbsp;·&nbsp;第 9 期&nbsp;·&nbsp;由布丁自动生成</div>
+</div>
+
+<div class="container">
+
+  <!-- ════════ ONE-LINER CONCLUSION ════════ -->
+  <div class="conclusion-banner">
+    <div class="icon">🎯</div>
+    <div>
+      <div class="label">今日一句话结论</div>
+      <div class="text">腾讯混元 Unify-Agent 发布「思考-搜索-整理-绘制」四步绘图 Agent，图像相关性提升61%；教育部第五批 AI 培训师体系落地——内部技术爆发 × 政策体系完善，未来美术坊应本周完成「AI 备课 Agent」原型 Demo，抢占教师端心智窗口。</div>
+    </div>
+  </div>
+
+  <!-- ════════ CORE SUMMARY ════════ -->
+  <div class="section">
+    <div class="section-title"><span class="dot"></span>核心摘要</div>
+    <div class="summary-card">
+      <p>🔴 <strong>最高优先级信号：</strong>腾讯混元联合 UCLA 等机构于 4 月 8 日发布 Unify-Agent，首次将「主动搜索 + 图像生成」合并进统一架构，图像与目标对象相关性从 44.9 分跃升至 72.4 分（+61%）。该技术可直接应用于美术教师备课场景——AI 主动查阅画作资料后再生成示范图，大幅降低教师使用门槛。</p>
+      <p>🟡 <strong>政策层：</strong>教育部技术中心 4 月 3 日发布第五批中小学 AI 培训师与培训基地申报通知，标志着教师 AI 能力认证体系进入常态化阶段。同期，教育部 2026 年数字化战略部署会强调将 AI 纳入教师日常工具链，乡村教师数字化培训被列为重点攻坚方向。</p>
+      <p>🟡 <strong>竞品层：</strong>ModelScope 乡村童画坊摄像头互动工具已完成核心功能验证（摄像头无接触交互 + 分步 AI 引导），定位学生端；神笔绘画 App 持续强化「资源+工具+教学」三位一体，向乡村教师渗透；字节即梦 AI 4.0 持续输出创意工具，但无专属教育场景。<strong>未来美术坊聚焦教师端备课工具，差异化优势仍清晰。</strong></p>
+      <p>🟢 <strong>机会：</strong>郭爱和代表 3 月提案「将乡村学校美育数字化列为乡村振兴重点支持项目」，国家级顶层支持正在形成，未来美术坊需在政策红利兑现前完成种子用户积累。</p>
+    </div>
+  </div>
+
+  <!-- ════════ COMPETITOR DYNAMICS ════════ -->
+  <div class="section">
+    <div class="section-title"><span class="dot"></span>竞品动态（今日更新）</div>
+    <div class="item-list">
+
+      <div class="item-card">
+        <div class="item-icon">🤖</div>
+        <div class="item-body">
+          <div class="item-title">
+            Unify-Agent（腾讯混元 × UCLA）
+            <span class="tag tag-high">高影响</span>
+            <span class="tag tag-new">今日</span>
+            <span class="tag tag-tencent">腾讯系</span>
+          </div>
+          <div class="item-desc">4 月 8 日，UCLA + 腾讯混元等联合发布 Unify-Agent（arXiv:2603.29620），首个将「思考→搜索→整理→绘制」四步工作流统一进单一多模态架构的 AI 绘图系统。在 FactIP 基准测试中得分 73.2，图像相关性较基础模型提升 61%，可准确还原历史人物、文化符号、地标等需世界知识的绘画目标。训练集含 143,000 个高质量示例，覆盖动漫、游戏、地标等 12 类别。</div>
+          <div class="item-insight">→ 对未来美术坊的影响：混元内部已具备「AI 主动查资料→生成示范图」能力，接入后可实现「教师输入教学主题，AI 自动出参考画稿」的核心备课功能。需本季度启动 API 对接原型。</div>
+        </div>
+      </div>
+
+      <div class="item-card">
+        <div class="item-icon">📚</div>
+        <div class="item-body">
+          <div class="item-title">
+            教育部第五批 AI 培训师申报开启
+            <span class="tag tag-high">政策</span>
+            <span class="tag tag-new">4月3日</span>
+          </div>
+          <div class="item-desc">教育部技术中心 4 月 3 日发布「第五批中小学人工智能教育培训师与培训基地」申报通知，此前已于 2025 年 8 月公布第四批名单。AI 培训师体系进入常态化，教师掌握 AI 工具正成为考核项，乡村美术教师对 AI 工具的接受度将加速提升。</div>
+          <div class="item-insight">→ 参与培训师体系或将课程内容与培训体系对齐，是未来美术坊快速触达种子用户（乡村美术教师）的重要渠道。</div>
+        </div>
+      </div>
+
+      <div class="item-card">
+        <div class="item-icon">🖥️</div>
+        <div class="item-body">
+          <div class="item-title">
+            乡村童画坊（ModelScope）摄像头互动工具
+            <span class="tag tag-mid">关注</span>
+            <span class="tag tag-new">学生端</span>
+          </div>
+          <div class="item-desc">ModelScope 开源项目「乡村童画坊」面向乡村小学 1-6 年级美术课堂，通过摄像头无接触交互实现「教-学-评」一体化，支持 Windows/Linux 离线运行（最低配置 CPU 双核 + 2G 内存），已实现手势识别、多材质画笔、年级模式切换，AI 色彩搭配与作品点评功能尚在完善中。</div>
+          <div class="item-insight">→ 定位学生端操作工具，未来美术坊定位教师端备课 + 教研协作，互补不竞争。可关注其开源社区动态，吸引其已验证的乡村学校合作资源。</div>
+        </div>
+      </div>
+
+      <div class="item-card">
+        <div class="item-icon">🎨</div>
+        <div class="item-body">
+          <div class="item-title">
+            神笔绘画 App 乡村渗透持续
+            <span class="tag tag-mid">关注</span>
+          </div>
+          <div class="item-desc">神笔绘画 App 面向乡村美术教师推出「资源+工具+教学」三位一体体系，整合全国优质美术教育资源，提供 AI 辅助创作、课件生成、评价反馈功能，2026 年 2 月起在乡村教师群体中传播增加。产品与未来美术坊目标用户高度重叠。</div>
+          <div class="item-insight">→ 核心差异：神笔以「资源库+工具」为主，未来美术坊侧重「社区协作+AI教研+腾讯生态赋能」。需加快社区功能差异化落地，避免在资源侧被追平。</div>
+        </div>
+      </div>
+
+      <div class="item-card">
+        <div class="item-icon">🌾</div>
+        <div class="item-body">
+          <div class="item-title">
+            郭爱和代表提案：乡村美育数字化纳入乡村振兴
+            <span class="tag tag-high">政策利好</span>
+            <span class="tag tag-new">3月两会</span>
+          </div>
+          <div class="item-desc">全国人大代表郭爱和 3 月建议将「乡村学校美育数字化」列为乡村振兴重点支持项目，明确建设目标、覆盖范围与考核标准，并建议建设国家级乡村美育数字资源平台，统筹推进线上线下融合。提案已进入教育部研究程序。</div>
+          <div class="item-insight">→ 政策红利兑现节点预计 2026-2027 年。未来美术坊需在政策规范出台前完成产品 PMF 验证，以「已有用户基础」姿态迎接政策资金扶持。</div>
+        </div>
+      </div>
+
+      <div class="item-card">
+        <div class="item-icon">📊</div>
+        <div class="item-body">
+          <div class="item-title">
+            教育部 2026 数字化战略部署：AI 入课标推进
+            <span class="tag tag-mid">监控</span>
+          </div>
+          <div class="item-desc">3 月 31 日，教育部召开 2026 年国家教育数字化战略行动部署会，总结「十四五」经验、部署「十五五」重点，强调用好 AI 推动教学方式变革，推进 AI 能力入课标，教师 AI 工具使用纳入绩效考核体系。乡村学校获专项支持政策。</div>
+          <div class="item-insight">→ AI 入课标意味着「教师使用 AI 工具」从自愿变刚需，未来美术坊的产品需同步设计「合规教研记录导出」功能，以满足考核需要。</div>
+        </div>
+      </div>
+
+      <div class="item-card">
+        <div class="item-icon">🖼️</div>
+        <div class="item-body">
+          <div class="item-title">
+            即梦 AI 4.0 持续迭代，首尾帧视频能力成熟
+            <span class="tag tag-low">观察</span>
+          </div>
+          <div class="item-desc">即梦 AI（字节剪映旗下）2026 年 2 月发布 4.0 版本，新增首尾帧设定（上传初始图与目标图生成过渡动画）、数字人生成与智能画布功能，与剪映、抖音生态深度打通。面向内容创作者，未设教育场景专属功能。</div>
+          <div class="item-insight">→ 即梦专注于泛创作者场景，短期不会深耕乡村美育，但其视频化图像功能可作为未来美术坊「作品动态展示」的参考方向。</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ════════ INDUSTRY TRENDS ════════ -->
+  <div class="section">
+    <div class="section-title"><span class="dot blue"></span>行业趋势</div>
+    <div class="trend-list">
+
+      <div class="trend-item">
+        <div class="trend-title">① AI 绘图进入「有知识、能搜索」的 Agent 阶段</div>
+        <div class="trend-desc">Unify-Agent 标志着 AI 图像生成从「凭训练数据想象」进化为「先查资料再作画」，知识准确性大幅提升。教育场景中，AI 可主动搜索历史画作、地方文化符号后生成符合事实的示范图，教师专业性焦虑将大幅降低。</div>
+        <div class="trend-signal">↗ 信号强度：高 | 对未来美术坊：直接正向，需纳入产品路线图</div>
+      </div>
+
+      <div class="trend-item">
+        <div class="trend-title">② 教师 AI 能力认证体系化，倒逼工具入校速度</div>
+        <div class="trend-desc">教育部 AI 培训师体系进入第五批，教师 AI 能力纳入绩效考核。乡村美术教师的 AI 工具使用从「有条件则用」转向「需达标则学」，对专为美术教师设计的工具形成强力拉动。</div>
+        <div class="trend-signal">↗ 信号强度：高 | 对未来美术坊：获客速度将加快，需匹配培训课程</div>
+      </div>
+
+      <div class="trend-item">
+        <div class="trend-title">③ 乡村美育数字化从「民间实践」升格为「政策工程」</div>
+        <div class="trend-desc">从 2025 年乡村教师自组织 AI 实践，到 2026 年两会提案进入教育部研究程序，乡村美育数字化完成了从草根到政策的路径打通。产业生态正在形成，竞争者将快速入场。</div>
+        <div class="trend-signal">↗ 信号强度：高 | 对未来美术坊：时间窗口缩短，冷启动需提速</div>
+      </div>
+
+      <div class="trend-item">
+        <div class="trend-title">④ 大模型 Agent 化加速，专垂直场景成竞争主战场</div>
+        <div class="trend-desc">从 ModelScope 乡村童画坊到 Unify-Agent，2026 年上半年 AI 工具普遍向「具备自主推理+工具调用能力」的 Agent 形态演进。通用型图像工具优势收窄，垂直场景+用户数据+社区网络效应将成为护城河。</div>
+        <div class="trend-signal">↗ 信号强度：高 | 对未来美术坊：需尽早构建乡村美术教师的专属数据飞轮</div>
+      </div>
+
+      <div class="trend-item">
+        <div class="trend-title">⑤ 智能化美育案例评选制度化，优质产品获政府背书机会</div>
+        <div class="trend-desc">教育部 2025 年度智能化美育应用案例评选结果 4 月公布（江门两案例入选），评选机制趋于常态化。入选即等同于教育部认可，是乡村学校采购决策的关键背书。</div>
+        <div class="trend-signal">↗ 信号强度：中 | 对未来美术坊：尽早准备案例申报材料，以参评身份推动进校</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ════════ TENCENT ART POWER ════════ -->
+  <div class="section">
+    <div class="section-title"><span class="dot gold"></span>腾讯游戏美术力（内部资源盘点）</div>
+    <div class="tencent-grid">
+
+      <div class="tencent-card">
+        <div class="tc-title">🧠 混元 Unify-Agent（4月8日发布）</div>
+        <div class="tc-desc">腾讯混元参与研发的图像生成 Agent，支持「主动搜索+理解+生成」全链路，已在 FactIP 基准中验证世界知识准确性。可直接应用于「教师输入主题→AI 生成示范画稿」核心场景。</div>
+        <div class="tc-action">🔑 优先接入，本季度 Demo 必须项</div>
+      </div>
+
+      <div class="tencent-card">
+        <div class="tc-title">🎨 混元图像 3.0（开源版）</div>
+        <div class="tc-desc">800 亿参数 MoE 架构，单次推理激活 130 亿参数，支持国风/水墨等 20+ 美术风格，已开源。作为底座模型与 Unify-Agent 架构结合，可实现乡村美术老师一键生成符合课标的示范画。</div>
+        <div class="tc-action">✅ 技术底座已就绪，需申请内部接入权限</div>
+      </div>
+
+      <div class="tencent-card">
+        <div class="tc-title">🏫 触梦计划·未来教室</div>
+        <div class="tc-desc">腾讯公益触梦计划已覆盖 1842+ 所乡村学校，未来教室配备智能硬件与腾讯教育系统。渠道与基础设施已在乡村学校落地，未来美术坊可申请合作伙伴身份，通过触梦渠道完成冷启动。</div>
+        <div class="tc-action">🤝 本周申请合作伙伴资质</div>
+      </div>
+
+      <div class="tencent-card">
+        <div class="tc-title">🌐 微信小程序生态</div>
+        <div class="tc-desc">微信小程序月活超 9 亿，是中国农村地区最高渗透率的移动端入口，无需安装、低配置兼容，与乡村学校设备环境完美契合。同时支持企业微信集成，适合教研社区协作功能落地。</div>
+        <div class="tc-action">✅ 产品形态已锁定，持续优化体验</div>
+      </div>
+
+      <div class="tencent-card">
+        <div class="tc-title">🔬 腾讯元器平台（Agent 托管）</div>
+        <div class="tc-desc">腾讯元器为 AI Agent 提供托管与分发能力，可将未来美术坊的「AI 备课助手 Agent」以零代码形式接入微信小程序，大幅降低开发门槛，缩短 Demo 到 MVP 的时间。</div>
+        <div class="tc-action">📋 评估接入可行性，本月完成技术调研</div>
+      </div>
+
+      <div class="tencent-card">
+        <div class="tc-title">🎮 游戏美术资产潜在授权</div>
+        <div class="tc-desc">腾讯游戏（王者荣耀、和平精英等）沉淀大量高质量美术素材，涵盖中国传统文化、自然场景等与美育课标高度契合的题材。若能申请内部授权作为教学示范素材，将形成竞品无法复制的独特资源壁垒。</div>
+        <div class="tc-action">📌 中长期机会，先建立内部接触点</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ════════ PRODUCT ACTIONS ════════ -->
+  <div class="section">
+    <div class="section-title"><span class="dot"></span>产品动作建议</div>
+    <div class="action-grid">
+
+      <div class="action-card">
+        <div class="ac-header">
+          <div class="ac-badge ac-badge-p0">P0</div>
+          <div class="ac-title">本周启动 Unify-Agent 备课原型验证</div>
+        </div>
+        <div class="ac-body">借助混元 Unify-Agent「主动搜索+生成」能力，搭建最小化 Demo：教师输入「国画牡丹—五年级」→ AI 自动检索参考画作→生成步骤分解图。录制演示视频，用于种子用户招募和触梦计划合作申请的视觉材料。</div>
+        <div class="ac-metric">🎯 目标：本周五完成 3 步可演示原型 | 负责人：产品+技术</div>
+      </div>
+
+      <div class="action-card">
+        <div class="ac-header">
+          <div class="ac-badge ac-badge-p1">P1</div>
+          <div class="ac-title">申请 AI 培训师合作课程资质</div>
+        </div>
+        <div class="ac-body">以「乡村美术教师 AI 工具使用」为课程方向，对接教育部技术中心第五批培训师体系申报流程，将未来美术坊工具使用纳入课程内容。同时联系已入选的培训基地，申请成为推荐工具合作方。</div>
+        <div class="ac-metric">📅 目标：本月完成一份合作意向函 | 渠道：官网申报 + 行业关系</div>
+      </div>
+
+      <div class="action-card">
+        <div class="ac-header">
+          <div class="ac-badge ac-badge-p2">P2</div>
+          <div class="ac-title">准备智能化美育案例申报材料</div>
+        </div>
+        <div class="ac-body">参照教育部智能化美育应用案例评选标准，整理未来美术坊现阶段功能亮点和乡村学校使用场景，准备 2026 年度申报材料草稿。评选结果作为进校营销的政府背书核心素材。</div>
+        <div class="ac-metric">📋 目标：本月完成案例材料初稿 | 形式：1500字应用案例+截图</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ════════ RISK WATCH ════════ -->
+  <div class="section">
+    <div class="section-title"><span class="dot"></span>风险观察清单</div>
+    <div class="risk-list">
+
+      <div class="risk-item">
+        <div class="risk-icon">🔴</div>
+        <div class="risk-body">
+          <div class="risk-title">R1·高 | 内部技术竞争加速，未及时接入将失去差异化优势</div>
+          <div class="risk-desc">Unify-Agent 已由腾讯混元联合研发，若未来美术坊不在本季度完成接入原型，竞品（如神笔绘画）可能率先与混元合作并发布「AI 生图备课」功能，消除未来美术坊的技术先发优势。</div>
+        </div>
+      </div>
+
+      <div class="risk-item">
+        <div class="risk-icon">🔴</div>
+        <div class="risk-body">
+          <div class="risk-title">R2·高 | 政策窗口缩短，冷启动进度滞后于政策落地</div>
+          <div class="risk-desc">郭爱和提案进入教育部研究程序，若 2026 年下半年出台具体支持政策，市场将快速涌入有资金背景的玩家。未来美术坊需在政策规范前完成 100 名种子用户积累，以「先行者」身份参与政策标准制定。</div>
+        </div>
+      </div>
+
+      <div class="risk-item">
+        <div class="risk-icon">🟡</div>
+        <div class="risk-body">
+          <div class="risk-title">R3·中 | 神笔绘画持续渗透乡村教师群体，用户心智被抢占</div>
+          <div class="risk-desc">神笔绘画 2 月起在乡村美术教师群体加速传播，其「资源+工具」一体化策略与未来美术坊目标用户高度重叠。若未来美术坊社区功能不在 Q2 上线，资源侧差距将拉大，后期获客成本倍增。</div>
+        </div>
+      </div>
+
+      <div class="risk-item">
+        <div class="risk-icon">🟡</div>
+        <div class="risk-body">
+          <div class="risk-title">R4·中 | AI 培训师体系可能产生「官方推荐工具」效应，形成准入壁垒</div>
+          <div class="risk-desc">教育部培训体系若开始为培训课程推荐配套工具，未被纳入推荐名单的产品将面临进校阻力。建议主动参与第五批申报，建立官方渠道关系，提前布局。</div>
+        </div>
+      </div>
+
+      <div class="risk-item">
+        <div class="risk-icon">🟡</div>
+        <div class="risk-body">
+          <div class="risk-title">R5·中 | 乡村设备环境限制 AI 功能体验，用户留存存在隐患</div>
+          <div class="risk-desc">乡村学校设备老旧（参考童画坊最低配置要求），若 Unify-Agent 等重型 AI 功能因算力要求高而无法流畅运行，将导致用户体验骨折式下滑。需同步设计离线/轻量模式，确保弱网环境可用。</div>
+        </div>
+      </div>
+
+      <div class="risk-item">
+        <div class="risk-icon">🟢</div>
+        <div class="risk-body">
+          <div class="risk-title">R6·低 | AI 生成内容合规性问题可能引发教育场景负面舆情</div>
+          <div class="risk-desc">AI 生成图像在教育场景中存在内容合规风险（版权、不当内容等）。当前教育 AI 应用中已出现部分争议案例，需提前制定内容审核策略，并在用户协议中明确责任边界。</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ════════ FOOTER ════════ -->
+  <div class="footer">
+    <p>未来美术坊 · 每日竞品简报 · 2026-04-09 · 第 9 期</p>
+    <p style="margin-top:6px;">
+      <a href="https://tanqiutong.github.io/art-report" target="_blank">📊 历史简报归档</a>
+      <span class="divider">|</span>
+      数据来源：公开网络信息综合分析，仅供内部参考
+      <span class="divider">|</span>
+      由布丁 🍮 自动生成
+    </p>
+  </div>
+
+</div>
+</body>
+</html>
