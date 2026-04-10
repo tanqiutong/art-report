@@ -1,0 +1,403 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>未来美术坊 · 每日竞品简报 2026-04-10</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap');
+    :root {
+      --bg:#f2f7f4;--bg2:#e8f2ec;--card:#ffffff;--ink:#1e2d24;--ink-mid:#3d5247;--ink-light:#7a9485;
+      --border:#d0e4d8;--shadow:0 2px 14px rgba(30,80,50,.07);--radius:14px;
+      --green:#2e8b57;--green-lt:#4aad73;--green-bg:#edf7f2;
+      --amber:#c47c1a;--amber-bg:#fef7ec;--red:#c94040;--red-bg:#fdf0f0;--blue:#2e72b8;--blue-bg:#eef4fc;
+      --new-bg:#e6f9ef;--new-border:#52c47a;--new-text:#1a7a42;--new-badge:#2cb560;
+    }
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Noto Sans SC','PingFang SC','Microsoft YaHei',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.75;padding-bottom:64px;}
+    .header{background:linear-gradient(160deg,#1e5c38 0%,#2e7d52 45%,#3a9e6a 100%);color:#fff;padding:44px 24px 36px;text-align:center;position:relative;overflow:hidden;}
+    .header::after{content:"";position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#52c47a,#a8e6c0,#52c47a);opacity:.6;}
+    .header::before{content:"";position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(circle at 20% 30%,rgba(255,255,255,.06) 0%,transparent 50%),radial-gradient(circle at 80% 70%,rgba(255,255,255,.04) 0%,transparent 40%);}
+    .header-date{font-size:12px;letter-spacing:.14em;font-weight:700;color:rgba(255,255,255,.65);text-transform:uppercase;margin-bottom:10px;}
+    .header h1{font-size:clamp(20px,4.5vw,30px);font-weight:900;letter-spacing:-.02em;line-height:1.25;margin-bottom:8px;}
+    .header h1 em{font-style:normal;color:#a8f0c6;}
+    .header-sub{font-size:13px;color:rgba(255,255,255,.55);}
+    .header-badge{display:inline-block;margin-bottom:14px;background:rgba(255,255,255,.15);color:#d4f7e4;font-size:11px;font-weight:700;letter-spacing:.1em;padding:3px 14px;border-radius:20px;border:1px solid rgba(255,255,255,.2);}
+    .wrap{max-width:880px;margin:0 auto;padding:0 16px;}
+    .new-legend{display:flex;align-items:center;gap:10px;background:var(--new-bg);border:1px solid var(--new-border);border-radius:10px;padding:10px 16px;margin:24px 0 4px;font-size:13px;color:var(--new-text);font-weight:600;}
+    .new-legend .dot-new{width:10px;height:10px;border-radius:50%;background:var(--new-badge);flex-shrink:0;box-shadow:0 0 0 3px rgba(82,196,122,.25);}
+    .section{margin-top:32px;}
+    .section-hd{display:flex;align-items:center;gap:10px;font-size:12px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-light);padding-bottom:12px;margin-bottom:16px;border-bottom:2px solid var(--border);}
+    .section-hd .bar{width:4px;height:18px;border-radius:3px;background:var(--green);flex-shrink:0;}
+    .section-hd .bar-amber{background:var(--amber);}
+    .section-hd .bar-blue{background:var(--blue);}
+    .section-hd .bar-red{background:var(--red);}
+    .section-hd .count{margin-left:auto;background:var(--green-bg);color:var(--green);font-size:11px;padding:1px 8px;border-radius:10px;}
+    .conclusion{background:linear-gradient(135deg,#1e7a46,#2e9e62);color:#fff;border-radius:var(--radius);padding:22px 24px;margin-top:24px;display:flex;gap:16px;align-items:flex-start;box-shadow:0 4px 24px rgba(30,122,70,.25);}
+    .conclusion .icon{font-size:28px;flex-shrink:0;}
+    .conclusion .label{font-size:11px;font-weight:700;letter-spacing:.1em;opacity:.7;text-transform:uppercase;margin-bottom:5px;}
+    .conclusion .text{font-size:16px;font-weight:700;line-height:1.55;}
+    .conclusion .text em{font-style:normal;color:#a8f0c6;}
+    .summary{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:22px 24px;box-shadow:var(--shadow);}
+    .summary p{font-size:14.5px;margin-bottom:12px;line-height:1.7;}
+    .summary p:last-child{margin-bottom:0;}
+    .summary strong{color:var(--green);}
+    .card-list{display:flex;flex-direction:column;gap:12px;}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px 20px;box-shadow:var(--shadow);display:flex;gap:14px;align-items:flex-start;transition:box-shadow .15s;}
+    .card:hover{box-shadow:0 4px 20px rgba(30,80,50,.1);}
+    .card.is-new{background:var(--new-bg);border-color:var(--new-border);border-left:4px solid var(--new-badge);box-shadow:0 2px 16px rgba(82,196,122,.12);}
+    .card.is-new .card-insight{color:var(--new-text);background:rgba(82,196,122,.1);border-left-color:var(--new-badge);}
+    .card .ci{width:38px;height:38px;border-radius:10px;background:var(--bg2);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+    .card.is-new .ci{background:rgba(82,196,122,.15);}
+    .card .cb{flex:1;min-width:0;}
+    .card .ct{font-size:15px;font-weight:700;margin-bottom:5px;display:flex;flex-wrap:wrap;gap:6px;align-items:center;}
+    .card .cd{font-size:13.5px;color:#445;line-height:1.65;}
+    .card .card-insight{font-size:12.5px;color:var(--green);font-weight:600;margin-top:8px;background:var(--green-bg);border-left:3px solid var(--green);padding:5px 10px;border-radius:0 6px 6px 0;}
+    .tag{display:inline-flex;align-items:center;font-size:11px;font-weight:700;letter-spacing:.04em;padding:2px 9px;border-radius:20px;white-space:nowrap;}
+    .tag-hi{background:rgba(201,64,64,.1);color:var(--red);}
+    .tag-mid{background:rgba(196,124,26,.1);color:var(--amber);}
+    .tag-lo{background:rgba(46,158,107,.1);color:#2e9e6b;}
+    .tag-new{background:var(--new-bg);color:var(--new-text);border:1px solid var(--new-border);}
+    .tag-tc{background:rgba(46,114,184,.1);color:var(--blue);}
+    .tag-pol{background:rgba(196,124,26,.1);color:var(--amber);}
+    .new-stamp{display:inline-flex;align-items:center;gap:4px;background:var(--new-badge);color:#fff;font-size:10px;font-weight:800;letter-spacing:.06em;padding:2px 8px;border-radius:20px;}
+    .new-stamp::before{content:"✦";font-size:9px;}
+    .trend-list{display:flex;flex-direction:column;gap:11px;}
+    .trend{background:var(--card);border-radius:11px;border:1px solid var(--border);border-left:4px solid var(--blue);padding:15px 18px;box-shadow:var(--shadow);}
+    .trend.is-new{background:var(--new-bg);border-color:var(--new-border);border-left-color:var(--new-badge);}
+    .trend .tt{font-size:14px;font-weight:700;margin-bottom:5px;}
+    .trend .td{font-size:13px;color:#455;line-height:1.65;}
+    .trend .ts{font-size:12px;font-weight:700;color:var(--blue);margin-top:6px;}
+    .trend.is-new .ts{color:var(--new-text);}
+    .tc-grid{display:grid;gap:12px;grid-template-columns:1fr;}
+    @media(min-width:560px){.tc-grid{grid-template-columns:repeat(2,1fr);}}
+    .tc-card{background:linear-gradient(135deg,#f0f7ff,#e8f4fd);border:1px solid #c8dff5;border-radius:var(--radius);padding:17px 18px;box-shadow:var(--shadow);}
+    .tc-card.is-new{background:linear-gradient(135deg,var(--new-bg),#e2f9ee);border-color:var(--new-border);}
+    .tc-card .tct{font-size:14px;font-weight:700;color:#1a4a8a;margin-bottom:7px;display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+    .tc-card.is-new .tct{color:var(--new-text);}
+    .tc-card .tcd{font-size:13px;color:#345;line-height:1.65;}
+    .tc-card .tca{margin-top:9px;font-size:12px;font-weight:700;color:var(--blue);background:rgba(46,114,184,.08);padding:3px 9px;border-radius:5px;display:inline-block;}
+    .tc-card.is-new .tca{color:var(--new-text);background:rgba(82,196,122,.12);}
+    .action-grid{display:grid;gap:12px;}
+    @media(min-width:620px){.action-grid{grid-template-columns:repeat(3,1fr);}}
+    .ac{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px 18px 16px;box-shadow:var(--shadow);}
+    .ac.is-new{background:var(--new-bg);border-color:var(--new-border);}
+    .ac-hd{display:flex;align-items:center;gap:9px;margin-bottom:10px;}
+    .ac-badge{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;flex-shrink:0;}
+    .p0{background:var(--red);}
+    .p1{background:var(--amber);}
+    .p2{background:var(--blue);}
+    .ac-title{font-size:14px;font-weight:700;}
+    .ac-body{font-size:13px;color:#555;line-height:1.62;}
+    .ac-foot{margin-top:10px;font-size:12px;font-weight:700;color:var(--ink-light);border-top:1px solid var(--border);padding-top:8px;}
+    .ac.is-new .ac-foot{border-top-color:var(--new-border);color:var(--new-text);}
+    .risk-list{display:flex;flex-direction:column;gap:10px;}
+    .risk{background:var(--card);border:1px solid var(--border);border-radius:11px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start;box-shadow:var(--shadow);}
+    .risk.is-new{background:var(--new-bg);border-color:var(--new-border);}
+    .risk .ri{font-size:18px;flex-shrink:0;margin-top:1px;}
+    .risk .rt{font-size:14px;font-weight:700;margin-bottom:3px;}
+    .risk .rd{font-size:13px;color:#555;line-height:1.62;}
+    .footer{text-align:center;margin-top:52px;color:var(--ink-light);font-size:12px;padding:0 16px;}
+    .footer a{color:var(--green);text-decoration:none;}
+    .footer .sep{margin:0 8px;opacity:.4;}
+    hr.soft{border:none;border-top:1px solid var(--border);margin:10px 0 0;}
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-badge">未来美术坊 · 每日简报</div>
+  <div class="header-date">Friday · April 10, 2026 · Issue #10</div>
+  <h1>美育产品<em>竞品分析</em>简报</h1>
+  <div class="header-sub">由布丁 🍮 自动生成 · 每工作日 09:20 推送</div>
+</div>
+
+<div class="wrap">
+
+  <div class="new-legend">
+    <span class="dot-new"></span>
+    <span>🌿 <strong>绿色高亮</strong>为今日新增内容，与往期简报不同；无高亮为持续追踪中的已有信息。</span>
+  </div>
+
+  <!-- 一句话结论 -->
+  <div class="conclusion">
+    <div class="icon">🎯</div>
+    <div>
+      <div class="label">今日一句话结论</div>
+      <div class="text">行者AI×AMD「边缘算力+美育」方案进校落地，神笔绘画乡村教师备课效率提升 <em>65%</em> 数据曝光；教育部「每学期1次全员艺术展演」硬指标倒逼学校购买工具——未来美术坊应<em>本周上线「一键展览生成」功能原型</em>，精准卡位政策执行空白。</div>
+    </div>
+  </div>
+
+  <!-- 核心摘要 -->
+  <div class="section">
+    <div class="section-hd"><span class="bar"></span>核心摘要</div>
+    <div class="summary">
+      <p>🔴 <strong>最高优先级信号：</strong>神笔绘画针对乡村美术教师发布「资源+工具+教学」三位一体方案，已对50所乡村学校实测——教师备课效率提升65%、学生艺术兴趣从25%飙升至95%。核心竞品已完成乡村场景验证，未来美术坊需在社区协作与腾讯生态接入两条差异化赛道上加速。</p>
+      <p>🟡 <strong>政策层：</strong>教育部《健康学校建设指导意见》（教体艺〔2026〕3号）明确「每学期至少1次全员艺术展演」量化硬指标，2027年形成可推广案例、2030年覆盖每所学校。政策执行端的工具空缺（展览策划、作品管理、家长分享）是未来美术坊的精准突破口。</p>
+      <p>🟡 <strong>竞品层：</strong>行者AI×AMD方案以边缘算力主打「低延迟+离线可用+内容安全」优势，已在成都七中验证落地，正向中小学推广。其强项在硬件绑定，未来美术坊可以「纯软件+微信生态+腾讯AI」实现差异化，无硬件束缚、更轻量易部署。</p>
+      <p>🟢 <strong>机会：</strong>Canva Magic Layers（3月10日发布）实现AI图片自动分图层编辑，教师课件效率提升320%。该能力与腾讯混元图像3.0结合，可构建「本土化+国风美术风格」的差异化备课工具，Canva无法覆盖的国风/水墨课件场景是切入点。</p>
+    </div>
+  </div>
+
+  <!-- 竞品动态 -->
+  <div class="section">
+    <div class="section-hd">
+      <span class="bar"></span>竞品动态
+      <span class="count">7 条 · 今日 3 条新增</span>
+    </div>
+    <div class="card-list">
+
+      <div class="card is-new">
+        <div class="ci">⚡</div>
+        <div class="cb">
+          <div class="ct">行者AI × AMD「边缘算力赋能未来课堂」方案发布<span class="tag tag-hi">高影响</span><span class="new-stamp">今日新增</span></div>
+          <div class="cd">3月25日，行者AI联合AMD在成都发布美育素质教育综合解决方案，主题「边缘算力赋能未来课堂」，成都市经济和信息化局指导。核心产品为AI美术创客平台：创意启发→素材推荐→创作辅助→成果展示完整闭环；搭载「谛听」安全大模型实现多模态内容风险识别；AMD边缘算力支撑低延迟本地部署，无需云端实时连接。已在成都七中等学校实际验证应用。</div>
+          <div class="card-insight">→ 行者AI的边缘部署方案解决了乡村弱网痛点，但依赖硬件绑定。未来美术坊以纯微信小程序+腾讯云的轻量路线形成差异，强调零部署成本。</div>
+        </div>
+      </div>
+
+      <div class="card is-new">
+        <div class="ci">🖌️</div>
+        <div class="cb">
+          <div class="ct">神笔绘画乡村教师备课方案实测数据曝光<span class="tag tag-hi">高影响</span><span class="new-stamp">今日新增</span></div>
+          <div class="cd">2月11日，神笔绘画针对乡村美术教师发布「资源+工具+教学」三位一体解决方案：整合1000+优质课程、500+创作模板、300+经典艺术作品（96%覆盖率），全部免费开放；支持离线/弱网运行；涂鸦一键转动画功能显著提升学生参与感。50所乡村学校实测：学生艺术兴趣25%→95%（+70pp），教师备课效率提升65%，审美感知能力提升42%。2月起乡村教师圈传播明显加速。</div>
+          <div class="card-insight">→ 神笔绘画已完成乡村场景验证，数据强劲。未来美术坊核心差异：神笔主打「资源库消费型」，未来美术坊定位「教研社区共创型+腾讯AI赋能」，需本季度上线社区功能拉开距离。</div>
+        </div>
+      </div>
+
+      <div class="card is-new">
+        <div class="ci">✨</div>
+        <div class="cb">
+          <div class="ct">Canva Magic Layers 发布，AI图层自动拆解颠覆课件制作<span class="tag tag-mid">关注</span><span class="new-stamp">今日新增</span></div>
+          <div class="cd">3月10日，Canva正式发布Magic Layers功能：将任何PNG/JPG图片自动解构为多个可独立编辑图层，8-15秒完成处理，识别背景、文字、图形等元素分别处理。配合已有25+AI工具的Magic Studio套件，教师课件内容产出频率提升320%，实现20%人工+80%AI自动化工作范式。教育版提供免费额度（25次/月），有Education专属定价。</div>
+          <div class="card-insight">→ Canva国际化能力强，但中文字幕仍有乱码问题、国风美术内容支持薄弱。未来美术坊与腾讯混元结合打国风/水墨课件场景，是Canva的结构性盲区。</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="ci">📚</div>
+        <div class="cb">
+          <div class="ct">ModelScope AI助教·乡村美术教育工具<span class="tag tag-mid">关注</span><span class="tag tag-lo">开源</span></div>
+          <div class="cd">开源AI助教工具，专为资源有限乡村美术教师设计：AI一键生成教案（考虑旧挂历代替素描纸等乡村实际）、学生作品点评助手、低成本资源库（落叶拼贴/旧报纸雕塑等本地化方案）、教学图样生成（黑白线稿直接打印）。零成本、无订阅广告，基于Qwen3-VL模型构建。</div>
+          <div class="card-insight">→ 开源轻量，用户口碑良好（「第一次知道怎么夸孩子的画」）。未来美术坊可参考其「考虑乡村实际约束」的产品思维，同步设计低配兼容版本。</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="ci">🏫</div>
+        <div class="cb">
+          <div class="ct">腾讯触梦计划·未来教室AI共建平台<span class="tag tag-tc">腾讯系</span></div>
+          <div class="cd">3月31日年度小会召开，「用AI守护·让梦可及」主题，展示AI赋能乡村教育成果：已支持1842所乡村学校，5860万游戏玩家参与公益互动，民族舞蹈游戏化传承、AI音乐应用等美育案例落地。「未来教室AI共建平台」邀请一线教师和技术达人共建AI教育代表作。</div>
+          <div class="card-insight">→ 触梦计划覆盖1842所学校是最佳冷启动渠道，申请「合作伙伴」身份可快速触达种子用户。本周需推进正式沟通。</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="ci">🌾</div>
+        <div class="cb">
+          <div class="ct">中央一号文件「文艺赋美乡村」工作方案落地<span class="tag tag-pol">政策</span></div>
+          <div class="cd">2026年中央一号文件明确推进「文艺赋美乡村」，七部委联合印发2025-2027年工作方案。乡村美育教师缺额率超50%（部分省份），农村教师缺口达30万，音体美集中在乡村。「文艺赋美乡村2026大幕艺术季」4月3日在湖北咸宁开幕，湖北美院等高校深度参与，「美育乡贤」培育工程启动。</div>
+          <div class="card-insight">→ 乡村美术教师缺额50%+是最核心市场空白，AI工具补位教师空缺的叙事逻辑完全成立。政策执行层的工具需求将快速释放。</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="ci">📊</div>
+        <div class="cb">
+          <div class="ct">教育部健康学校建设：美育硬指标全面落地<span class="tag tag-pol">政策</span></div>
+          <div class="cd">《关于全面推进健康学校建设的指导意见》（教体艺〔2026〕3号，2月27日）明确美育工作量化要求：学生掌握1-2项艺术专项特长、每学期至少1次全员参与艺术展演展示活动、开齐开足开好艺术课程、美育器材设备配套保障。时间表：2027年完成试点→2030年覆盖每校→2035年全面升级。</div>
+          <div class="card-insight">→「每学期1次全员艺术展演」是可量化的执行硬指标，学校需要工具支撑：展览策划→作品管理→家长分享，这是未来美术坊的精准切入场景。</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 行业趋势 -->
+  <div class="section">
+    <div class="section-hd">
+      <span class="bar bar-blue"></span>行业趋势
+      <span class="count">5 条 · 今日 2 条新增</span>
+    </div>
+    <div class="trend-list">
+
+      <div class="trend is-new">
+        <div class="tt">① AI+美育从「功能展示」进入「场景验证」阶段 <span class="new-stamp">今日新增</span></div>
+        <div class="td">神笔绘画50所乡村学校实测数据（备课效率+65%、学生兴趣+70pp）、行者AI成都七中落地验证，标志着AI美育工具已从「演示PPT」进入「有数据、可复制」阶段。接下来的竞争是谁能最快拿到可信的规模化数据。</div>
+        <div class="ts">↗ 信号强度：高 | 对未来美术坊：需尽快设计种子用户A/B测试，积累可对外发布的效果数据</div>
+      </div>
+
+      <div class="trend is-new">
+        <div class="tt">② 「边缘算力+端侧部署」成为乡村美育AI新基础设施 <span class="new-stamp">今日新增</span></div>
+        <div class="td">行者AI×AMD主打本地低延迟部署，ModelScope AI助教强调离线缓存，神笔绘画支持弱网运行——三家竞品不约而同把「不依赖云端」作为核心卖点。乡村网络条件倒逼端侧能力，微信小程序的离线缓存和本地存储策略需要提前规划。</div>
+        <div class="ts">↗ 信号强度：高 | 对未来美术坊：需在Q2完成弱网模式技术评估，制定「最小可用功能集」</div>
+      </div>
+
+      <div class="trend">
+        <div class="tt">③ 政策硬指标落地，工具需求从「自愿采购」转「刚性执行」</div>
+        <div class="td">「每学期1次全员艺术展演」「学生掌握1-2项艺术特长」从政策倡导变为考核指标，学校从「想用工具」变为「必须用工具」。市场进入刚需转化阶段，获客逻辑从「功能说服」转向「执行解决方案」。</div>
+        <div class="ts">↗ 信号强度：高 | 对未来美术坊：需设计「展演策划助手」功能，直接对接政策执行需求</div>
+      </div>
+
+      <div class="trend">
+        <div class="tt">④ 国际工具（Canva/Procreate）在国风美术课件场景存在结构性盲区</div>
+        <div class="td">Canva Magic Layers虽然强大，但中文排版乱码问题和国风美术素材库薄弱是系统性短板，Procreate无本土化运营。腾讯混元图像3.0支持20+美术风格（含国风/水墨），与课标中「中华优秀传统文化艺术传承」方向高度匹配，是本土化工具的核心竞争壁垒。</div>
+        <div class="ts">↗ 信号强度：中 | 对未来美术坊：「国风/水墨课件一键生成」是国际竞品无法复制的差异化功能</div>
+      </div>
+
+      <div class="trend">
+        <div class="tt">⑤ 乡村教师从「被动接受培训」向「主动构建教研社区」演进</div>
+        <div class="td">微信小程序教育平台已有5000+校17万+项目，乡村教师通过平台主动创作、分享、交流的意愿正在觉醒。神笔绘画通过「在线参加专业培训」功能成功触达，ModelScope AI助教通过公益社区口碑扩散。乡村教师「同伴学习」意愿强于「自上而下培训」。</div>
+        <div class="ts">↗ 信号强度：中 | 对未来美术坊：社区功能是护城河，需要比资源库先上线</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 腾讯美术力 -->
+  <div class="section">
+    <div class="section-hd">
+      <span class="bar bar-amber"></span>腾讯游戏美术力（内部资源）
+      <span class="count">6 条 · 今日 1 条更新</span>
+    </div>
+    <div class="tc-grid">
+
+      <div class="tc-card is-new">
+        <div class="tct">🤖 混元 Unify-Agent（主动搜索+绘图Agent）<span class="new-stamp">昨日新增持续</span></div>
+        <div class="tcd">UCLA×腾讯混元联合发布，「思考→搜索→整理→绘制」四步工作流统一架构，图像相关性提升61%（44.9→72.4分），143,000个训练示例。教师输入「国画牡丹五年级」→AI主动检索画作资料→生成步骤示范图。</div>
+        <div class="tca">🔑 本季度必须完成接入原型</div>
+      </div>
+
+      <div class="tc-card">
+        <div class="tct">🎨 混元图像 3.0（开源，20+美术风格）</div>
+        <div class="tcd">800亿参数MoE架构，支持国风/水墨/工笔/写意等20+美术风格，已开源。与课标「中华优秀传统文化传承」方向完全吻合，是Canva/Adobe等国际工具无法复制的本土美术生成能力。</div>
+        <div class="tca">✅ 技术底座已就绪，申请内部接入</div>
+      </div>
+
+      <div class="tc-card">
+        <div class="tct">🏫 触梦计划·未来教室（1842所学校渠道）</div>
+        <div class="tcd">已覆盖全国1842所乡村学校，硬件+系统已落地。2026年「未来教室AI共建平台」开放生态合作，邀请教育伙伴共建。申请合作伙伴可直接触达乡村种子用户，跳过冷启动。</div>
+        <div class="tca">🤝 本周启动合作申请流程</div>
+      </div>
+
+      <div class="tc-card">
+        <div class="tct">📱 微信小程序生态（月活9亿）</div>
+        <div class="tcd">农村地区最高渗透率移动端入口，无需安装、低配置兼容，与乡村学校设备环境完美匹配。微信小程序教育平台已有5000校17万+项目验证，未来美术坊产品形态正确。</div>
+        <div class="tca">✅ 产品形态已锁定，继续深化</div>
+      </div>
+
+      <div class="tc-card">
+        <div class="tct">🔬 腾讯元器平台（Agent零代码托管）</div>
+        <div class="tcd">为AI Agent提供托管与分发能力，可将「AI备课助手Agent」以零代码形式接入微信小程序。大幅降低开发门槛，缩短Demo到MVP的时间，是「本月完成备课Agent原型」的关键技术路径。</div>
+        <div class="tca">📋 本月完成接入可行性评估</div>
+      </div>
+
+      <div class="tc-card">
+        <div class="tct">🛡️ 腾讯内容安全能力</div>
+        <div class="tcd">行者AI需要外购AMD+「谛听」安全大模型来解决AI生成内容合规问题，腾讯内部已有成熟内容安全能力（文本/图片/视频多模态审核），可直接调用，这是竞品无法复制的内部资源优势。</div>
+        <div class="tca">✅ 合规风险护城河，优先规划接入</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 产品动作建议 -->
+  <div class="section">
+    <div class="section-hd"><span class="bar bar-red"></span>产品动作建议</div>
+    <div class="action-grid">
+
+      <div class="ac is-new">
+        <div class="ac-hd"><div class="ac-badge p0">P0</div><div class="ac-title">上线「全员艺术展览」功能原型</div></div>
+        <div class="ac-body">教育部「每学期1次全员艺术展演」硬指标已落地，学校需要工具支撑执行。本周设计最小化「班级展览」功能：教师上传学生作品→一键生成展览页→微信分享给家长。直接对接政策执行痛点，是进校最快的理由。</div>
+        <div class="ac-foot">🎯 目标：本周完成交互原型 | 产品+设计</div>
+      </div>
+
+      <div class="ac">
+        <div class="ac-hd"><div class="ac-badge p1">P1</div><div class="ac-title">申请触梦计划合作伙伴资质</div></div>
+        <div class="ac-body">触梦计划「未来教室AI共建平台」已开放生态合作，1842所乡村学校是最佳冷启动渠道。本周整理产品介绍（乡村美术教师定位、AI备课能力、微信小程序轻量部署）发起正式接触，目标是成为「乡村美术教师工具」类合作伙伴。</div>
+        <div class="ac-foot">📅 目标：本周提交合作意向材料</div>
+      </div>
+
+      <div class="ac">
+        <div class="ac-hd"><div class="ac-badge p2">P2</div><div class="ac-title">设计「弱网可用」最小功能集</div></div>
+        <div class="ac-body">行者AI/神笔/ModelScope三家竞品均以「离线/弱网可用」为核心卖点，说明乡村网络是真实痛点。评估微信小程序离线缓存策略，定义弱网环境下的「最小可用功能集」（至少：已下载课件可离线查看+教案本地保存），避免用户流失。</div>
+        <div class="ac-foot">📋 目标：本月完成技术评估报告</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 风险观察 -->
+  <div class="section">
+    <div class="section-hd">
+      <span class="bar bar-red"></span>风险观察清单
+      <span class="count">6 条 · 今日 1 条新增</span>
+    </div>
+    <div class="risk-list">
+
+      <div class="risk is-new">
+        <div class="ri">🔴</div>
+        <div>
+          <div class="rt">R1·高（新增）| 神笔绘画已完成乡村场景验证，心智占领窗口快速收窄</div>
+          <div class="rd">神笔绘画50所学校实测数据（备课效率+65%）已成为可传播的说服材料，乡村教师口碑扩散效应正在加速。若未来美术坊Q2无法完成社区功能上线并积累首批种子用户，后期获客成本将倍增，「乡村美术教师工具」心智被抢占风险极高。</div>
+        </div>
+      </div>
+
+      <div class="risk">
+        <div class="ri">🔴</div>
+        <div>
+          <div class="rt">R2·高 | 行者AI硬件绑定模式可能形成教育采购锁定</div>
+          <div class="rd">行者AI与AMD联合方案采购时捆绑硬件（AMD算力设备），一旦学校采购了行者AI方案，更换软件工具的迁移成本极高，形成事实垄断。未来美术坊需以「零硬件依赖+微信生态」为差异化优势，在行者AI完成规模铺设前完成种子学校布局。</div>
+        </div>
+      </div>
+
+      <div class="risk">
+        <div class="ri">🟡</div>
+        <div>
+          <div class="rt">R3·中 | 政策执行工具需求释放可能引发大厂入场</div>
+          <div class="rd">「每学期1次全员艺术展演」等量化指标的落地，让美育工具市场从长尾需求变为规模刚需。阿里（钉钉）、字节（飞书教育）等已有教育生态的大厂可能在2026下半年快速落地美育功能。未来美术坊需在Q2完成产品PMF验证并积累用户壁垒。</div>
+        </div>
+      </div>
+
+      <div class="risk">
+        <div class="ri">🟡</div>
+        <div>
+          <div class="rt">R4·中 | 乡村设备弱网环境制约重型AI功能体验</div>
+          <div class="rd">三家竞品均将离线/弱网运行列为核心卖点，说明乡村网络是真实用户痛点。若未来美术坊的AI备课、展览生成等功能在弱网下卡顿或失败，首次使用体验将直接导致流失。需在Q2完成弱网模式方案设计。</div>
+        </div>
+      </div>
+
+      <div class="risk">
+        <div class="ri">🟡</div>
+        <div>
+          <div class="rt">R5·中 | Canva教育版持续渗透，国际化审美习惯可能反向输出</div>
+          <div class="rd">Canva Magic Studio在教师群体中获得极高口碑（效率提升320%），虽然国风课件有盲区，但教师一旦养成Canva使用习惯，迁移意愿低。未来美术坊需将「国风/水墨课件」作为差异化功能大力推广，形成Canva做不到的心智。</div>
+        </div>
+      </div>
+
+      <div class="risk">
+        <div class="ri">🟢</div>
+        <div>
+          <div class="rt">R6·低 | AI生成内容合规性风险（教育场景）</div>
+          <div class="rd">AI生成图像在教育场景中存在版权、不当内容、价值观偏差等合规风险。行者AI专门采购「谛听」安全模型解决此问题，说明竞品已将合规性作为重要卖点。腾讯内部内容安全能力可直接调用，优先完成接入规划，将合规性转化为竞争优势。</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <p>未来美术坊 · 每日竞品简报 · 2026-04-10 · 第 10 期</p>
+    <p style="margin-top:6px;">
+      <a href="https://tanqiutong.github.io/art-report" target="_blank">📊 历史简报归档</a>
+      <span class="sep">|</span>
+      数据来源：公开网络信息综合分析，仅供内部参考
+      <span class="sep">|</span>
+      由布丁 🍮 自动生成
+    </p>
+  </div>
+
+</div>
+</body>
+</html>
