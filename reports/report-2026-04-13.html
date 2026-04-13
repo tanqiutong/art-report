@@ -229,7 +229,30 @@
     .link-bar a.ls{background:#f0f0f0;color:#444;border:1px solid #ddd;}
     .link-bar a.ls:hover{background:#e4e4e4;}
 
-  </style>
+  
+  .map-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px;}
+  .map-tab{padding:7px 16px;border-radius:20px;font-size:12px;font-weight:700;cursor:pointer;border:1.5px solid var(--green-border);background:#fff;color:var(--green-text);transition:all .15s;user-select:none;}
+  .map-tab:hover,.map-tab.active{background:var(--green-mid);color:#fff;border-color:var(--green-mid);}
+  .map-panel{display:none;}.map-panel.active{display:block;}
+  .map-category-label{font-size:12px;font-weight:900;letter-spacing:.06em;color:var(--text-muted);margin:16px 0 10px;padding-left:6px;border-left:3px solid var(--green-mid);}
+  .map-grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));margin-bottom:6px;}
+  .map-card{background:var(--card-bg);border:1px solid var(--border-color);border-radius:12px;padding:15px 17px;box-shadow:var(--shadow);border-top:3px solid #ccc;transition:box-shadow .15s;}
+  .map-card:hover{box-shadow:0 4px 18px rgba(30,80,50,.12);}
+  .map-t1{border-top-color:#c94040!important;}.map-t2{border-top-color:#c47c1a!important;}
+  .map-t3{border-top-color:#2e72b8!important;}.map-ta{border-top-color:#2e8b57!important;}
+  .map-tally{border-top-color:#7b66cc!important;}
+  .map-card-hd{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+  .map-icon{font-size:22px;}
+  .map-name{font-size:14px;font-weight:700;}
+  .map-name a{color:var(--text-color);text-decoration:none;border-bottom:1px dotted var(--green-mid);}
+  .map-name a:hover{color:var(--green-dark);}
+  .map-desc{font-size:12.5px;color:var(--text-muted);line-height:1.65;}
+  .map-tags{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;}
+  .map-tag{font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;background:#f0f0f0;color:#555;}
+  .map-r{background:rgba(201,64,64,.1);color:#c94040;}.map-o{background:rgba(196,124,26,.1);color:#c47c1a;}
+  .map-b{background:rgba(46,114,184,.1);color:#2e72b8;}.map-g{background:rgba(46,139,87,.1);color:#1a7a44;}
+  .map-links{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap;}
+</style>
 </head>
 <body>
 
@@ -424,7 +447,176 @@
     </div>
   </div>
 
-  <!-- ② 行业趋势 -->
+  
+  <!-- ★ 竞品图谱 ★ -->
+  <div class="section" id="competitor-map">
+    <div class="section-hd">
+      <h3>🗺️ 上下游竞品图谱</h3>
+      <div class="count">5 维度 · 13 家</div>
+    </div>
+    <p style="font-size:13px;color:#5a7a65;margin-bottom:16px;line-height:1.65;">以<strong>未来美术坊</strong>为中心，从产业链上下游和竞合关系两个维度分类梳理，点击名称可跳转。</p>
+
+    <div class="map-tabs">
+      <div class="map-tab active" onclick="switchTab(this,'tab-all')">全部视图</div>
+      <div class="map-tab" onclick="switchTab(this,'tab-direct')">🔴 直接竞品</div>
+      <div class="map-tab" onclick="switchTab(this,'tab-indirect')">🟡 间接竞品</div>
+      <div class="map-tab" onclick="switchTab(this,'tab-upstream')">🔵 上游供给</div>
+      <div class="map-tab" onclick="switchTab(this,'tab-downstream')">🟢 下游出口</div>
+      <div class="map-tab" onclick="switchTab(this,'tab-ally')">🤝 潜在合作</div>
+    </div>
+
+    <div id="tab-all" class="map-panel active">
+      <div class="map-category-label">🔴 直接竞品 — 同赛道 · 同用户 · 直接争夺</div>
+      <div class="map-grid">
+        <div class="map-card map-t1">
+          <div class="map-card-hd"><span class="map-icon">🖌️</span><div class="map-name"><a href="https://www.shenbishuhua.com/" target="_blank">神笔绘画 AI 教育版</a></div></div>
+          <div class="map-desc">专注 K12 美术教学，已在 50 所乡村学校实测，备课效率+65%。硬件软件一体化，进入场景验证阶段，是目前最近的直接威胁。</div>
+          <div class="map-tags"><span class="map-tag map-r">高威胁</span><span class="map-tag">50 校验证</span><span class="map-tag">乡村学校</span></div>
+          <div class="map-links"><a class="link-btn" href="https://www.shenbishuhua.com/" target="_blank">官网</a><a class="link-btn" href="https://www.jyeoo.com/art/" target="_blank">产品体验</a></div>
+        </div>
+        <div class="map-card map-t1">
+          <div class="map-card-hd"><span class="map-icon">🏃</span><div class="map-name"><a href="https://www.xingzhe.ai/" target="_blank">行者 AI（美育版）</a></div></div>
+          <div class="map-desc">×AMD 硬件绑定，向中小学 AI 美育课推广，政府采购渠道为主，硬件壁垒高但乡村渗透慢。</div>
+          <div class="map-tags"><span class="map-tag map-r">中高威胁</span><span class="map-tag map-o">硬件绑定</span><span class="map-tag">政府渠道</span></div>
+          <div class="map-links"><a class="link-btn" href="https://www.xingzhe.ai/" target="_blank">官网</a></div>
+        </div>
+        <div class="map-card map-t1">
+          <div class="map-card-hd"><span class="map-icon">🌾</span><div class="map-name"><a href="https://www.sohu.com/a/1006926375_121924584" target="_blank">浙师大朱敬东工作室</a></div></div>
+          <div class="map-desc">省级体制内乡村美育 AI 推广，4 月 8 日启动，覆盖浙江 4 所乡村学校。缺数字平台底座——这正是未来美术坊的切入点。</div>
+          <div class="map-tags"><span class="map-tag map-o">中等威胁</span><span class="map-tag">体制内渠道</span><span class="map-tag map-g">可合作</span></div>
+          <div class="map-links"><a class="link-btn" href="https://www.sohu.com/a/1006926375_121924584" target="_blank">相关报道</a><a class="link-btn" href="https://www.sohu.com/a/959844501_121106832" target="_blank">省级推进会背景</a></div>
+        </div>
+      </div>
+
+      <div class="map-category-label">🟡 间接竞品 — 同用户群 · 不同场景</div>
+      <div class="map-grid">
+        <div class="map-card map-t2">
+          <div class="map-card-hd"><span class="map-icon">🎨</span><div class="map-name"><a href="https://www.canva.cn/education/" target="_blank">Canva 可画（教育版）</a></div></div>
+          <div class="map-desc">全球最成熟 AI 教师创作工具，符合条件 100% 免费。"AI 备课→学生创作→家长分享"四环节闭环，是最高参考模型。</div>
+          <div class="map-tags"><span class="map-tag map-o">参考标杆</span><span class="map-tag">免费策略</span><span class="map-tag">国际产品</span></div>
+          <div class="map-links"><a class="link-btn" href="https://www.canva.cn/education/" target="_blank">教育版</a><a class="link-btn" href="https://www.canva.cn/features/ai-image-generator/" target="_blank">AI 图像功能</a></div>
+        </div>
+        <div class="map-card map-t2">
+          <div class="map-card-hd"><span class="map-icon">🖼️</span><div class="map-name"><a href="https://www.artsonia.com/" target="_blank">Artsonia</a></div></div>
+          <div class="map-desc">美国最大学生美术展示平台，"展示+家长传播+纪念品变现"闭环，50 万+教师。本土化：微信裂变 + 作品电商。</div>
+          <div class="map-tags"><span class="map-tag map-o">展示变现</span><span class="map-tag">50 万+教师</span></div>
+          <div class="map-links"><a class="link-btn" href="https://www.artsonia.com/" target="_blank">官网</a></div>
+        </div>
+        <div class="map-card map-t2">
+          <div class="map-card-hd"><span class="map-icon">📚</span><div class="map-name"><a href="https://theartofeducation.edu/" target="_blank">AOEU</a></div></div>
+          <div class="map-desc">"课程包+职业认证+社区"三角结构，是教师成长平台的参考架构，认证体系是核心留存杠杆。</div>
+          <div class="map-tags"><span class="map-tag map-o">职业认证</span><span class="map-tag">教师社区</span></div>
+          <div class="map-links"><a class="link-btn" href="https://theartofeducation.edu/" target="_blank">官网</a></div>
+        </div>
+      </div>
+
+      <div class="map-category-label">🔵 上游供给 — AI 能力 / 内容 / 政策基础设施</div>
+      <div class="map-grid">
+        <div class="map-card map-t3">
+          <div class="map-card-hd"><span class="map-icon">🧠</span><div class="map-name"><a href="https://hunyuan.tencent.com/image" target="_blank">腾讯混元图像 3.0</a></div></div>
+          <div class="map-desc">20+ 美术风格，Unify-Agent 四步绘图图像相关性+61%，内部接入成本极低，是未来美术坊的 AI 底座首选。</div>
+          <div class="map-tags"><span class="map-tag map-b">AI 底座</span><span class="map-tag map-g">优先接入</span><span class="map-tag">腾讯内部</span></div>
+          <div class="map-links"><a class="link-btn" href="https://hunyuan.tencent.com/image" target="_blank">官网</a><a class="link-btn" href="https://arxiv.org/abs/2603.29620" target="_blank">Unify-Agent 论文</a></div>
+        </div>
+        <div class="map-card map-t3">
+          <div class="map-card-hd"><span class="map-icon">🎓</span><div class="map-name"><a href="https://www.tsinghua.edu.cn/" target="_blank">清华伟新 / 央美授渔计划</a></div></div>
+          <div class="map-desc">历届参训乡村美术教师是最佳种子用户，培训后缺持续工具，是最核心的市场空白来源。</div>
+          <div class="map-tags"><span class="map-tag map-b">种子用户</span><span class="map-tag map-g">可合作</span></div>
+          <div class="map-links"><a class="link-btn" href="https://www.tsinghua.edu.cn/" target="_blank">清华官网</a></div>
+        </div>
+        <div class="map-card map-t3">
+          <div class="map-card-hd"><span class="map-icon">🏛️</span><div class="map-name"><a href="https://www.gov.cn/zhengce/zhengceku/202604/content_7065138.htm" target="_blank">教育部《AI+教育行动计划》</a></div></div>
+          <div class="map-desc">教科信〔2026〕1号，国家大模型攻关 + 中试基地遴选，是产品合规性和白名单入围的最大政策上游。</div>
+          <div class="map-tags"><span class="map-tag map-b">政策供给</span><span class="map-tag map-o">申报机会</span></div>
+          <div class="map-links"><a class="link-btn" href="https://www.gov.cn/zhengce/zhengceku/202604/content_7065138.htm" target="_blank">政策原文</a><a class="link-btn" href="https://basic.smartedu.cn/" target="_blank">国家智慧教育平台</a></div>
+        </div>
+      </div>
+
+      <div class="map-category-label">🟢 下游出口 — 产品触达渠道 / 分发平台</div>
+      <div class="map-grid">
+        <div class="map-card map-ta">
+          <div class="map-card-hd"><span class="map-icon">📱</span><div class="map-name"><a href="https://mp.weixin.qq.com/" target="_blank">微信小程序生态</a></div></div>
+          <div class="map-desc">主阵地，教师间口碑传播路径最短，微信搜一搜 + 公众号是主要获客入口，社交分发成本最低。</div>
+          <div class="map-tags"><span class="map-tag map-g">主阵地</span><span class="map-tag map-g">低成本</span></div>
+          <div class="map-links"><a class="link-btn" href="https://mp.weixin.qq.com/" target="_blank">微信公众平台</a></div>
+        </div>
+        <div class="map-card map-ta">
+          <div class="map-card-hd"><span class="map-icon">🌐</span><div class="map-name"><a href="https://basic.smartedu.cn/" target="_blank">国家中小学智慧教育平台</a></div></div>
+          <div class="map-desc">教育部官方平台，列入白名单即获全国教师搜索流量，是最高价值的下游出口。</div>
+          <div class="map-tags"><span class="map-tag map-o">待申报</span><span class="map-tag map-g">高价值</span></div>
+          <div class="map-links"><a class="link-btn" href="https://basic.smartedu.cn/" target="_blank">平台官网</a></div>
+        </div>
+        <div class="map-card map-ta">
+          <div class="map-card-hd"><span class="map-icon">🎪</span><div class="map-name"><a href="https://www.moe.gov.cn/" target="_blank">县区教研网络</a></div></div>
+          <div class="map-desc">一个县区教研室推荐即可触达辖区所有教师，开化县模式已验证，可批量复制到其他县区。</div>
+          <div class="map-tags"><span class="map-tag map-g">B端渠道</span><span class="map-tag map-g">可复制</span></div>
+          <div class="map-links"><a class="link-btn" href="https://www.moe.gov.cn/" target="_blank">教育部官网</a></div>
+        </div>
+      </div>
+
+      <div class="map-category-label">🤝 潜在合作方 — 互补非竞争 · 可联合运营</div>
+      <div class="map-grid">
+        <div class="map-card map-tally">
+          <div class="map-card-hd"><span class="map-icon">🌈</span><div class="map-name"><a href="https://www.tencent.com/zh-cn/articles/2201646.html" target="_blank">触梦计划·未来调色盘</a></div></div>
+          <div class="map-desc">腾讯系，覆盖 1842 所乡村学校，学生侧+硬件侧为主，与未来美术坊（教师工具侧）天然互补，共享渠道放大双方价值。</div>
+          <div class="map-tags"><span class="map-tag map-g">腾讯内部</span><span class="map-tag map-g">天然互补</span></div>
+          <div class="map-links"><a class="link-btn" href="https://www.tencent.com/zh-cn/articles/2201646.html" target="_blank">触梦计划介绍</a></div>
+        </div>
+        <div class="map-card map-tally">
+          <div class="map-card-hd"><span class="map-icon">🏫</span><div class="map-name"><a href="https://genaicon.zhidx.com/2026beijing/" target="_blank">GenAICon 2026</a></div></div>
+          <div class="map-desc">4 月 21-22 日北京，腾讯混元参加大模型记忆专场，是面向 AI 教育工具厂商的核心合作网络节点，建议派员参会。</div>
+          <div class="map-tags"><span class="map-tag map-b">行业活动</span><span class="map-tag">2026-04-21</span></div>
+          <div class="map-links"><a class="link-btn" href="https://genaicon.zhidx.com/2026beijing/" target="_blank">大会官网</a></div>
+        </div>
+      </div>
+    </div><!-- /tab-all -->
+
+    <div id="tab-direct" class="map-panel">
+      <div class="map-grid">
+        <div class="map-card map-t1"><div class="map-card-hd"><span class="map-icon">🖌️</span><div class="map-name"><a href="https://www.shenbishuhua.com/" target="_blank">神笔绘画 AI 教育版</a></div></div><div class="map-desc">50 所乡村学校实测，备课效率+65%，硬件软件一体化，当前最直接竞品。</div><div class="map-tags"><span class="map-tag map-r">高威胁</span><span class="map-tag">50 校验证</span></div><div class="map-links"><a class="link-btn" href="https://www.shenbishuhua.com/" target="_blank">官网</a><a class="link-btn" href="https://www.jyeoo.com/art/" target="_blank">体验</a></div></div>
+        <div class="map-card map-t1"><div class="map-card-hd"><span class="map-icon">🏃</span><div class="map-name"><a href="https://www.xingzhe.ai/" target="_blank">行者 AI（美育版）</a></div></div><div class="map-desc">×AMD 硬件绑定，政府采购渠道为主，硬件壁垒高但乡村渗透慢。</div><div class="map-tags"><span class="map-tag map-r">中高威胁</span><span class="map-tag map-o">硬件绑定</span></div><div class="map-links"><a class="link-btn" href="https://www.xingzhe.ai/" target="_blank">官网</a></div></div>
+        <div class="map-card map-t1"><div class="map-card-hd"><span class="map-icon">🌾</span><div class="map-name"><a href="https://www.sohu.com/a/1006926375_121924584" target="_blank">浙师大朱敬东工作室</a></div></div><div class="map-desc">省级体制内推广，缺数字平台底座，可转为合作方。</div><div class="map-tags"><span class="map-tag map-o">中等威胁</span><span class="map-tag map-g">可合作</span></div><div class="map-links"><a class="link-btn" href="https://www.sohu.com/a/1006926375_121924584" target="_blank">报道</a></div></div>
+      </div>
+    </div>
+    <div id="tab-indirect" class="map-panel">
+      <div class="map-grid">
+        <div class="map-card map-t2"><div class="map-card-hd"><span class="map-icon">🎨</span><div class="map-name"><a href="https://www.canva.cn/education/" target="_blank">Canva 可画（教育版）</a></div></div><div class="map-desc">全球最成熟 AI 教师创作工具，"AI 备课→学生创作→家长分享"闭环，最高参考模型。</div><div class="map-tags"><span class="map-tag map-o">参考标杆</span><span class="map-tag">免费策略</span></div><div class="map-links"><a class="link-btn" href="https://www.canva.cn/education/" target="_blank">教育版</a></div></div>
+        <div class="map-card map-t2"><div class="map-card-hd"><span class="map-icon">🖼️</span><div class="map-name"><a href="https://www.artsonia.com/" target="_blank">Artsonia</a></div></div><div class="map-desc">美国最大学生美术展示平台，展示+变现闭环，50 万+教师，本土化方向：微信裂变。</div><div class="map-tags"><span class="map-tag map-o">展示变现</span></div><div class="map-links"><a class="link-btn" href="https://www.artsonia.com/" target="_blank">官网</a></div></div>
+        <div class="map-card map-t2"><div class="map-card-hd"><span class="map-icon">📚</span><div class="map-name"><a href="https://theartofeducation.edu/" target="_blank">AOEU</a></div></div><div class="map-desc">"课程包+职业认证+社区"三角，认证体系是核心留存杠杆，值得借鉴。</div><div class="map-tags"><span class="map-tag map-o">职业认证</span></div><div class="map-links"><a class="link-btn" href="https://theartofeducation.edu/" target="_blank">官网</a></div></div>
+      </div>
+    </div>
+    <div id="tab-upstream" class="map-panel">
+      <div class="map-grid">
+        <div class="map-card map-t3"><div class="map-card-hd"><span class="map-icon">🧠</span><div class="map-name"><a href="https://hunyuan.tencent.com/image" target="_blank">腾讯混元图像 3.0</a></div></div><div class="map-desc">20+ 美术风格，Unify-Agent 图像相关性+61%，内部接入成本极低，首选 AI 底座。</div><div class="map-tags"><span class="map-tag map-b">AI 底座</span><span class="map-tag map-g">优先接入</span></div><div class="map-links"><a class="link-btn" href="https://hunyuan.tencent.com/image" target="_blank">官网</a><a class="link-btn" href="https://arxiv.org/abs/2603.29620" target="_blank">论文</a></div></div>
+        <div class="map-card map-t3"><div class="map-card-hd"><span class="map-icon">🎓</span><div class="map-name"><a href="https://www.tsinghua.edu.cn/" target="_blank">清华伟新 / 央美授渔计划</a></div></div><div class="map-desc">历届参训乡村美术教师是最佳种子用户，培训后缺持续工具是核心市场空白。</div><div class="map-tags"><span class="map-tag map-b">种子用户</span><span class="map-tag map-g">可合作</span></div><div class="map-links"><a class="link-btn" href="https://www.tsinghua.edu.cn/" target="_blank">清华官网</a></div></div>
+        <div class="map-card map-t3"><div class="map-card-hd"><span class="map-icon">🏛️</span><div class="map-name"><a href="https://www.gov.cn/zhengce/zhengceku/202604/content_7065138.htm" target="_blank">教育部《AI+教育行动计划》</a></div></div><div class="map-desc">五部委联署（教科信〔2026〕1号），国家大模型攻关 + 中试基地遴选，最大政策上游。</div><div class="map-tags"><span class="map-tag map-b">政策供给</span><span class="map-tag map-o">申报机会</span></div><div class="map-links"><a class="link-btn" href="https://www.gov.cn/zhengce/zhengceku/202604/content_7065138.htm" target="_blank">原文</a></div></div>
+      </div>
+    </div>
+    <div id="tab-downstream" class="map-panel">
+      <div class="map-grid">
+        <div class="map-card map-ta"><div class="map-card-hd"><span class="map-icon">📱</span><div class="map-name"><a href="https://mp.weixin.qq.com/" target="_blank">微信小程序生态</a></div></div><div class="map-desc">主阵地，口碑传播路径最短，搜一搜+公众号为主要获客入口。</div><div class="map-tags"><span class="map-tag map-g">主阵地</span></div><div class="map-links"><a class="link-btn" href="https://mp.weixin.qq.com/" target="_blank">微信公众平台</a></div></div>
+        <div class="map-card map-ta"><div class="map-card-hd"><span class="map-icon">🌐</span><div class="map-name"><a href="https://basic.smartedu.cn/" target="_blank">国家中小学智慧教育平台</a></div></div><div class="map-desc">列入白名单即获全国教师搜索流量，是最高价值下游出口。</div><div class="map-tags"><span class="map-tag map-o">待申报</span><span class="map-tag map-g">高价值</span></div><div class="map-links"><a class="link-btn" href="https://basic.smartedu.cn/" target="_blank">平台官网</a></div></div>
+        <div class="map-card map-ta"><div class="map-card-hd"><span class="map-icon">🎪</span><div class="map-name"><a href="https://www.moe.gov.cn/" target="_blank">县区教研网络</a></div></div><div class="map-desc">一个县区教研室推荐即触达辖区所有教师，开化县模式已验证可批量复制。</div><div class="map-tags"><span class="map-tag map-g">B端渠道</span><span class="map-tag map-g">可复制</span></div><div class="map-links"><a class="link-btn" href="https://www.moe.gov.cn/" target="_blank">教育部官网</a></div></div>
+      </div>
+    </div>
+    <div id="tab-ally" class="map-panel">
+      <div class="map-grid">
+        <div class="map-card map-tally"><div class="map-card-hd"><span class="map-icon">🌈</span><div class="map-name"><a href="https://www.tencent.com/zh-cn/articles/2201646.html" target="_blank">触梦计划·未来调色盘</a></div></div><div class="map-desc">腾讯系，覆盖 1842 所乡村学校，学生侧+硬件侧，与未来美术坊（教师工具侧）天然互补。</div><div class="map-tags"><span class="map-tag map-g">腾讯内部</span><span class="map-tag map-g">天然互补</span></div><div class="map-links"><a class="link-btn" href="https://www.tencent.com/zh-cn/articles/2201646.html" target="_blank">触梦计划</a></div></div>
+        <div class="map-card map-tally"><div class="map-card-hd"><span class="map-icon">🏫</span><div class="map-name"><a href="https://genaicon.zhidx.com/2026beijing/" target="_blank">GenAICon 2026</a></div></div><div class="map-desc">4 月 21-22 日北京，腾讯混元参加大模型记忆专场，核心合作网络节点。</div><div class="map-tags"><span class="map-tag map-b">行业活动</span><span class="map-tag">2026-04-21</span></div><div class="map-links"><a class="link-btn" href="https://genaicon.zhidx.com/2026beijing/" target="_blank">大会官网</a></div></div>
+      </div>
+    </div>
+
+  </div>
+  <script>
+  function switchTab(el,panelId){
+    document.querySelectorAll('#competitor-map .map-tab').forEach(t=>t.classList.remove('active'));
+    document.querySelectorAll('#competitor-map .map-panel').forEach(p=>p.classList.remove('active'));
+    el.classList.add('active');
+    document.getElementById(panelId).classList.add('active');
+  }
+  </script>
+
+<!-- ② 行业趋势 -->
   <div class="section">
     <div class="section-hd">
       <h3>📈 行业趋势</h3>
