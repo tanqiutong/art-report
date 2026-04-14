@@ -14,12 +14,15 @@
     --green-light: #e6f9ef;
     --green-border: #52c47a;
     --green-text: #1a7a44;
+    --green-pale: #f0fff7;
+    --green-muted: #b2dfcb;
     --text-main: #1a2e23;
     --text-sub: #4a6658;
     --text-muted: #7a9a88;
-    --p0: #d93025;
-    --p1: #e67e22;
-    --p2: #2980b9;
+    /* 优先级：P0保留警示红，P1/P2统一进绿色体系 */
+    --p0: #c0392b;
+    --p1: #1e5c38;
+    --p2: #3a9e6a;
     --shadow: 0 2px 12px rgba(30,92,56,0.08);
     --radius: 12px;
   }
@@ -135,12 +138,12 @@
   .badge {
     font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px;
   }
-  .badge-high { background: #fdecea; color: #c62828; }
-  .badge-mid  { background: #fff3e0; color: #e65100; }
-  .badge-low  { background: #e8f5e9; color: #2e7d32; }
+  .badge-high { background: #d4f0e2; color: #1a5c38; }
+  .badge-mid  { background: #e6f9ef; color: #2e7d52; }
+  .badge-low  { background: #f0fff7; color: #52c47a; }
   .badge-green{ background: var(--green-light); color: var(--green-text); }
   .badge-gray { background: #f5f5f5; color: #666; }
-  .badge-blue { background: #e3f2fd; color: #1565c0; }
+  .badge-blue { background: #e6f9ef; color: var(--green-dark); }
 
   /* ─── LINKS ─── */
   .link-bar { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
@@ -161,7 +164,7 @@
     background: var(--card); border-radius: var(--radius);
     padding: 16px 20px; margin-bottom: 10px;
     box-shadow: var(--shadow);
-    border-left: 4px solid #b2dfdb;
+    border-left: 4px solid var(--green-muted);
   }
   .trend-item.new { border-left-color: var(--green-border); background: linear-gradient(to right, #f0fff7, #fff 60%); }
   .trend-title { font-size: 13px; font-weight: 700; margin-bottom: 6px; color: var(--text-main); }
@@ -191,8 +194,8 @@
     text-transform: uppercase; letter-spacing: .06em;
   }
   .p0 { background: #fdecea; color: var(--p0); }
-  .p1 { background: #fff3e0; color: var(--p1); }
-  .p2 { background: #e3f2fd; color: var(--p2); }
+  .p1 { background: #d4f0e2; color: var(--p1); }
+  .p2 { background: #e6f9ef; color: var(--p2); }
   .action-title { font-size: 14px; font-weight: 700; color: var(--text-main); }
   .action-body { font-size: 13px; color: var(--text-sub); line-height: 1.75; }
 
@@ -203,7 +206,13 @@
     box-shadow: var(--shadow);
     display: flex; align-items: flex-start; gap: 12px;
   }
-  .risk-icon { font-size: 16px; flex-shrink: 0; margin-top: 2px; }
+  .risk-icon {
+    width: 10px; height: 10px; border-radius: 50%;
+    flex-shrink: 0; margin-top: 6px;
+  }
+  .risk-icon.red   { background: #c0392b; }
+  .risk-icon.amber { background: #e0a033; }
+  .risk-icon.green { background: #52c47a; }
   .risk-text { font-size: 13px; color: var(--text-sub); line-height: 1.65; }
   .risk-text strong { color: var(--text-main); }
 
@@ -229,11 +238,11 @@
     padding: 14px 16px; box-shadow: var(--shadow);
     border-top: 3px solid #ccc;
   }
-  .map-t1 { border-top-color: #ef5350; }
-  .map-t2 { border-top-color: #ffa726; }
-  .map-t3 { border-top-color: #42a5f5; }
-  .map-ta { border-top-color: #66bb6a; }
-  .map-tally { border-top-color: #ab47bc; }
+  .map-t1 { border-top-color: #c0392b; }
+  .map-t2 { border-top-color: #3a9e6a; }
+  .map-t3 { border-top-color: #1e5c38; }
+  .map-ta { border-top-color: #52c47a; }
+  .map-tally { border-top-color: #b2dfcb; }
   .map-card-hd { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
   .map-icon { font-size: 18px; flex-shrink: 0; }
   .map-name { font-size: 13px; font-weight: 700; }
@@ -242,8 +251,8 @@
   .map-desc { font-size: 12px; color: var(--text-sub); line-height: 1.65; }
   .map-tags{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;}
   .map-tag{font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;background:#f0f0f0;color:#555;}
-  .map-r{background:rgba(201,64,64,.1);color:#c94040;}.map-o{background:rgba(196,124,26,.1);color:#c47c1a;}
-  .map-b{background:rgba(46,114,184,.1);color:#2e72b8;}.map-g{background:rgba(46,139,87,.1);color:#1a7a44;}
+  .map-r{background:rgba(192,57,43,.1);color:#a93226;}.map-o{background:rgba(30,92,56,.12);color:#1e5c38;}
+  .map-b{background:rgba(58,158,106,.12);color:#2e7d52;}.map-g{background:rgba(46,139,87,.1);color:#1a7a44;}
   .map-links{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap;}
   .link-btn{font-size:11px;font-weight:600;padding:3px 10px;border-radius:4px;background:#f0f0f0;color:#444;text-decoration:none;}
   .link-btn:hover{background:var(--green-border);color:#fff;}
@@ -463,15 +472,15 @@
 
     <div class="map-tabs">
       <div class="map-tab active" onclick="switchTab(this,'tab-all')">全部视图</div>
-      <div class="map-tab" onclick="switchTab(this,'tab-direct')">🔴 直接竞品</div>
-      <div class="map-tab" onclick="switchTab(this,'tab-indirect')">🟡 间接竞品</div>
-      <div class="map-tab" onclick="switchTab(this,'tab-upstream')">🔵 上游供给</div>
-      <div class="map-tab" onclick="switchTab(this,'tab-downstream')">🟢 下游出口</div>
-      <div class="map-tab" onclick="switchTab(this,'tab-ally')">🤝 潜在合作</div>
+      <div class="map-tab" onclick="switchTab(this,'tab-direct')">▲ 直接竞品</div>
+      <div class="map-tab" onclick="switchTab(this,'tab-indirect')">◆ 间接竞品</div>
+      <div class="map-tab" onclick="switchTab(this,'tab-upstream')">● 上游供给</div>
+      <div class="map-tab" onclick="switchTab(this,'tab-downstream')">◉ 下游出口</div>
+      <div class="map-tab" onclick="switchTab(this,'tab-ally')">✦ 潜在合作</div>
     </div>
 
     <div id="tab-all" class="map-panel active">
-      <div class="map-category-label">🔴 直接竞品 — 同赛道 · 同用户 · 直接争夺</div>
+      <div class="map-category-label">▲ 直接竞品 — 同赛道 · 同用户 · 直接争夺</div>
       <div class="map-grid">
         <div class="map-card map-t1">
           <div class="map-card-hd"><span class="map-icon">🖌️</span><div class="map-name"><a href="https://sj.qq.com/appdetail/com.wanmeixiangsu.android.magicpen" target="_blank">神笔绘画 AI 教育版</a></div></div>
@@ -493,7 +502,7 @@
         </div>
       </div>
 
-      <div class="map-category-label">🟡 间接竞品 — 同用户群 · 不同场景</div>
+      <div class="map-category-label">◆ 间接竞品 — 同用户群 · 不同场景</div>
       <div class="map-grid">
         <div class="map-card map-t2">
           <div class="map-card-hd"><span class="map-icon">🎨</span><div class="map-name"><a href="https://www.canva.cn/education/" target="_blank">Canva 可画（教育版）</a></div></div>
@@ -515,7 +524,7 @@
         </div>
       </div>
 
-      <div class="map-category-label">🔵 上游供给 — AI 能力 / 内容 / 政策基础设施</div>
+      <div class="map-category-label">● 上游供给 — AI 能力 / 内容 / 政策基础设施</div>
       <div class="map-grid">
         <div class="map-card map-t3">
           <div class="map-card-hd"><span class="map-icon">🧠</span><div class="map-name"><a href="https://hunyuan.tencent.com/image" target="_blank">腾讯混元3.0（即将发布）</a></div></div>
@@ -537,7 +546,7 @@
         </div>
       </div>
 
-      <div class="map-category-label">🟢 下游出口 — 产品触达渠道 / 分发平台</div>
+      <div class="map-category-label">◉ 下游出口 — 产品触达渠道 / 分发平台</div>
       <div class="map-grid">
         <div class="map-card map-ta">
           <div class="map-card-hd"><span class="map-icon">📱</span><div class="map-name"><a href="https://mp.weixin.qq.com/" target="_blank">微信小程序生态</a></div></div>
@@ -559,7 +568,7 @@
         </div>
       </div>
 
-      <div class="map-category-label">🤝 潜在合作方 — 互补非竞争 · 可联合运营</div>
+      <div class="map-category-label">✦ 潜在合作方 — 互补非竞争 · 可联合运营</div>
       <div class="map-grid">
         <div class="map-card map-tally">
           <div class="map-card-hd"><span class="map-icon">🌈</span><div class="map-name"><a href="https://www.tencent.com/zh-cn/articles/2201646.html" target="_blank">触梦计划·未来调色盘</a></div></div>
@@ -744,37 +753,37 @@
     </div>
 
     <div class="risk-item">
-      <div class="risk-icon">🔴</div>
+      <div class="risk-icon red"></div>
       <div class="risk-text"><strong>【紧急·新增】GPT-6 集成浪潮：Canva Magic AI 将在 1-2 个月内完成接入</strong><br>
       国际竞品 Canva 集成 GPT-6 后，其"AI备课"能力将大幅提升，且面向教师免费。未来美术坊必须在混元3.0接入后形成差异化（本土化+低门槛+乡村场景适配），否则将被 Canva GPT-6 版本在功能层面碾压。</div>
     </div>
 
     <div class="risk-item">
-      <div class="risk-icon">🔴</div>
+      <div class="risk-icon red"></div>
       <div class="risk-text"><strong>【紧急】神笔绘画加速在乡村学校渗透，已 50 校实测，4月更新持续迭代</strong><br>
       神笔绘画是当前最直接的直接竞品，已在乡村学校建立先发壁垒。未来美术坊需在混元底座确定后，快速完成 MVP 并在神笔绘画尚未覆盖的区域（非浙江/广东以外省份）抢先布点。</div>
     </div>
 
     <div class="risk-item">
-      <div class="risk-icon">🟡</div>
+      <div class="risk-icon amber"></div>
       <div class="risk-text"><strong>【持续】混元3.0发布时间不确定性：若延至5月，竞品将抢先在旧版本上构建功能</strong><br>
       官方承诺"4月发布"，但具体日期未定。建议在混元图像3.0现有 API 基础上立即启动功能原型开发，不依赖3.0正式发布，确保 GenAICon 大会前有可演示 Demo。</div>
     </div>
 
     <div class="risk-item">
-      <div class="risk-icon">🟡</div>
+      <div class="risk-icon amber"></div>
       <div class="risk-text"><strong>【持续】工信部高价值场景申报窗口短，约 30 天，逾期将错失首批认证</strong><br>
       工信部发布节奏尚不明确，建议立即启动材料准备，同时密切关注工信部官方通知渠道。首批认证的品牌价值远高于后续跟进者。</div>
     </div>
 
     <div class="risk-item">
-      <div class="risk-icon">🟡</div>
+      <div class="risk-icon amber"></div>
       <div class="risk-text"><strong>【持续】行者 AI×AMD 模式若获得大规模政府采购，将占据乡村学校硬件端</strong><br>
       行者 AI 依托政府采购渠道推广硬件捆绑方案，若地方政府批量采购，将形成"AI工具随硬件预装"的捆绑局面，抬高未来美术坊的进入门槛。需持续追踪行者 AI 的政府采购进展。</div>
     </div>
 
     <div class="risk-item">
-      <div class="risk-icon">🟢</div>
+      <div class="risk-icon green"></div>
       <div class="risk-text"><strong>【低风险·持续观察】即梦 AI 教师端传播势能，依赖抖音生态</strong><br>
       即梦 AI 通过抖音短视频传播，在城市教师群体中渗透较快，但乡村教师抖音使用频率和宽带条件限制其渗透速度。未来美术坊在乡村场景的本土适配优势（微信/低带宽优化）是护城河。</div>
     </div>
