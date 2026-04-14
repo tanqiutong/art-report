@@ -7,10 +7,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #f4f8f5;          /* 页面底色：低饱和暖绿白，比纯白更护眼 */
-    --bg-sub: #eef4f0;      /* 次级区域背景（如腾讯美术力、辅助块） */
+    --bg: #fdfbf3;              /* 页面底色：淡黄暖白 */
+    --bg-sub: #f5f0e0;          /* 次级区域背景 */
     --card: #ffffff;
-    --card-hover: #f9fcfa;  /* 卡片悬停/次级卡片背景 */
+    --card-hover: #fdfaf0;      /* 卡片悬停 */
     --green-dark: #1e5c38;
     --green-mid: #3a9e6a;
     --green-light: #e6f9ef;
@@ -21,7 +21,6 @@
     --text-main: #1a2e23;
     --text-sub: #4a6658;
     --text-muted: #7a9a88;
-    /* 优先级：P0保留警示红，P1/P2统一进绿色体系 */
     --p0: #c0392b;
     --p1: #1e5c38;
     --p2: #3a9e6a;
@@ -41,17 +40,16 @@
   .header {
     background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-mid) 100%);
     color: #fff;
-    padding: 36px 48px 32px;
+    padding: 24px 48px;
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: center;
     flex-wrap: wrap;
-    gap: 16px;
+    gap: 12px;
   }
-  .header-left h1 { font-size: 22px; font-weight: 700; letter-spacing: .04em; margin-bottom: 6px; }
-  .header-left h2 { font-size: 14px; font-weight: 400; opacity: .85; }
-  .header-right { text-align: right; font-size: 13px; opacity: .8; }
-  .header-right .date { font-size: 26px; font-weight: 700; opacity: 1; display: block; }
+  .header-left h1 { font-size: 20px; font-weight: 700; letter-spacing: .06em; }
+  .header-right { text-align: right; font-size: 13px; opacity: .85; }
+  .header-right .date { font-size: 22px; font-weight: 700; opacity: 1; display: block; letter-spacing: .04em; }
 
   /* ─── LAYOUT ─── */
   .container { max-width: 960px; margin: 0 auto; padding: 32px 24px 60px; }
@@ -268,12 +266,11 @@
 <!-- HEADER -->
 <div class="header">
   <div class="header-left">
-    <h1>🎨 未来美术坊 · 每日美育产品竞品分析简报</h1>
-    <h2>面向乡村美术教师的 AI 工具平台 · 内部产品决策参考</h2>
+    <h1>未来美术坊</h1>
   </div>
   <div class="header-right">
     <span class="date">2026-04-14</span>
-    周二 · 第 11 期
+    第 11 期
   </div>
 </div>
 
