@@ -7,8 +7,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #f2f7f4;
+    --bg: #f4f8f5;          /* 页面底色：低饱和暖绿白，比纯白更护眼 */
+    --bg-sub: #eef4f0;      /* 次级区域背景（如腾讯美术力、辅助块） */
     --card: #ffffff;
+    --card-hover: #f9fcfa;  /* 卡片悬停/次级卡片背景 */
     --green-dark: #1e5c38;
     --green-mid: #3a9e6a;
     --green-light: #e6f9ef;
@@ -142,7 +144,7 @@
   .badge-mid  { background: #e6f9ef; color: #2e7d52; }
   .badge-low  { background: #f0fff7; color: #52c47a; }
   .badge-green{ background: var(--green-light); color: var(--green-text); }
-  .badge-gray { background: #f5f5f5; color: #666; }
+  .badge-gray { background: var(--bg-sub); color: var(--text-sub); }
   .badge-blue { background: #e6f9ef; color: var(--green-dark); }
 
   /* ─── LINKS ─── */
@@ -155,9 +157,9 @@
   a.lp:hover { background: var(--green-border); color: #fff; }
   a.ls {
     font-size: 12px; color: var(--text-sub); text-decoration: none;
-    padding: 3px 10px; border-radius: 4px; background: #f5f5f5; border: 1px solid #ddd;
+    padding: 3px 10px; border-radius: 4px; background: var(--bg-sub); border: 1px solid var(--green-muted);
   }
-  a.ls:hover { background: #e0e0e0; }
+  a.ls:hover { background: var(--green-muted); color: var(--green-dark); }
 
   /* ─── TREND ─── */
   .trend-item {
@@ -172,13 +174,13 @@
 
   /* ─── TENCENT POWER ─── */
   .power-item {
-    background: linear-gradient(135deg, #e8f5e9, #f2f7f4);
+    background: var(--bg-sub);
     border-radius: var(--radius);
     padding: 16px 20px; margin-bottom: 10px;
     box-shadow: var(--shadow);
     border-left: 4px solid var(--green-dark);
   }
-  .power-item.new { background: linear-gradient(135deg, #d4f8e8, #e8fff2 60%); }
+  .power-item.new { background: linear-gradient(135deg, #d4f8e8, #eef4f0 60%); }
   .power-title { font-size: 13px; font-weight: 700; color: var(--green-dark); margin-bottom: 6px; }
   .power-body { font-size: 13px; color: var(--text-sub); line-height: 1.75; }
 
@@ -220,8 +222,8 @@
   .map-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
   .map-tab {
     font-size: 12px; font-weight: 600; padding: 6px 14px; border-radius: 20px;
-    cursor: pointer; background: #f0f0f0; color: #555;
-    border: 1px solid #ddd; transition: all .2s;
+    cursor: pointer; background: var(--bg-sub); color: var(--text-sub);
+    border: 1px solid var(--green-muted); transition: all .2s;
   }
   .map-tab.active { background: var(--green-dark); color: #fff; border-color: var(--green-dark); }
   .map-panel { display: none; }
@@ -250,12 +252,12 @@
   .map-name a:hover { color: var(--green-text); text-decoration: underline; }
   .map-desc { font-size: 12px; color: var(--text-sub); line-height: 1.65; }
   .map-tags{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;}
-  .map-tag{font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;background:#f0f0f0;color:#555;}
+  .map-tag{font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;background:var(--bg-sub);color:var(--text-sub);}
   .map-r{background:rgba(192,57,43,.1);color:#a93226;}.map-o{background:rgba(30,92,56,.12);color:#1e5c38;}
   .map-b{background:rgba(58,158,106,.12);color:#2e7d52;}.map-g{background:rgba(46,139,87,.1);color:#1a7a44;}
   .map-links{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap;}
-  .link-btn{font-size:11px;font-weight:600;padding:3px 10px;border-radius:4px;background:#f0f0f0;color:#444;text-decoration:none;}
-  .link-btn:hover{background:var(--green-border);color:#fff;}
+  .link-btn{font-size:11px;font-weight:600;padding:3px 10px;border-radius:4px;background:var(--bg-sub);color:var(--text-sub);text-decoration:none;border:1px solid var(--green-muted);}
+  .link-btn:hover{background:var(--green-border);color:#fff;border-color:var(--green-border);}
 </style>
 </head>
 <body>
