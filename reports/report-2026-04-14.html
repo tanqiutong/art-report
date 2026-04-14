@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>未来美术坊 · 每日美育产品竞品分析简报 | 2026-04-14</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f2f7f4;
+    --card: #ffffff;
+    --green-dark: #1e5c38;
+    --green-mid: #3a9e6a;
+    --green-light: #e6f9ef;
+    --green-border: #52c47a;
+    --green-text: #1a7a44;
+    --text-main: #1a2e23;
+    --text-sub: #4a6658;
+    --text-muted: #7a9a88;
+    --p0: #d93025;
+    --p1: #e67e22;
+    --p2: #2980b9;
+    --shadow: 0 2px 12px rgba(30,92,56,0.08);
+    --radius: 12px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: var(--bg);
+    color: var(--text-main);
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* ─── HEADER ─── */
+  .header {
+    background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-mid) 100%);
+    color: #fff;
+    padding: 36px 48px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .header-left h1 { font-size: 22px; font-weight: 700; letter-spacing: .04em; margin-bottom: 6px; }
+  .header-left h2 { font-size: 14px; font-weight: 400; opacity: .85; }
+  .header-right { text-align: right; font-size: 13px; opacity: .8; }
+  .header-right .date { font-size: 26px; font-weight: 700; opacity: 1; display: block; }
+
+  /* ─── LAYOUT ─── */
+  .container { max-width: 960px; margin: 0 auto; padding: 32px 24px 60px; }
+
+  /* ─── NEW LEGEND ─── */
+  .new-legend {
+    background: var(--green-light);
+    border: 1px solid var(--green-border);
+    border-radius: 8px;
+    padding: 10px 18px;
+    margin-bottom: 28px;
+    font-size: 13px;
+    color: var(--green-text);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .new-legend .dot {
+    width: 12px; height: 12px; border-radius: 2px;
+    background: var(--green-border); flex-shrink: 0;
+  }
+
+  /* ─── CONCLUSION ─── */
+  .conclusion {
+    background: linear-gradient(135deg, #1e5c38 0%, #2d7a52 100%);
+    color: #fff;
+    border-radius: var(--radius);
+    padding: 24px 28px;
+    margin-bottom: 28px;
+    box-shadow: var(--shadow);
+  }
+  .conclusion .label { font-size: 11px; font-weight: 600; letter-spacing: .1em; opacity: .7; text-transform: uppercase; margin-bottom: 10px; }
+  .conclusion p { font-size: 16px; font-weight: 600; line-height: 1.65; }
+  .conclusion .tag {
+    display: inline-block; background: rgba(255,255,255,0.2);
+    border-radius: 4px; padding: 2px 8px; font-size: 12px;
+    font-weight: 700; margin-left: 8px; vertical-align: middle;
+  }
+
+  /* ─── SUMMARY ─── */
+  .summary-card {
+    display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px;
+    margin-bottom: 32px;
+  }
+  @media(max-width:640px){ .summary-card{grid-template-columns:repeat(3,1fr);} }
+  .summary-item {
+    background: var(--card); border-radius: var(--radius);
+    padding: 16px 8px; text-align: center; box-shadow: var(--shadow);
+  }
+  .s-num { font-size: 28px; font-weight: 700; color: var(--green-dark); line-height: 1.2; }
+  .s-label { font-size: 11px; color: var(--text-muted); margin-top: 4px; }
+
+  /* ─── SECTION ─── */
+  .section { margin-bottom: 32px; }
+  .section-hd {
+    display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 2px solid var(--green-border);
+    padding-bottom: 10px; margin-bottom: 18px;
+  }
+  .section-hd h3 { font-size: 16px; font-weight: 700; color: var(--green-dark); }
+  .section-hd .count { font-size: 12px; color: var(--text-muted); }
+  .section-hd .count span { color: var(--green-text); font-weight: 600; }
+
+  /* ─── CARD ─── */
+  .card {
+    background: var(--card); border-radius: var(--radius);
+    padding: 18px 20px; margin-bottom: 12px;
+    box-shadow: var(--shadow);
+    border-left: 4px solid transparent;
+    position: relative;
+  }
+  .card.new {
+    border-left-color: var(--green-border);
+    background: linear-gradient(to right, #f0fff7 0%, #fff 60%);
+  }
+  .new-stamp {
+    position: absolute; top: 12px; right: 14px;
+    background: var(--green-border); color: #fff;
+    font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 4px;
+    letter-spacing: .06em;
+  }
+  .card-title { font-size: 14px; font-weight: 700; margin-bottom: 8px; color: var(--text-main); }
+  .card-body { font-size: 13px; color: var(--text-sub); line-height: 1.75; }
+  .card-body em { color: var(--green-text); font-style: normal; font-weight: 500; }
+  .card-meta { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
+  .badge {
+    font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px;
+  }
+  .badge-high { background: #fdecea; color: #c62828; }
+  .badge-mid  { background: #fff3e0; color: #e65100; }
+  .badge-low  { background: #e8f5e9; color: #2e7d32; }
+  .badge-green{ background: var(--green-light); color: var(--green-text); }
+  .badge-gray { background: #f5f5f5; color: #666; }
+  .badge-blue { background: #e3f2fd; color: #1565c0; }
+
+  /* ─── LINKS ─── */
+  .link-bar { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+  a.lp {
+    font-size: 12px; color: var(--green-dark); font-weight: 600;
+    text-decoration: none; padding: 3px 10px; border-radius: 4px;
+    background: var(--green-light); border: 1px solid var(--green-border);
+  }
+  a.lp:hover { background: var(--green-border); color: #fff; }
+  a.ls {
+    font-size: 12px; color: var(--text-sub); text-decoration: none;
+    padding: 3px 10px; border-radius: 4px; background: #f5f5f5; border: 1px solid #ddd;
+  }
+  a.ls:hover { background: #e0e0e0; }
+
+  /* ─── TREND ─── */
+  .trend-item {
+    background: var(--card); border-radius: var(--radius);
+    padding: 16px 20px; margin-bottom: 10px;
+    box-shadow: var(--shadow);
+    border-left: 4px solid #b2dfdb;
+  }
+  .trend-item.new { border-left-color: var(--green-border); background: linear-gradient(to right, #f0fff7, #fff 60%); }
+  .trend-title { font-size: 13px; font-weight: 700; margin-bottom: 6px; color: var(--text-main); }
+  .trend-body { font-size: 13px; color: var(--text-sub); line-height: 1.75; }
+
+  /* ─── TENCENT POWER ─── */
+  .power-item {
+    background: linear-gradient(135deg, #e8f5e9, #f2f7f4);
+    border-radius: var(--radius);
+    padding: 16px 20px; margin-bottom: 10px;
+    box-shadow: var(--shadow);
+    border-left: 4px solid var(--green-dark);
+  }
+  .power-item.new { background: linear-gradient(135deg, #d4f8e8, #e8fff2 60%); }
+  .power-title { font-size: 13px; font-weight: 700; color: var(--green-dark); margin-bottom: 6px; }
+  .power-body { font-size: 13px; color: var(--text-sub); line-height: 1.75; }
+
+  /* ─── ACTION ─── */
+  .action-item {
+    background: var(--card); border-radius: var(--radius);
+    padding: 18px 20px; margin-bottom: 12px;
+    box-shadow: var(--shadow);
+  }
+  .action-hd { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .priority-badge {
+    font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 4px;
+    text-transform: uppercase; letter-spacing: .06em;
+  }
+  .p0 { background: #fdecea; color: var(--p0); }
+  .p1 { background: #fff3e0; color: var(--p1); }
+  .p2 { background: #e3f2fd; color: var(--p2); }
+  .action-title { font-size: 14px; font-weight: 700; color: var(--text-main); }
+  .action-body { font-size: 13px; color: var(--text-sub); line-height: 1.75; }
+
+  /* ─── RISK ─── */
+  .risk-item {
+    background: var(--card); border-radius: 8px;
+    padding: 12px 16px; margin-bottom: 8px;
+    box-shadow: var(--shadow);
+    display: flex; align-items: flex-start; gap: 12px;
+  }
+  .risk-icon { font-size: 16px; flex-shrink: 0; margin-top: 2px; }
+  .risk-text { font-size: 13px; color: var(--text-sub); line-height: 1.65; }
+  .risk-text strong { color: var(--text-main); }
+
+  /* ─── COMPETITOR MAP ─── */
+  .map-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+  .map-tab {
+    font-size: 12px; font-weight: 600; padding: 6px 14px; border-radius: 20px;
+    cursor: pointer; background: #f0f0f0; color: #555;
+    border: 1px solid #ddd; transition: all .2s;
+  }
+  .map-tab.active { background: var(--green-dark); color: #fff; border-color: var(--green-dark); }
+  .map-panel { display: none; }
+  .map-panel.active { display: block; }
+  .map-category-label {
+    font-size: 12px; font-weight: 700; color: var(--text-muted);
+    letter-spacing: .08em; text-transform: uppercase;
+    margin: 18px 0 10px; padding-left: 4px;
+    border-left: 3px solid var(--green-border);
+  }
+  .map-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(240px,1fr)); gap: 12px; }
+  .map-card {
+    background: var(--card); border-radius: var(--radius);
+    padding: 14px 16px; box-shadow: var(--shadow);
+    border-top: 3px solid #ccc;
+  }
+  .map-t1 { border-top-color: #ef5350; }
+  .map-t2 { border-top-color: #ffa726; }
+  .map-t3 { border-top-color: #42a5f5; }
+  .map-ta { border-top-color: #66bb6a; }
+  .map-tally { border-top-color: #ab47bc; }
+  .map-card-hd { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .map-icon { font-size: 18px; flex-shrink: 0; }
+  .map-name { font-size: 13px; font-weight: 700; }
+  .map-name a { color: var(--text-main); text-decoration: none; }
+  .map-name a:hover { color: var(--green-text); text-decoration: underline; }
+  .map-desc { font-size: 12px; color: var(--text-sub); line-height: 1.65; }
+  .map-tags{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;}
+  .map-tag{font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;background:#f0f0f0;color:#555;}
+  .map-r{background:rgba(201,64,64,.1);color:#c94040;}.map-o{background:rgba(196,124,26,.1);color:#c47c1a;}
+  .map-b{background:rgba(46,114,184,.1);color:#2e72b8;}.map-g{background:rgba(46,139,87,.1);color:#1a7a44;}
+  .map-links{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap;}
+  .link-btn{font-size:11px;font-weight:600;padding:3px 10px;border-radius:4px;background:#f0f0f0;color:#444;text-decoration:none;}
+  .link-btn:hover{background:var(--green-border);color:#fff;}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-left">
+    <h1>🎨 未来美术坊 · 每日美育产品竞品分析简报</h1>
+    <h2>面向乡村美术教师的 AI 工具平台 · 内部产品决策参考</h2>
+  </div>
+  <div class="header-right">
+    <span class="date">2026-04-14</span>
+    周二 · 第 11 期
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- NEW LEGEND -->
+  <div class="new-legend">
+    <div class="dot"></div>
+    <span><strong>绿色高亮</strong> = 本期相比上期（2026-04-13）新增或重大更新的条目，需重点关注</span>
+  </div>
+
+  <!-- 今日一句话结论 -->
+  <div class="conclusion">
+    <div class="label">📌 今日一句话结论</div>
+    <p>
+      GPT-6 今日正式亮相（Symphony架构 · 200万Token · 性能+40%）、腾讯混元3.0本月内即将发布，全球AI能力代际跃迁与国内政策强制落地同步叠加——未来美术坊需在混元3.0发布前<strong>锁定 AI 底座接入方案</strong>，同时借工信部"AI+高价值场景"申报窗口<strong>争取官方背书</strong>，抢占政策红利的黄金 30 天。
+      <span class="tag">⚡ 能力代际跃迁</span>
+    </p>
+  </div>
+
+  <!-- 核心摘要 -->
+  <div class="summary-card">
+    <div class="summary-item">
+      <div class="s-num">8</div>
+      <div class="s-label">竞品动态</div>
+    </div>
+    <div class="summary-item">
+      <div class="s-num">5</div>
+      <div class="s-label">行业趋势</div>
+    </div>
+    <div class="summary-item">
+      <div class="s-num">5</div>
+      <div class="s-label">腾讯美术力</div>
+    </div>
+    <div class="summary-item">
+      <div class="s-num">3</div>
+      <div class="s-label">产品建议</div>
+    </div>
+    <div class="summary-item">
+      <div class="s-num">6</div>
+      <div class="s-label">风险观察</div>
+    </div>
+    <div class="summary-item">
+      <div class="s-num">3</div>
+      <div class="s-label">今日新增</div>
+    </div>
+  </div>
+
+  <!-- ① 竞品动态 -->
+  <div class="section">
+    <div class="section-hd">
+      <h3>🔍 竞品动态</h3>
+      <div class="count">8 条 · 今日 <span>3 条新增</span></div>
+    </div>
+
+    <!-- 新增1 -->
+    <div class="card new">
+      <div class="new-stamp">✦ 今日新增</div>
+      <div class="card-title">①&nbsp; GPT-6 今日正式发布 —— 代号"Spud"，AI能力格局重塑</div>
+      <div class="card-body">
+        2026 年 4 月 14 日，OpenAI 正式发布 GPT-6（代号"Spud"），被定位为"AGI的最后一公里"。核心升级：<br>
+        · <strong>Symphony 原生多模态统一架构</strong>：彻底摒弃分支融合模式，视觉/语音/文本统一向量空间底层编码<br>
+        · <strong>200万 Token 超长上下文</strong>：可一次处理整学期课程大纲+所有学生作品<br>
+        · 相比 GPT-5.4 综合性能提升 40%，推理与创意任务尤为突出<br>
+        <em>→ 对未来美术坊的影响：全球 AI 创作工具（Canva Magic、Adobe Firefly）将快速集成 GPT-6，未来美术坊需加速完成混元接入，保持本土工具竞争力。GPT-6 同时意味着国产竞品将快速跟进，窗口期约 3-6 个月。</em>
+      </div>
+      <div class="link-bar">
+        <a class="lp" href="https://zhuanlan.zhihu.com/p/2024970852341426129" target="_blank">📄 GPT-6 深度解析</a>
+        <a class="ls" href="https://ai.programnotes.cn/p/gpt-6-%E5%AE%9A%E6%A1%A34%E6%9C%8814%E6%97%A5200%E4%B8%87token%E4%B8%8A%E4%B8%8B%E6%96%87symphony%E5%85%A8%E6%A8%A1%E6%80%81%E6%9E%B6%E6%9E%84/" target="_blank">技术规格详解</a>
+        <a class="ls" href="https://pd.qq.com/g/pd26279654/post/B_60f8dc69fca005001441152187007549370X60" target="_blank">科技日报报道</a>
+      </div>
+      <div class="card-meta">
+        <span class="badge badge-high">影响：极高</span>
+        <span class="badge badge-blue">全球格局</span>
+        <span class="badge badge-gray">2026-04-14 发布</span>
+      </div>
+    </div>
+
+    <!-- 新增2 -->
+    <div class="card new">
+      <div class="new-stamp">✦ 今日新增</div>
+      <div class="card-title">②&nbsp; 工信部宣布将发布一批"AI+高价值场景" —— 教育明确列入</div>
+      <div class="card-body">
+        2026 年 4 月 11 日，工业和信息化部在武汉中国人工智能产业发展联盟第17次全体会议上宣布，将发布一批"人工智能+"高价值场景，<strong>教育场景明确列入</strong>，与教育部《AI+教育行动计划》形成双部委合力。<br>
+        · "AI纳入教师资格考试"正式作为重要信号被纳入工信部政策框架<br>
+        · 工信部将通过高价值场景认定推动企业产品进入政府采购目录<br>
+        <em>→ 直接机会：未来美术坊若能以"乡村美育 AI 赋能教师"为场景申报工信部高价值场景，可获得政府采购资质和品牌背书，是当前最直接的官方认证渠道。</em>
+      </div>
+      <div class="link-bar">
+        <a class="lp" href="https://news.cctv.cn/2026/04/11/ARTIkzrapDyezYI7MlhKealp260411.shtml" target="_blank">📄 央视新闻原文</a>
+        <a class="ls" href="https://www.chinanews.com/cj/2026/04-11/10602108.shtml" target="_blank">中新网报道</a>
+      </div>
+      <div class="card-meta">
+        <span class="badge badge-high">影响：高</span>
+        <span class="badge badge-green">申报机会</span>
+        <span class="badge badge-gray">2026-04-11</span>
+      </div>
+    </div>
+
+    <!-- 新增3 -->
+    <div class="card new">
+      <div class="new-stamp">✦ 今日新增</div>
+      <div class="card-title">③&nbsp; 马云公益基金会2026年"乡村教师计划"开放报名 —— 第12届</div>
+      <div class="card-body">
+        2026 年 4 月 1 日正式启动报名，寻找 100 位守在乡村的一线教师，资助金额 10 万元/人，已累计支持 1101 位乡村教师（99% 坚守一线）。美术是重要学科方向之一。<br>
+        · 报名条件：乡镇及以下义务教育阶段学校，连续任教 3 年以上<br>
+        · 项目走遍全国 2000+ 乡村，是乡村教师群体最具公信力的公益项目<br>
+        <em>→ 对未来美术坊的启示：历届获奖乡村美术教师是最高质量的种子用户和口碑传播者，可主动联系马云公益基金会建立合作，将未来美术坊作为获奖教师的工具礼包。</em>
+      </div>
+      <div class="link-bar">
+        <a class="lp" href="https://www.mayun.xin/news/%e5%8d%83%e9%87%8c%e4%b8%87%e9%87%8c%ef%bc%8c2026%e4%b9%a1%e6%9d%91%e6%95%99%e5%b8%88%e8%ae%a1%e5%88%92%e7%ad%89%e4%bd%a0" target="_blank">📰 官方报名页</a>
+        <a class="ls" href="https://news.dahebao.cn/dahe/appcommunity/2262893" target="_blank">大河报报道</a>
+        <a class="ls" href="https://finance.sina.com.cn/jjxw/2026-04-02/doc-inhtaenm4495113.shtml" target="_blank">新浪财经报道</a>
+      </div>
+      <div class="card-meta">
+        <span class="badge badge-mid">影响：中高</span>
+        <span class="badge badge-green">用户渠道</span>
+        <span class="badge badge-gray">报名截止待确认</span>
+      </div>
+    </div>
+
+    <!-- 持续追踪 -->
+    <div class="card">
+      <div class="card-title">④&nbsp; 腾讯混元3.0 —— 本月内即将正式发布（倒计时阶段）</div>
+      <div class="card-body">上期（4/13）追踪：混元3.0已完成内测，官宣本月对外开放。架构重构（支持百万字级输入）+推理增强+多模态升级，教育/广告/客服 700+ 场景验证完毕。GenAICon 大会（4月21-22日）是最可能的发布节点，届时预计有教育场景演示。</div>
+      <div class="link-bar">
+        <a class="lp" href="https://www.pconline.com.cn/ai/2117/21175932.html" target="_blank">📰 混元3.0发布前瞻</a>
+        <a class="ls" href="https://genaicon.zhidx.com/2026beijing/" target="_blank">GenAICon 大会官网</a>
+        <a class="ls" href="https://cloud.tencent.cn/developer/article/2652458" target="_blank">混元技术详解</a>
+      </div>
+      <div class="card-meta">
+        <span class="badge badge-high">影响：极高</span>
+        <span class="badge badge-green">内部能力</span>
+        <span class="badge badge-gray">本月内发布</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">⑤&nbsp; 教育部《"人工智能+教育"行动计划》4月13日发布解读文章（持续深化）</div>
+      <div class="card-body">4月13日，教育部官网发布《"人工智能+教育"，"加"什么、如何"加"》深度解读，进一步明确"未来教育空间"建设路径：未来课堂、未来学校及智能终端三位一体，2026年为落地关键年。国家智慧教育平台2.0智能版已上线，AI接入赛道开放。</div>
+      <div class="link-bar">
+        <a class="lp" href="https://www.moe.gov.cn/jyb_xwfb/s5147/202604/t20260413_1433411.html" target="_blank">📄 教育部最新解读</a>
+        <a class="ls" href="http://www3.xinhuanet.com/edu/20260410/7ae1c553bb8949dd8a645b6cdca1fcff/c.html" target="_blank">新华网：未来教育空间</a>
+        <a class="ls" href="https://edu.cctv.com/2026/04/02/ARTIJ6CNZOJGmrVciuTZ8i2F260402.shtml" target="_blank">央视网："十五五"部署</a>
+      </div>
+      <div class="card-meta">
+        <span class="badge badge-high">影响：极高</span>
+        <span class="badge badge-green">政策红利</span>
+        <span class="badge badge-gray">2026-04-13 解读发布</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">⑥&nbsp; 即梦 AI 4.0 · 文字生成视频持续渗透美术教学场景（持续追踪）</div>
+      <div class="card-body">「DeepSeek + 即梦 AI」小学课堂图像生成教学指南持续在教师群体传播，抖音生态内占据视频化美术教学入口。本周无版本更新，但传播势能不减。</div>
+      <div class="link-bar">
+        <a class="lp" href="https://jimeng.jianying.com/" target="_blank">🌐 即梦 AI 官网</a>
+        <a class="ls" href="https://www.douyin.com/search/%E5%8D%B3%E6%A2%A6AI%E7%BE%8E%E6%9C%AF%E8%AF%BE" target="_blank">抖音美术课案例</a>
+      </div>
+      <div class="card-meta">
+        <span class="badge badge-mid">影响：中</span>
+        <span class="badge badge-gray">字节系</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">⑦&nbsp; Canva 可画 AI 教育版 · 「AI 备课→学生创作→家长分享」闭环持续强化</div>
+      <div class="card-body">Canva 教育版对符合条件的学校 100% 免费，GPT-6 发布后 Canva Magic AI 系列将快速集成新能力，生态护城河预计进一步加深。对未来美术坊形成持续参考压力。</div>
+      <div class="link-bar">
+        <a class="lp" href="https://www.canva.cn/education/" target="_blank">🌐 Canva 教育官网</a>
+        <a class="ls" href="https://www.canva.com/magic/" target="_blank">Magic AI 功能</a>
+      </div>
+      <div class="card-meta">
+        <span class="badge badge-high">影响：高</span>
+        <span class="badge badge-gray">外部竞品</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">⑧&nbsp; 神笔绘画 App 4月2日更新 · 乡村渗透持续加速</div>
+      <div class="card-body">应用宝4月2日显示最新版本更新，AI智能扫描（纸质画转动画）、儿童安全模式持续迭代，在乡村学校（50校）场景验证基础上扩大推广，乡村美育最直接竞品动作仍需重点跟踪。</div>
+      <div class="link-bar">
+        <a class="lp" href="https://sj.qq.com/appdetail/com.wanmeixiangsu.android.magicpen" target="_blank">📱 应用宝页面</a>
+        <a class="ls" href="https://zhuanlan.zhihu.com/p/2020648212067828303" target="_blank">2026年实测报告</a>
+      </div>
+      <div class="card-meta">
+        <span class="badge badge-high">影响：高</span>
+        <span class="badge badge-gray">直接竞品</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ★ 竞品图谱 ★ -->
+  <div class="section" id="competitor-map">
+    <div class="section-hd">
+      <h3>🗺️ 上下游竞品图谱</h3>
+      <div class="count">5 维度 · 14 家</div>
+    </div>
+    <p style="font-size:13px;color:#5a7a65;margin-bottom:16px;line-height:1.65;">以<strong>未来美术坊</strong>为中心，从产业链上下游和竞合关系两个维度分类梳理。</p>
+
+    <div class="map-tabs">
+      <div class="map-tab active" onclick="switchTab(this,'tab-all')">全部视图</div>
+      <div class="map-tab" onclick="switchTab(this,'tab-direct')">🔴 直接竞品</div>
+      <div class="map-tab" onclick="switchTab(this,'tab-indirect')">🟡 间接竞品</div>
+      <div class="map-tab" onclick="switchTab(this,'tab-upstream')">🔵 上游供给</div>
+      <div class="map-tab" onclick="switchTab(this,'tab-downstream')">🟢 下游出口</div>
+      <div class="map-tab" onclick="switchTab(this,'tab-ally')">🤝 潜在合作</div>
+    </div>
+
+    <div id="tab-all" class="map-panel active">
+      <div class="map-category-label">🔴 直接竞品 — 同赛道 · 同用户 · 直接争夺</div>
+      <div class="map-grid">
+        <div class="map-card map-t1">
+          <div class="map-card-hd"><span class="map-icon">🖌️</span><div class="map-name"><a href="https://sj.qq.com/appdetail/com.wanmeixiangsu.android.magicpen" target="_blank">神笔绘画 AI 教育版</a></div></div>
+          <div class="map-desc">专注 K12 美术教学，已在 50 所乡村学校实测，备课效率+65%。4月2日更新，AI纸质画转动画功能强化，当前最直接威胁。</div>
+          <div class="map-tags"><span class="map-tag map-r">高威胁</span><span class="map-tag">50 校验证</span><span class="map-tag">乡村学校</span></div>
+          <div class="map-links"><a class="link-btn" href="https://sj.qq.com/appdetail/com.wanmeixiangsu.android.magicpen" target="_blank">应用宝</a></div>
+        </div>
+        <div class="map-card map-t1">
+          <div class="map-card-hd"><span class="map-icon">🏃</span><div class="map-name"><a href="https://finance.sina.cn/tech/2026-04-01/detail-inhsxzph1588248.d.html" target="_blank">行者 AI（美育版）</a></div></div>
+          <div class="map-desc">×AMD 硬件绑定，政府采购渠道为主，硬件壁垒高但乡村渗透慢。3月26日成都发布会已验证方案。</div>
+          <div class="map-tags"><span class="map-tag map-r">中高威胁</span><span class="map-tag map-o">硬件绑定</span><span class="map-tag">政府渠道</span></div>
+          <div class="map-links"><a class="link-btn" href="https://finance.sina.cn/tech/2026-04-01/detail-inhsxzph1588248.d.html" target="_blank">发布会报道</a></div>
+        </div>
+        <div class="map-card map-t1">
+          <div class="map-card-hd"><span class="map-icon">🌾</span><div class="map-name"><a href="https://www.sohu.com/a/1006926375_121924584" target="_blank">浙师大朱敬东工作室</a></div></div>
+          <div class="map-desc">省级体制内乡村美育 AI 推广，覆盖浙江 4 所乡村学校，缺数字平台底座——这正是未来美术坊的切入点。</div>
+          <div class="map-tags"><span class="map-tag map-o">中等威胁</span><span class="map-tag">体制内渠道</span><span class="map-tag map-g">可合作</span></div>
+          <div class="map-links"><a class="link-btn" href="https://www.sohu.com/a/1006926375_121924584" target="_blank">相关报道</a></div>
+        </div>
+      </div>
+
+      <div class="map-category-label">🟡 间接竞品 — 同用户群 · 不同场景</div>
+      <div class="map-grid">
+        <div class="map-card map-t2">
+          <div class="map-card-hd"><span class="map-icon">🎨</span><div class="map-name"><a href="https://www.canva.cn/education/" target="_blank">Canva 可画（教育版）</a></div></div>
+          <div class="map-desc">GPT-6 发布后 Magic AI 将快速集成新能力，"AI备课→学生创作→家长分享"四环节闭环，是最高参考模型。</div>
+          <div class="map-tags"><span class="map-tag map-o">参考标杆</span><span class="map-tag">免费策略</span><span class="map-tag">国际产品</span></div>
+          <div class="map-links"><a class="link-btn" href="https://www.canva.cn/education/" target="_blank">教育版</a></div>
+        </div>
+        <div class="map-card map-t2">
+          <div class="map-card-hd"><span class="map-icon">🖼️</span><div class="map-name"><a href="https://www.artsonia.com/" target="_blank">Artsonia</a></div></div>
+          <div class="map-desc">美国最大学生美术展示平台，"展示+家长传播+纪念品变现"闭环，50万+教师。本土化：微信裂变+作品电商。</div>
+          <div class="map-tags"><span class="map-tag map-o">展示变现</span><span class="map-tag">50 万+教师</span></div>
+          <div class="map-links"><a class="link-btn" href="https://www.artsonia.com/" target="_blank">官网</a></div>
+        </div>
+        <div class="map-card map-t2">
+          <div class="map-card-hd"><span class="map-icon">📚</span><div class="map-name"><a href="https://theartofeducation.edu/" target="_blank">AOEU</a></div></div>
+          <div class="map-desc">"课程包+职业认证+社区"三角结构，认证体系是核心留存杠杆，值得借鉴。</div>
+          <div class="map-tags"><span class="map-tag map-o">职业认证</span><span class="map-tag">教师社区</span></div>
+          <div class="map-links"><a class="link-btn" href="https://theartofeducation.edu/" target="_blank">官网</a></div>
+        </div>
+      </div>
+
+      <div class="map-category-label">🔵 上游供给 — AI 能力 / 内容 / 政策基础设施</div>
+      <div class="map-grid">
+        <div class="map-card map-t3">
+          <div class="map-card-hd"><span class="map-icon">🧠</span><div class="map-name"><a href="https://hunyuan.tencent.com/image" target="_blank">腾讯混元3.0（即将发布）</a></div></div>
+          <div class="map-desc">本月内正式发布，架构重构+百万Token输入+推理增强，教育场景已验证。GenAICon（4月21日）是发布节点，AI底座首选。</div>
+          <div class="map-tags"><span class="map-tag map-b">AI 底座</span><span class="map-tag map-g">优先接入</span><span class="map-tag">腾讯内部</span></div>
+          <div class="map-links"><a class="link-btn" href="https://hunyuan.tencent.com/image" target="_blank">官网</a></div>
+        </div>
+        <div class="map-card map-t3">
+          <div class="map-card-hd"><span class="map-icon">🎓</span><div class="map-name"><a href="https://www.mayun.xin/news/%e5%8d%83%e9%87%8c%e4%b8%87%e9%87%8c%ef%bc%8c2026%e4%b9%a1%e6%9d%91%e6%95%99%e5%b8%88%e8%ae%a1%e5%88%92%e7%ad%89%e4%bd%a0" target="_blank">马云公益基金会"乡村教师计划"</a></div></div>
+          <div class="map-desc">第12届正式开放报名（2026年4月1日），100位乡村教师/年，美术教师是重要群体，历届获奖者是最佳种子用户。</div>
+          <div class="map-tags"><span class="map-tag map-b">种子用户</span><span class="map-tag map-g">新增关注</span><span class="map-tag">可合作</span></div>
+          <div class="map-links"><a class="link-btn" href="https://www.mayun.xin/news/%e5%8d%83%e9%87%8c%e4%b8%87%e9%87%8c%ef%bc%8c2026%e4%b9%a1%e6%9d%91%e6%95%99%e5%b8%88%e8%ae%a1%e5%88%92%e7%ad%89%e4%bd%a0" target="_blank">报名页</a></div>
+        </div>
+        <div class="map-card map-t3">
+          <div class="map-card-hd"><span class="map-icon">🏛️</span><div class="map-name"><a href="https://www.moe.gov.cn/jyb_xwfb/s5147/202604/t20260413_1433411.html" target="_blank">工信部"AI+高价值场景"</a></div></div>
+          <div class="map-desc">4月11日宣布将发布一批高价值场景，教育明确列入，是进入政府采购目录的最直接渠道，申报窗口约 30 天。</div>
+          <div class="map-tags"><span class="map-tag map-b">政策供给</span><span class="map-tag map-o">申报机会</span></div>
+          <div class="map-links"><a class="link-btn" href="https://news.cctv.cn/2026/04/11/ARTIkzrapDyezYI7MlhKealp260411.shtml" target="_blank">央视原文</a></div>
+        </div>
+      </div>
+
+      <div class="map-category-label">🟢 下游出口 — 产品触达渠道 / 分发平台</div>
+      <div class="map-grid">
+        <div class="map-card map-ta">
+          <div class="map-card-hd"><span class="map-icon">📱</span><div class="map-name"><a href="https://mp.weixin.qq.com/" target="_blank">微信小程序生态</a></div></div>
+          <div class="map-desc">主阵地，教师间口碑传播路径最短，微信搜一搜+公众号是主要获客入口，社交分发成本最低。</div>
+          <div class="map-tags"><span class="map-tag map-g">主阵地</span><span class="map-tag map-g">低成本</span></div>
+          <div class="map-links"><a class="link-btn" href="https://mp.weixin.qq.com/" target="_blank">微信公众平台</a></div>
+        </div>
+        <div class="map-card map-ta">
+          <div class="map-card-hd"><span class="map-icon">🌐</span><div class="map-name"><a href="https://basic.smartedu.cn/" target="_blank">国家中小学智慧教育平台</a></div></div>
+          <div class="map-desc">2025年上线2.0智能版，教育部指定AI工具入驻平台，列入白名单即获全国教师搜索流量。</div>
+          <div class="map-tags"><span class="map-tag map-o">待申报</span><span class="map-tag map-g">高价值</span></div>
+          <div class="map-links"><a class="link-btn" href="https://basic.smartedu.cn/" target="_blank">平台官网</a></div>
+        </div>
+        <div class="map-card map-ta">
+          <div class="map-card-hd"><span class="map-icon">🎪</span><div class="map-name"><a href="https://www.moe.gov.cn/" target="_blank">县区教研网络</a></div></div>
+          <div class="map-desc">一个县区教研室推荐即可触达辖区所有教师，开化县模式已验证，可批量复制到其他县区。</div>
+          <div class="map-tags"><span class="map-tag map-g">B端渠道</span><span class="map-tag map-g">可复制</span></div>
+          <div class="map-links"><a class="link-btn" href="https://www.moe.gov.cn/" target="_blank">教育部官网</a></div>
+        </div>
+      </div>
+
+      <div class="map-category-label">🤝 潜在合作方 — 互补非竞争 · 可联合运营</div>
+      <div class="map-grid">
+        <div class="map-card map-tally">
+          <div class="map-card-hd"><span class="map-icon">🌈</span><div class="map-name"><a href="https://www.tencent.com/zh-cn/articles/2201646.html" target="_blank">触梦计划·未来调色盘</a></div></div>
+          <div class="map-desc">腾讯系，覆盖 1842 所乡村学校，学生侧+硬件侧，与未来美术坊（教师工具侧）天然互补。</div>
+          <div class="map-tags"><span class="map-tag map-g">腾讯内部</span><span class="map-tag map-g">天然互补</span></div>
+          <div class="map-links"><a class="link-btn" href="https://www.tencent.com/zh-cn/articles/2201646.html" target="_blank">触梦计划</a></div>
+        </div>
+        <div class="map-card map-tally">
+          <div class="map-card-hd"><span class="map-icon">🏫</span><div class="map-name"><a href="https://genaicon.zhidx.com/2026beijing/" target="_blank">GenAICon 2026 北京站</a></div></div>
+          <div class="map-desc">4 月 21-22 日，混元3.0 发布节点，腾讯参加大模型记忆专场，是 AI 教育工具厂商核心合作网络节点。</div>
+          <div class="map-tags"><span class="map-tag map-b">行业活动</span><span class="map-tag">2026-04-21</span></div>
+          <div class="map-links"><a class="link-btn" href="https://genaicon.zhidx.com/2026beijing/" target="_blank">大会官网</a></div>
+        </div>
+      </div>
+    </div><!-- /tab-all -->
+
+    <div id="tab-direct" class="map-panel">
+      <div class="map-grid">
+        <div class="map-card map-t1"><div class="map-card-hd"><span class="map-icon">🖌️</span><div class="map-name"><a href="https://sj.qq.com/appdetail/com.wanmeixiangsu.android.magicpen" target="_blank">神笔绘画 AI 教育版</a></div></div><div class="map-desc">50 所乡村学校实测，备课效率+65%，4月2日更新，当前最直接竞品。</div><div class="map-tags"><span class="map-tag map-r">高威胁</span><span class="map-tag">50 校验证</span></div></div>
+        <div class="map-card map-t1"><div class="map-card-hd"><span class="map-icon">🏃</span><div class="map-name"><a href="https://finance.sina.cn/tech/2026-04-01/detail-inhsxzph1588248.d.html" target="_blank">行者 AI（美育版）</a></div></div><div class="map-desc">×AMD 硬件绑定，政府采购渠道为主，硬件壁垒高但乡村渗透慢。</div><div class="map-tags"><span class="map-tag map-r">中高威胁</span><span class="map-tag map-o">硬件绑定</span></div></div>
+        <div class="map-card map-t1"><div class="map-card-hd"><span class="map-icon">🌾</span><div class="map-name"><a href="https://www.sohu.com/a/1006926375_121924584" target="_blank">浙师大朱敬东工作室</a></div></div><div class="map-desc">省级体制内推广，缺数字平台底座，可转为合作方。</div><div class="map-tags"><span class="map-tag map-o">中等威胁</span><span class="map-tag map-g">可合作</span></div></div>
+      </div>
+    </div>
+    <div id="tab-indirect" class="map-panel">
+      <div class="map-grid">
+        <div class="map-card map-t2"><div class="map-card-hd"><span class="map-icon">🎨</span><div class="map-name"><a href="https://www.canva.cn/education/" target="_blank">Canva 可画（教育版）</a></div></div><div class="map-desc">GPT-6 后 Magic AI 将快速迭代，"AI备课→学生创作→家长分享"闭环最高参考。</div><div class="map-tags"><span class="map-tag map-o">参考标杆</span><span class="map-tag">免费策略</span></div></div>
+        <div class="map-card map-t2"><div class="map-card-hd"><span class="map-icon">🖼️</span><div class="map-name"><a href="https://www.artsonia.com/" target="_blank">Artsonia</a></div></div><div class="map-desc">展示+变现闭环，50万+教师，本土化方向：微信裂变。</div><div class="map-tags"><span class="map-tag map-o">展示变现</span></div></div>
+        <div class="map-card map-t2"><div class="map-card-hd"><span class="map-icon">📚</span><div class="map-name"><a href="https://theartofeducation.edu/" target="_blank">AOEU</a></div></div><div class="map-desc">"课程包+职业认证+社区"三角，认证体系是核心留存杠杆。</div><div class="map-tags"><span class="map-tag map-o">职业认证</span></div></div>
+      </div>
+    </div>
+    <div id="tab-upstream" class="map-panel">
+      <div class="map-grid">
+        <div class="map-card map-t3"><div class="map-card-hd"><span class="map-icon">🧠</span><div class="map-name"><a href="https://hunyuan.tencent.com/image" target="_blank">腾讯混元3.0（即将发布）</a></div></div><div class="map-desc">本月内发布，GenAICon（4/21）是节点，首选AI底座，架构重构+百万Token。</div><div class="map-tags"><span class="map-tag map-b">AI 底座</span><span class="map-tag map-g">优先接入</span></div></div>
+        <div class="map-card map-t3"><div class="map-card-hd"><span class="map-icon">🎓</span><div class="map-name"><a href="https://www.mayun.xin/news/%e5%8d%83%e9%87%8c%e4%b8%87%e9%87%8c%ef%bc%8c2026%e4%b9%a1%e6%9d%91%e6%95%99%e5%b8%88%e8%ae%a1%e5%88%92%e7%ad%89%e4%bd%a0" target="_blank">马云公益"乡村教师计划"</a></div></div><div class="map-desc">第12届开放报名，100位/年，历届美术教师获奖者是最佳种子用户。</div><div class="map-tags"><span class="map-tag map-b">种子用户</span><span class="map-tag map-g">新增关注</span></div></div>
+        <div class="map-card map-t3"><div class="map-card-hd"><span class="map-icon">🏛️</span><div class="map-name"><a href="https://news.cctv.cn/2026/04/11/ARTIkzrapDyezYI7MlhKealp260411.shtml" target="_blank">工信部"AI+高价值场景"</a></div></div><div class="map-desc">教育明确列入，进入政府采购目录最直接渠道，申报窗口约30天。</div><div class="map-tags"><span class="map-tag map-b">政策供给</span><span class="map-tag map-o">申报机会</span></div></div>
+      </div>
+    </div>
+    <div id="tab-downstream" class="map-panel">
+      <div class="map-grid">
+        <div class="map-card map-ta"><div class="map-card-hd"><span class="map-icon">📱</span><div class="map-name"><a href="https://mp.weixin.qq.com/" target="_blank">微信小程序生态</a></div></div><div class="map-desc">主阵地，口碑传播路径最短，搜一搜+公众号为主要获客入口。</div><div class="map-tags"><span class="map-tag map-g">主阵地</span></div></div>
+        <div class="map-card map-ta"><div class="map-card-hd"><span class="map-icon">🌐</span><div class="map-name"><a href="https://basic.smartedu.cn/" target="_blank">国家中小学智慧教育平台</a></div></div><div class="map-desc">2.0智能版已上线，列入白名单即获全国教师搜索流量，最高价值下游出口。</div><div class="map-tags"><span class="map-tag map-o">待申报</span><span class="map-tag map-g">高价值</span></div></div>
+        <div class="map-card map-ta"><div class="map-card-hd"><span class="map-icon">🎪</span><div class="map-name"><a href="https://www.moe.gov.cn/" target="_blank">县区教研网络</a></div></div><div class="map-desc">开化县模式已验证可批量复制，一个县区教研室推荐即触达辖区所有教师。</div><div class="map-tags"><span class="map-tag map-g">B端渠道</span><span class="map-tag map-g">可复制</span></div></div>
+      </div>
+    </div>
+    <div id="tab-ally" class="map-panel">
+      <div class="map-grid">
+        <div class="map-card map-tally"><div class="map-card-hd"><span class="map-icon">🌈</span><div class="map-name"><a href="https://www.tencent.com/zh-cn/articles/2201646.html" target="_blank">触梦计划·未来调色盘</a></div></div><div class="map-desc">腾讯系，1842所乡村学校，学生侧+硬件侧，与未来美术坊（教师工具侧）天然互补。</div><div class="map-tags"><span class="map-tag map-g">腾讯内部</span><span class="map-tag map-g">天然互补</span></div></div>
+        <div class="map-card map-tally"><div class="map-card-hd"><span class="map-icon">🏫</span><div class="map-name"><a href="https://genaicon.zhidx.com/2026beijing/" target="_blank">GenAICon 2026</a></div></div><div class="map-desc">4月21-22日北京，混元3.0发布节点，腾讯参加大模型记忆专场，核心合作网络节点。</div><div class="map-tags"><span class="map-tag map-b">行业活动</span><span class="map-tag">2026-04-21</span></div></div>
+      </div>
+    </div>
+  </div>
+  <script>
+  function switchTab(el,panelId){
+    document.querySelectorAll('#competitor-map .map-tab').forEach(t=>t.classList.remove('active'));
+    document.querySelectorAll('#competitor-map .map-panel').forEach(p=>p.classList.remove('active'));
+    el.classList.add('active');
+    document.getElementById(panelId).classList.add('active');
+  }
+  </script>
+
+  <!-- ② 行业趋势 -->
+  <div class="section">
+    <div class="section-hd">
+      <h3>📈 行业趋势</h3>
+      <div class="count">5 条 · 今日 <span>2 条新增</span></div>
+    </div>
+
+    <div class="trend-item new">
+      <div class="trend-title">① 全球 AI 能力代际跃迁 —— GPT-6 发布开启新周期 ✦ 新</div>
+      <div class="trend-body">GPT-6 今日正式亮相，Symphony 原生多模态架构和 200 万 Token 超长上下文，标志着 AI 创作辅助工具进入"长程理解+全模态"新阶段。国产模型（混元3.0、千问）将在 3-6 个月内完成跟进，形成新一轮能力平台期。对教育 AI 工具而言，此轮升级后"一次性生成完整单元教案+配图+评分标准"将成为基础能力门槛。</div>
+      <div class="link-bar"><a class="lp" href="https://zhuanlan.zhihu.com/p/2024970852341426129" target="_blank">📄 GPT-6 技术前瞻</a><a class="ls" href="https://ai.programnotes.cn/p/gpt-6-%E5%AE%9A%E6%A1%A34%E6%9C%8814%E6%97%A5200%E4%B8%87token%E4%B8%8A%E4%B8%8B%E6%96%87symphony%E5%85%A8%E6%A8%A1%E6%80%81%E6%9E%B6%E6%9E%84/" target="_blank">技术规格详解</a></div>
+    </div>
+
+    <div class="trend-item new">
+      <div class="trend-title">② 双部委合力 —— 教育 AI 从"行业推荐"升级为"国家基础设施" ✦ 新</div>
+      <div class="trend-body">教育部《AI+教育行动计划》（4/10）+ 工信部"AI+高价值场景"（4/11）双轨推进，教育 AI 工具从"可选行业工具"正式升级为"国家教育基础设施"。产品若能在工信部高价值场景和国家智慧教育平台2.0同步获得认证，将直接获得体制内强信任背书，乡村学校采购壁垒大幅降低。</div>
+      <div class="link-bar"><a class="lp" href="https://news.cctv.cn/2026/04/11/ARTIkzrapDyezYI7MlhKealp260411.shtml" target="_blank">📄 工信部宣布</a><a class="ls" href="https://www.moe.gov.cn/srcsite/A16/s3342/202604/t20260410_1433240.html" target="_blank">教育部行动计划</a></div>
+    </div>
+
+    <div class="trend-item">
+      <div class="trend-title">③ AI 绘图进入 Agent 智能化阶段（持续）</div>
+      <div class="trend-body">从单步生成到"思考-搜索-整理-绘制"多步 Agent，AI 图像工具教师端应用门槛持续降低，GPT-6 多模态统一架构进一步加速这一趋势，创作效率预计再提升 30%+。</div>
+      <div class="link-bar"><a class="lp" href="https://arxiv.org/abs/2603.29620" target="_blank">Unify-Agent 论文</a></div>
+    </div>
+
+    <div class="trend-item">
+      <div class="trend-title">④ 乡村美育 AI 化进入"省级项目制推广"阶段（持续）</div>
+      <div class="trend-body">浙江开化案例验证了"高校领衔+骨干教师联动+AI工具"的可复制模式，预计各省将陆续发起类似项目，工信部高价值场景政策将为此提供额外资金和背书支持。</div>
+      <div class="link-bar"><a class="lp" href="https://www.sohu.com/a/1006926375_121924584" target="_blank">📰 浙江开化案例报道</a></div>
+    </div>
+
+    <div class="trend-item">
+      <div class="trend-title">⑤ 大模型教育垂直化加速（持续）</div>
+      <div class="trend-body">国家教育大模型列入行动计划，企业侧腾讯混元3.0（本月发布）、阿里千问均在加速教育场景适配，教育垂类模型竞争窗口约 12-18 个月，需在混元3.0发布后立即完成接入验证。</div>
+      <div class="link-bar"><a class="lp" href="https://genaicon.zhidx.com/2026beijing/" target="_blank">GenAICon 2026 大会</a><a class="ls" href="https://hunyuan.tencent.com/" target="_blank">腾讯混元官网</a></div>
+    </div>
+  </div>
+
+  <!-- ③ 腾讯游戏美术力 -->
+  <div class="section">
+    <div class="section-hd">
+      <h3>🏆 腾讯内部能力评估</h3>
+      <div class="count">5 条 · 今日 <span>1 条新增</span></div>
+    </div>
+
+    <div class="power-item new">
+      <div class="power-title">① 腾讯混元3.0本月发布 —— 多模态+百万Token，可直接赋能美术备课 ✦ 新增评估</div>
+      <div class="power-body">混元3.0架构重构支持百万字级输入，意味着教师可将"教材全册+历年教学案例+学生作品数据库"同时输入，让 AI 生成定制化年度教学规划和差异化作业方案。相比 GPT-6 的海外服务，混元3.0内部接入零合规障碍，是构建「AI备课助手」核心功能的唯一选择。
+      <br><em>→ 建议：在 GenAICon 大会（4/21）前，提前对接混元团队，明确接入档期和教育场景定制需求。</em></div>
+    </div>
+
+    <div class="power-item">
+      <div class="power-title">② 混元图像3.0（HunyuanImage 3.0）·「20+美术风格 + Instruct图生图」</div>
+      <div class="power-body">开源 80B MoE 架构，支持水墨、国风等 20+ 美术风格，Instruct 图生图版本（2026-01-26 发布）可将学生涂鸦精确转化为指定风格成品。是未来美术坊「一键风格化」核心功能底座。<br><em>→ 混元3.0发布后，图像能力预计进一步提升，原型开发可立即启动。</em></div>
+    </div>
+
+    <div class="power-item">
+      <div class="power-title">③ Unify-Agent「思考-搜索-整理-绘制」四步绘图 Agent · 图像相关性+61%</div>
+      <div class="power-body">上期首发，图像相关性提升 61%。GenAICon 大会临近，预计有教育场景演示。Agent 框架可直接适配「美术备课 Agent：输入主题→自动检索案例→生成教案→配图」全流程。</div>
+    </div>
+
+    <div class="power-item">
+      <div class="power-title">④ 触梦计划·未来调色盘 · 1842 所乡村学校渠道网络</div>
+      <div class="power-body">覆盖 1842 所乡村学校，学生侧+硬件侧为主，教师工具侧缺失。未来美术坊可通过触梦计划渠道快速触达目标用户，建议联系触梦计划负责人探讨工具共建。<br><em>→ 渠道价值：触梦计划已在乡村学校建立信任，未来美术坊借道触梦可大幅降低冷启动成本。</em></div>
+    </div>
+
+    <div class="power-item">
+      <div class="power-title">⑤ 腾讯 WXWork / 企业微信 · 教研协作基础设施</div>
+      <div class="power-body">教师群体已在企业微信/微信内形成稳定社群，未来美术坊可借助腾讯教育生态在企业微信内建立「乡村美术教研社群」，形成从工具使用到教研协作的闭环。无需额外采购，直接调用腾讯现有能力。</div>
+    </div>
+  </div>
+
+  <!-- ④ 产品动作建议 -->
+  <div class="section">
+    <div class="section-hd">
+      <h3>🎯 产品动作建议</h3>
+      <div class="count">P0 × 1 · P1 × 1 · P2 × 1</div>
+    </div>
+
+    <div class="action-item">
+      <div class="action-hd">
+        <span class="priority-badge p0">P0</span>
+        <div class="action-title">GenAICon 前（4月21日前）锁定混元3.0接入方案，抢占教育场景首发资格</div>
+      </div>
+      <div class="action-body">
+        混元3.0本月即将正式发布，GenAICon 大会（4月21-22日）是最可能的公开发布节点。
+        建议产品团队在大会前完成：① 联系混元 BD 团队，明确教育场景接入档期；② 准备"乡村美育 AI 备课助手"的 Demo 原型（基于混元图像3.0现有 API）；③ 与触梦计划对齐是否联合在大会上露出。
+        时间窗口：<strong>4月14日-20日（6天）</strong>。错过则竞品将抢先在混元3.0上做教育功能。
+      </div>
+    </div>
+
+    <div class="action-item">
+      <div class="action-hd">
+        <span class="priority-badge p1">P1</span>
+        <div class="action-title">立即启动工信部"AI+高价值场景"申报材料准备</div>
+      </div>
+      <div class="action-body">
+        工信部宣布将发布一批"AI+高价值场景"，教育场景明确列入，申报窗口约 30 天。
+        建议产品运营立即整理以下材料：① 产品定位文档（"乡村美育 AI 赋能教师"场景描述）；② 已有的合规备案证明（法务/风控已完成）；③ 触梦计划合作背书材料；④ 数据支撑（目标用户规模、市场空白数据）。
+        申报成功可直接获得政府采购资质和品牌背书，降低学校采购决策门槛。
+      </div>
+    </div>
+
+    <div class="action-item">
+      <div class="action-hd">
+        <span class="priority-badge p2">P2</span>
+        <div class="action-title">联系马云公益基金会"乡村教师计划"，争取合作植入</div>
+      </div>
+      <div class="action-body">
+        马云公益基金会第12届"乡村教师计划"正式开放报名（2026年4月1日），每年支持 100 位乡村一线教师，累计 1101 位获奖者 99% 坚守乡村。
+        建议品牌团队联系基金会，探讨：① 将未来美术坊作为"乡村美术教师获奖礼包"之一；② 在报名页/获奖公示页投放产品介绍；③ 联名推出"乡村美育 AI 工具"专项。
+        成本低，公益背书强，是打开乡村美术教师圈层信任的高效渠道。
+      </div>
+    </div>
+  </div>
+
+  <!-- ⑤ 风险观察清单 -->
+  <div class="section">
+    <div class="section-hd">
+      <h3>⚠️ 风险观察清单</h3>
+      <div class="count">6 条 · 持续追踪</div>
+    </div>
+
+    <div class="risk-item">
+      <div class="risk-icon">🔴</div>
+      <div class="risk-text"><strong>【紧急·新增】GPT-6 集成浪潮：Canva Magic AI 将在 1-2 个月内完成接入</strong><br>
+      国际竞品 Canva 集成 GPT-6 后，其"AI备课"能力将大幅提升，且面向教师免费。未来美术坊必须在混元3.0接入后形成差异化（本土化+低门槛+乡村场景适配），否则将被 Canva GPT-6 版本在功能层面碾压。</div>
+    </div>
+
+    <div class="risk-item">
+      <div class="risk-icon">🔴</div>
+      <div class="risk-text"><strong>【紧急】神笔绘画加速在乡村学校渗透，已 50 校实测，4月更新持续迭代</strong><br>
+      神笔绘画是当前最直接的直接竞品，已在乡村学校建立先发壁垒。未来美术坊需在混元底座确定后，快速完成 MVP 并在神笔绘画尚未覆盖的区域（非浙江/广东以外省份）抢先布点。</div>
+    </div>
+
+    <div class="risk-item">
+      <div class="risk-icon">🟡</div>
+      <div class="risk-text"><strong>【持续】混元3.0发布时间不确定性：若延至5月，竞品将抢先在旧版本上构建功能</strong><br>
+      官方承诺"4月发布"，但具体日期未定。建议在混元图像3.0现有 API 基础上立即启动功能原型开发，不依赖3.0正式发布，确保 GenAICon 大会前有可演示 Demo。</div>
+    </div>
+
+    <div class="risk-item">
+      <div class="risk-icon">🟡</div>
+      <div class="risk-text"><strong>【持续】工信部高价值场景申报窗口短，约 30 天，逾期将错失首批认证</strong><br>
+      工信部发布节奏尚不明确，建议立即启动材料准备，同时密切关注工信部官方通知渠道。首批认证的品牌价值远高于后续跟进者。</div>
+    </div>
+
+    <div class="risk-item">
+      <div class="risk-icon">🟡</div>
+      <div class="risk-text"><strong>【持续】行者 AI×AMD 模式若获得大规模政府采购，将占据乡村学校硬件端</strong><br>
+      行者 AI 依托政府采购渠道推广硬件捆绑方案，若地方政府批量采购，将形成"AI工具随硬件预装"的捆绑局面，抬高未来美术坊的进入门槛。需持续追踪行者 AI 的政府采购进展。</div>
+    </div>
+
+    <div class="risk-item">
+      <div class="risk-icon">🟢</div>
+      <div class="risk-text"><strong>【低风险·持续观察】即梦 AI 教师端传播势能，依赖抖音生态</strong><br>
+      即梦 AI 通过抖音短视频传播，在城市教师群体中渗透较快，但乡村教师抖音使用频率和宽带条件限制其渗透速度。未来美术坊在乡村场景的本土适配优势（微信/低带宽优化）是护城河。</div>
+    </div>
+  </div>
+
+  <!-- 页脚 -->
+  <div style="border-top:1px solid #d4e8da;margin-top:40px;padding-top:20px;font-size:12px;color:var(--text-muted);text-align:center;line-height:1.9;">
+    <p>📊 <strong>未来美术坊 · 每日美育产品竞品分析简报</strong> &nbsp;|&nbsp; 第 11 期 &nbsp;|&nbsp; 2026-04-14（周二）</p>
+    <p>数据来源：公开网络信息 · 仅供内部产品决策参考 · 禁止对外传播</p>
+    <p>持续追踪：神笔绘画渗透进度 · 混元3.0发布节点 · 工信部高价值场景申报 · GenAICon 2026（4月21日）</p>
+  </div>
+
+</div>
+</body>
+</html>
