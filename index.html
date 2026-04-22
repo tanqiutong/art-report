@@ -4,483 +4,409 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>未来美术坊 · 每日美育竞品简报</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-/* ════════════════════════════════════════
-   未来美术坊 · 美育简报门户
-   视觉主题：简约绿白（与每期简报保持一致）
-   ════════════════════════════════════════ */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&display=swap');
-
 :root {
-  --bg:           #f4f8f5;
-  --bg-sub:       #eef4f0;
-  --card:         #ffffff;
-  --green-dark:   #1e5c38;
-  --green-mid:    #3a9e6a;
-  --green-light:  #e6f9ef;
-  --green-border: #52c47a;
-  --green-muted:  #b2dfcb;
-  --text-main:    #1a2e23;
-  --text-sub:     #4a6658;
-  --text-muted:   #7a9a88;
-  --border:       #d4e8da;
-  --shadow:       0 2px 12px rgba(30,92,56,.08);
-  --radius:       12px;
+  --primary: #5b4fcf;
+  --primary-dark: #3d35a8;
+  --primary-mid: #7c6fe8;
+  --primary-light: #ede9fe;
+  --bg: #f7f6fc;
+  --white: #fff;
+  --text: #1e1b4b;
+  --text-sub: #4c4878;
+  --text-muted: #9691c4;
+  --shadow: 0 4px 20px rgba(91,79,207,0.13);
+  --radius: 12px;
 }
-
 * { box-sizing: border-box; margin: 0; padding: 0; }
-
+html, body { height: 100%; }
 body {
   font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
   background: var(--bg);
-  color: var(--text-main);
-  min-height: 100vh;
-  line-height: 1.7;
+  color: var(--text);
+  height: 100%;
 }
 
-/* ══ HEADER ══ */
-.site-header {
-  background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-mid) 100%);
+/* ── 顶部细条 ── */
+.topbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 44px;
+  background: linear-gradient(90deg, #3d35a8 0%, #6b5ce7 60%, #a78bfa 100%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(61,53,168,0.18);
+}
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.topbar-logo {
+  font-size: 14px;
+  font-weight: 700;
   color: #fff;
-  padding: 0;
-  overflow: hidden;
-  position: relative;
-}
-/* 仅保留头部装饰线，去掉blob */
-.header-border-top {
-  position: absolute; top: 0; left: 0; right: 0; height: 4px;
-  background: linear-gradient(90deg, rgba(255,255,255,.25) 0%, rgba(255,255,255,.5) 50%, rgba(255,255,255,.25) 100%);
-}
-/* 废弃元素隐藏 */
-.header-ink-bg, .ink-blob, .header-border-bot { display: none; }
-
-.header-inner {
-  position: relative; z-index: 2;
-  max-width: 900px; margin: 0 auto;
-  padding: 40px 24px 32px;
-  text-align: center;
-}
-
-.header-seal {
-  display: inline-block;
-  border: 1px solid rgba(255,255,255,.4);
-  color: rgba(255,255,255,.75);
-  font-size: 10px; font-weight: 600;
-  letter-spacing: .2em;
-  padding: 3px 14px;
-  margin-bottom: 16px;
-  border-radius: 2px;
-  text-transform: uppercase;
-}
-.header-seal::before, .header-seal::after { display: none; }
-
-.header-zh {
-  font-size: 28px; font-weight: 700;
-  letter-spacing: .1em;
-  color: #fff;
-  line-height: 1.2;
-  margin-bottom: 6px;
-}
-.header-zh .accent-char { color: #a8f0c8; }
-
-.header-en {
-  font-size: 11px; letter-spacing: .2em;
-  color: rgba(255,255,255,.45);
-  font-weight: 400;
-  margin-bottom: 18px;
-  text-transform: uppercase;
-}
-
-.header-tags {
-  display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;
-  margin-top: 4px;
-}
-.header-tag {
-  font-size: 11px;
-  color: rgba(255,255,255,.6);
-  border: 1px solid rgba(255,255,255,.18);
-  padding: 2px 10px; border-radius: 20px;
   letter-spacing: .04em;
 }
-
-/* 云纹 SVG 分隔（背景色跟 --bg 对齐） */
-.svg-yunwen { display: block; width: 100%; overflow: visible; }
-
-/* ══ 主体容器 ══ */
-.page-body {
-  max-width: 900px; margin: 0 auto; padding: 32px 16px 60px;
-}
-
-/* ══ 板块标题 ══ */
-.block-title {
-  display: flex; align-items: center; gap: 12px;
-  margin-bottom: 16px;
-}
-.block-title-line {
-  flex: 1; height: 1px;
-  background: linear-gradient(90deg, var(--green-border) 0%, var(--bg-sub) 100%);
-}
-.block-title-line.left {
-  background: linear-gradient(270deg, var(--green-border) 0%, var(--bg-sub) 100%);
-}
-.block-title-text {
-  font-size: 13px; font-weight: 700; letter-spacing: .1em;
-  color: var(--green-dark);
-  white-space: nowrap;
-  display: flex; align-items: center; gap: 8px;
-}
-.block-title-icon {
-  width: 20px; height: 20px; display: flex; align-items: center; justify-content: center;
-  background: var(--green-dark); border-radius: 4px;
-  font-size: 11px; color: #fff; flex-shrink: 0;
-}
-.today-chip {
-  background: var(--green-border); color: #fff;
-  font-size: 10px; font-weight: 700;
-  padding: 2px 8px; letter-spacing: .06em;
+.topbar-tag {
+  font-size: 10px;
+  background: rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: rgba(255,255,255,0.85);
+  padding: 2px 8px;
   border-radius: 20px;
-}
-
-/* ══ 今日简报卡片 ══ */
-.today-frame {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-top: 3px solid var(--green-border);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  overflow: hidden;
-  margin-bottom: 32px;
-  position: relative;
-}
-.today-frame::before { display: none; }
-.today-frame iframe {
-  display: block; width: 100%;
-  height: 1200px; border: none;
-}
-.today-frame-foot {
-  padding: 11px 20px;
-  background: var(--bg-sub);
-  border-top: 1px solid var(--border);
-  display: flex; align-items: center; justify-content: space-between;
-}
-.today-frame-foot .foot-date {
-  font-size: 12px; color: var(--text-sub);
-  letter-spacing: .04em;
-}
-.btn-new-tab {
-  font-size: 12px; font-weight: 600;
-  color: var(--green-dark); background: none;
-  border: 1px solid var(--green-muted);
-  border-radius: 6px; padding: 5px 14px;
-  cursor: pointer; letter-spacing: .04em;
-  transition: background .15s, color .15s;
-}
-.btn-new-tab:hover { background: var(--green-dark); color: #fff; border-color: var(--green-dark); }
-
-/* ══ 历史存档 ══ */
-.archive-stack { display: flex; flex-direction: column; gap: 8px; }
-
-.acc-card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-left: 3px solid var(--green-muted);
-  border-radius: var(--radius);
-  overflow: hidden;
-  box-shadow: var(--shadow);
-  transition: border-left-color .2s;
-}
-.acc-card:hover, .acc-card.open { border-left-color: var(--green-border); }
-
-.acc-head {
-  display: flex; align-items: center; gap: 14px;
-  padding: 14px 18px;
-  cursor: pointer; user-select: none;
-  transition: background .15s;
-}
-.acc-head:hover { background: var(--bg-sub); }
-.acc-card.open .acc-head { background: var(--green-light); }
-
-.acc-dot {
-  width: 8px; height: 8px; border-radius: 50%;
-  background: var(--green-muted); flex-shrink: 0;
-  transition: background .2s;
-}
-.acc-card.open .acc-dot { background: var(--green-border); }
-
-.acc-date { font-size: 15px; font-weight: 700; letter-spacing: .04em; color: var(--text-main); }
-.acc-sub  { font-size: 11px; color: var(--text-muted); margin-top: 1px; }
-.acc-spacer { flex: 1; }
-.acc-arrow {
-  font-size: 10px; color: var(--text-muted);
-  transition: transform .25s;
-  font-style: normal; flex-shrink: 0;
-  letter-spacing: 0;
-}
-.acc-card.open .acc-arrow { transform: rotate(90deg); }
-
-.acc-body { display: none; border-top: 1px solid var(--border); }
-.acc-card.open .acc-body { display: block; }
-.acc-body iframe { display: block; width: 100%; height: 1100px; border: none; }
-.acc-body-foot {
-  padding: 10px 18px; background: var(--bg-sub);
-  border-top: 1px solid var(--border);
-  text-align: right;
-}
-.acc-body-foot a {
-  font-size: 12px; color: var(--green-dark);
-  text-decoration: none;
-}
-.acc-body-foot a:hover { text-decoration: underline; }
-
-/* ══ 空态 ══ */
-.empty {
-  text-align: center; padding: 48px 0;
-  color: var(--text-muted); font-size: 14px;
-}
-
-/* ══ Footer ══ */
-.site-footer {
-  border-top: 1px solid var(--border);
-  padding: 24px 16px;
-  text-align: center;
-  background: var(--bg-sub);
-}
-.footer-seal {
-  display: inline-block;
-  width: 44px; height: 44px;
-  border: 2px solid var(--green-border);
-  color: var(--green-dark);
-  font-size: 13px; font-weight: 700;
-  line-height: 40px;
-  text-align: center;
-  border-radius: 8px;
-  margin-bottom: 10px;
   letter-spacing: .06em;
 }
-.footer-text {
-  font-size: 11px; color: var(--text-muted);
+.topbar-right {
+  font-size: 11px;
+  color: rgba(255,255,255,0.55);
   letter-spacing: .04em;
-  line-height: 1.8;
 }
-.footer-text a { color: var(--green-dark); text-decoration: none; }
-.footer-text a:hover { text-decoration: underline; }
 
-/* ══ 响应式 ══ */
-@media (max-width: 600px) {
-  .header-zh { font-size: 22px; }
-  .page-body { padding: 20px 12px 40px; }
+/* ── 主体：全屏 iframe ── */
+.report-frame {
+  position: fixed;
+  top: 44px; left: 0; right: 0; bottom: 0;
+}
+.report-frame iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+.report-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 12px;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+.report-empty .empty-icon {
+  font-size: 40px;
+  opacity: .4;
+}
+
+/* ── 右下角浮标 ── */
+.fab {
+  position: fixed;
+  right: 20px;
+  bottom: 24px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #5b4fcf, #a78bfa);
+  box-shadow: 0 4px 16px rgba(91,79,207,0.38);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 200;
+  border: none;
+  transition: transform .2s, box-shadow .2s;
+}
+.fab:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 20px rgba(91,79,207,0.45);
+}
+.fab-icon {
+  font-size: 20px;
+  color: #fff;
+  line-height: 1;
+  user-select: none;
+}
+/* 期数徽标 */
+.fab-badge {
+  position: absolute;
+  top: -4px; right: -4px;
+  min-width: 20px; height: 20px;
+  background: #e53e3e;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+  border: 2px solid #f7f6fc;
+}
+
+/* ── 抽屉遮罩 ── */
+.drawer-mask {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(30,27,75,0.35);
+  z-index: 300;
+  backdrop-filter: blur(2px);
+}
+.drawer-mask.open { display: block; }
+
+/* ── 历史归档抽屉 ── */
+.drawer {
+  position: fixed;
+  right: 0; top: 0; bottom: 0;
+  width: 320px;
+  background: var(--white);
+  z-index: 400;
+  box-shadow: -4px 0 24px rgba(91,79,207,0.16);
+  transform: translateX(100%);
+  transition: transform .3s cubic-bezier(.4,0,.2,1);
+  display: flex;
+  flex-direction: column;
+}
+.drawer.open { transform: translateX(0); }
+
+.drawer-header {
+  padding: 18px 20px 14px;
+  background: linear-gradient(125deg, #3d35a8, #7c6fe8);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+.drawer-title {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: .04em;
+}
+.drawer-close {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.18);
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .15s;
+}
+.drawer-close:hover { background: rgba(255,255,255,0.3); }
+
+.drawer-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px 16px 20px;
+}
+
+/* 归档条目 */
+.arch-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  border: 1px solid rgba(91,79,207,0.1);
+  background: var(--white);
+  transition: background .15s, border-color .15s, box-shadow .15s;
+}
+.arch-item:hover {
+  background: var(--primary-light);
+  border-color: var(--primary-mid);
+  box-shadow: 0 2px 8px rgba(91,79,207,0.1);
+}
+.arch-item.active {
+  background: linear-gradient(90deg, #ede9fe, #f3f0ff);
+  border-color: var(--primary);
+}
+.arch-num {
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #5b4fcf, #7c6fe8);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.arch-item.active .arch-num {
+  background: linear-gradient(135deg, #3d35a8, #5b4fcf);
+}
+.arch-info { flex: 1; min-width: 0; }
+.arch-date { font-size: 14px; font-weight: 600; color: var(--text); }
+.arch-sub  { font-size: 11px; color: var(--text-muted); margin-top: 1px; }
+.arch-arrow { font-size: 12px; color: var(--text-muted); }
+
+/* 抽屉底部：外链 */
+.drawer-footer {
+  padding: 12px 16px;
+  border-top: 1px solid rgba(91,79,207,0.1);
+  flex-shrink: 0;
+}
+.drawer-footer a {
+  display: block;
+  text-align: center;
+  font-size: 12px;
+  color: var(--primary);
+  text-decoration: none;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid var(--primary-light);
+  transition: background .15s;
+}
+.drawer-footer a:hover { background: var(--primary-light); }
+
+/* ── 响应式 ── */
+@media (max-width: 480px) {
+  .drawer { width: 100%; }
 }
 </style>
 </head>
 <body>
 
-<!-- ══ HEADER ══ -->
-<header class="site-header">
-  <div class="header-border-top"></div>
-  <div class="header-ink-bg"></div>
-  <div class="ink-blob ink-blob-1"></div>
-  <div class="ink-blob ink-blob-2"></div>
-  <div class="ink-blob ink-blob-3"></div>
-
-  <div class="header-inner">
-    <div class="header-seal">ART · EDUCATION · INTELLIGENCE</div>
-    <div class="header-zh">
-      未来<span class="accent-char">美术坊</span>
-    </div>
-    <div class="header-en">Daily Art Education Product Intelligence</div>
-    <div class="header-tags">
-      <span class="header-tag">乡村美术教师</span>
-      <span class="header-tag">竞品动态</span>
-      <span class="header-tag">非遗美育</span>
-      <span class="header-tag">AI工具</span>
-      <span class="header-tag">腾讯生态</span>
-    </div>
+<!-- 顶部细条 -->
+<div class="topbar">
+  <div class="topbar-left">
+    <span class="topbar-logo">未来美术坊</span>
+    <span class="topbar-tag">竞品简报</span>
   </div>
+  <span class="topbar-right" id="topbar-date">每日自动更新</span>
+</div>
 
-  <!-- 云纹分隔 SVG -->
-  <svg class="svg-yunwen" viewBox="0 0 900 28" height="28" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M0,28 L0,14
-      Q15,2 30,14 Q45,26 60,14 Q75,2 90,14
-      Q105,26 120,14 Q135,2 150,14
-      Q165,26 180,14 Q195,2 210,14
-      Q225,26 240,14 Q255,2 270,14
-      Q285,26 300,14 Q315,2 330,14
-      Q345,26 360,14 Q375,2 390,14
-      Q405,26 420,14 Q435,2 450,14
-      Q465,26 480,14 Q495,2 510,14
-      Q525,26 540,14 Q555,2 570,14
-      Q585,26 600,14 Q615,2 630,14
-      Q645,26 660,14 Q675,2 690,14
-      Q705,26 720,14 Q735,2 750,14
-      Q765,26 780,14 Q795,2 810,14
-      Q825,26 840,14 Q855,2 870,14
-      Q885,26 900,14
-      L900,28 Z"
-      fill="#f4f8f5"/>
-    <path d="M0,14
-      Q15,2 30,14 Q45,26 60,14 Q75,2 90,14
-      Q105,26 120,14 Q135,2 150,14
-      Q165,26 180,14 Q195,2 210,14
-      Q225,26 240,14 Q255,2 270,14
-      Q285,26 300,14 Q315,2 330,14
-      Q345,26 360,14 Q375,2 390,14
-      Q405,26 420,14 Q435,2 450,14
-      Q465,26 480,14 Q495,2 510,14
-      Q525,26 540,14 Q555,2 570,14
-      Q585,26 600,14 Q615,2 630,14
-      Q645,26 660,14 Q675,2 690,14
-      Q705,26 720,14 Q735,2 750,14
-      Q765,26 780,14 Q795,2 810,14
-      Q825,26 840,14 Q855,2 870,14
-      Q885,26 900,14"
-      fill="none" stroke="#b2dfcb" stroke-width="1" stroke-opacity=".8"/>
-  </svg>
-</header>
-
-<!-- ══ 主体 ══ -->
-<main class="page-body">
-
-  <!-- 今日简报 -->
-  <section style="margin-bottom:36px;">
-    <div class="block-title">
-      <div class="block-title-line left"></div>
-      <div class="block-title-text">
-        <span class="block-title-icon">今</span>
-        今日简报
-        <span class="today-chip">LATEST</span>
-      </div>
-      <div class="block-title-line"></div>
-    </div>
-
-    <div class="today-frame" id="todayWrap">
-      <div class="empty">正在展开今日简报…</div>
-    </div>
-  </section>
-
-  <!-- 历史存档 -->
-  <section>
-    <div class="block-title">
-      <div class="block-title-line left"></div>
-      <div class="block-title-text">
-        <span class="block-title-icon">档</span>
-        历史存档
-      </div>
-      <div class="block-title-line"></div>
-    </div>
-
-    <div class="archive-stack" id="archiveList">
-      <div class="empty">加载中…</div>
-    </div>
-  </section>
-
-</main>
-
-<!-- ══ FOOTER ══ -->
-<footer class="site-footer">
-  <!-- 回纹分隔线 -->
-  <svg width="200" height="12" viewBox="0 0 200 12" style="display:block;margin:0 auto 14px;" xmlns="http://www.w3.org/2000/svg">
-    <line x1="0" y1="6" x2="75" y2="6" stroke="#d4c9a8" stroke-width="1"/>
-    <rect x="80" y="2" width="8" height="8" fill="none" stroke="#b8860b" stroke-width="1"/>
-    <rect x="96" y="2" width="8" height="8" fill="none" stroke="#b8860b" stroke-width="1"/>
-    <line x1="110" y1="6" x2="200" y2="6" stroke="#d4c9a8" stroke-width="1"/>
-  </svg>
-  <div class="footer-seal">艺</div>
-  <div class="footer-text">
-    未来美术坊内部使用 · 每日自动生成<br>
-    <a href="https://tanqiutong.github.io/art-report" target="_blank">tanqiutong.github.io/art-report</a>
-    &nbsp;·&nbsp; 由布丁驱动
+<!-- 主体简报 -->
+<div class="report-frame" id="reportFrame">
+  <div class="report-empty">
+    <div class="empty-icon">📋</div>
+    <div>加载中…</div>
   </div>
-</footer>
+</div>
+
+<!-- 遮罩 -->
+<div class="drawer-mask" id="drawerMask" onclick="closeDrawer()"></div>
+
+<!-- 历史归档抽屉 -->
+<div class="drawer" id="drawer">
+  <div class="drawer-header">
+    <span class="drawer-title">📚 往期简报</span>
+    <button class="drawer-close" onclick="closeDrawer()">✕</button>
+  </div>
+  <div class="drawer-body" id="drawerBody">
+    <div style="text-align:center;padding:40px 0;color:#9691c4;font-size:13px;">加载中…</div>
+  </div>
+  <div class="drawer-footer">
+    <a href="https://tanqiutong.github.io/art-report" target="_blank">查看所有期次 ↗</a>
+  </div>
+</div>
+
+<!-- 右下角浮标 -->
+<button class="fab" id="fab" onclick="toggleDrawer()" title="往期简报">
+  <span class="fab-icon">🗂</span>
+  <span class="fab-badge" id="fabBadge" style="display:none">0</span>
+</button>
 
 <script>
 (function () {
-  function todayStr() {
-    var d = new Date();
-    return d.getFullYear() + '-'
-      + String(d.getMonth() + 1).padStart(2, '0') + '-'
-      + String(d.getDate()).padStart(2, '0');
-  }
+  var currentFile = null;
+  var allReports = [];
 
+  /* 加载索引 */
   fetch('./reports-index.json?_=' + Date.now())
     .then(function (r) { return r.json(); })
     .then(function (data) {
       if (!data || data.length === 0) {
-        document.getElementById('todayWrap').innerHTML = '<div class="empty">暂无简报，第一期将在明天早上10点发布。</div>';
-        document.getElementById('archiveList').innerHTML = '';
+        document.getElementById('reportFrame').innerHTML =
+          '<div class="report-empty"><div class="empty-icon">📭</div><div>暂无简报，第一期将在下次自动任务运行后发布</div></div>';
         return;
       }
 
-      var latest = data[0];
-      var archives = data.slice(1);
+      allReports = data;
 
-      /* ── 今日简报内嵌 ── */
-      var todayWrap = document.getElementById('todayWrap');
-      todayWrap.innerHTML =
-        '<iframe src="./reports/' + latest.file + '" title="' + latest.date + ' 简报" loading="lazy"></iframe>' +
-        '<div class="today-frame-foot">' +
-          '<span class="foot-date">📅 ' + latest.date + ' &nbsp;·&nbsp; 最新一期</span>' +
-          '<button class="btn-new-tab" onclick="window.open(\'./reports/' + latest.file + '\',\'_blank\')">新标签页打开 ↗</button>' +
-        '</div>';
+      /* 更新顶栏日期 */
+      document.getElementById('topbar-date').textContent = data[0].date + ' · 最新一期';
 
-      /* iframe 自适应高度 */
-      var ifr = todayWrap.querySelector('iframe');
-      ifr.addEventListener('load', function () {
-        try {
-          var h = ifr.contentWindow.document.body.scrollHeight;
-          if (h > 400) ifr.style.height = (h + 40) + 'px';
-        } catch (e) {}
-      });
-
-      /* ── 历史存档折叠 ── */
-      var archiveList = document.getElementById('archiveList');
-      if (archives.length === 0) {
-        archiveList.innerHTML = '<div class="empty" style="padding:20px 0;">暂无更多历史简报</div>';
-        return;
+      /* 更新浮标徽标 */
+      var archCount = data.length - 1;
+      if (archCount > 0) {
+        var badge = document.getElementById('fabBadge');
+        badge.textContent = archCount > 99 ? '99+' : archCount;
+        badge.style.display = 'flex';
       }
 
-      archiveList.innerHTML = archives.map(function (item, i) {
-        return (
-          '<div class="acc-card" id="acc-' + i + '">' +
-            '<div class="acc-head" onclick="toggleAcc(' + i + ')">' +
-              '<span class="acc-dot"></span>' +
-              '<div>' +
-                '<div class="acc-date">' + item.date + '</div>' +
-                '<div class="acc-sub">历史存档 · 点击展开阅读</div>' +
-              '</div>' +
-              '<div class="acc-spacer"></div>' +
-              '<span class="acc-arrow">▶</span>' +
-            '</div>' +
-            '<div class="acc-body">' +
-              '<iframe src="./reports/' + item.file + '" title="' + item.date + '" loading="lazy"></iframe>' +
-              '<div class="acc-body-foot"><a href="./reports/' + item.file + '" target="_blank">在新标签页打开 ↗</a></div>' +
-            '</div>' +
-          '</div>'
-        );
-      }).join('');
+      /* 展示最新一期 */
+      loadReport(data[0], 0);
+
+      /* 渲染抽屉归档列表（含最新期） */
+      renderDrawer(data);
     })
     .catch(function () {
-      document.getElementById('todayWrap').innerHTML = '<div class="empty">暂无简报记录，第一期将在下次自动任务运行后发布。</div>';
-      document.getElementById('archiveList').innerHTML = '';
+      document.getElementById('reportFrame').innerHTML =
+        '<div class="report-empty"><div class="empty-icon">⚠️</div><div>简报加载失败，请刷新重试</div></div>';
     });
 
-  window.toggleAcc = function (i) {
-    var card = document.getElementById('acc-' + i);
-    var isOpen = card.classList.contains('open');
-    document.querySelectorAll('.acc-card.open').forEach(function (c) { c.classList.remove('open'); });
-    if (!isOpen) {
-      card.classList.add('open');
-      var ifr = card.querySelector('iframe');
-      if (ifr && !ifr.dataset.loaded) {
-        ifr.dataset.loaded = '1';
-        ifr.addEventListener('load', function () {
-          try {
-            var h = ifr.contentWindow.document.body.scrollHeight;
-            if (h > 400) ifr.style.height = (h + 40) + 'px';
-          } catch (e) {}
-        });
-      }
+  /* 加载指定简报到 iframe */
+  function loadReport(item, idx) {
+    currentFile = item.file;
+    var frame = document.getElementById('reportFrame');
+    frame.innerHTML = '<iframe src="./reports/' + item.file + '" title="' + item.date + '" loading="lazy"></iframe>';
+
+    /* 更新顶栏 */
+    document.getElementById('topbar-date').textContent = item.date + ' · 第' + (allReports.length - idx) + '期';
+
+    /* 高亮当前条目 */
+    document.querySelectorAll('.arch-item').forEach(function (el, i) {
+      el.classList.toggle('active', i === idx);
+    });
+  }
+
+  /* 渲染抽屉 */
+  function renderDrawer(data) {
+    var html = data.map(function (item, i) {
+      var period = data.length - i;
+      return (
+        '<div class="arch-item' + (i === 0 ? ' active' : '') + '" onclick="selectReport(' + i + ')">' +
+          '<div class="arch-num">' + (period < 10 ? '0' + period : period) + '</div>' +
+          '<div class="arch-info">' +
+            '<div class="arch-date">' + item.date + '</div>' +
+            '<div class="arch-sub">' + (i === 0 ? '最新一期' : '历史归档') + '</div>' +
+          '</div>' +
+          '<span class="arch-arrow">›</span>' +
+        '</div>'
+      );
+    }).join('');
+    document.getElementById('drawerBody').innerHTML = html;
+  }
+
+  /* 选择某期 */
+  window.selectReport = function (idx) {
+    loadReport(allReports[idx], idx);
+    closeDrawer();
+  };
+
+  /* 浮标开关 */
+  window.toggleDrawer = function () {
+    var drawer = document.getElementById('drawer');
+    var mask = document.getElementById('drawerMask');
+    if (drawer.classList.contains('open')) {
+      closeDrawer();
+    } else {
+      drawer.classList.add('open');
+      mask.classList.add('open');
     }
   };
+
+  window.closeDrawer = function () {
+    document.getElementById('drawer').classList.remove('open');
+    document.getElementById('drawerMask').classList.remove('open');
+  };
+
+  /* ESC 关闭 */
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeDrawer();
+  });
 })();
 </script>
 </body>
