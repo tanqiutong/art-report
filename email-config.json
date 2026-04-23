@@ -1,0 +1,10 @@
+{
+  "githubPagesUrl": "https://tanqiutong.github.io/art-report",
+  "wecomWebhookUrl": "",
+  "smtp": {
+    "host": "smtp.exmail.qq.com",
+    "port": 465,
+    "user": "你的邮箱@tencent.com",
+    "pass": "你的邮箱密码或授权码"
+  }
+}
