@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>未来美术坊简报 · 2026-04-27</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f7f6fc;
+  --bg-sub: #ede9f8;
+  --white: #ffffff;
+  --primary: #5b4fcf;
+  --primary-dark: #3d35a8;
+  --primary-mid: #7c6fe8;
+  --primary-light: #ede9fe;
+  --accent: #06b6d4;
+  --new: #7c3aed;
+  --red: #e53e3e;
+  --amber: #d97706;
+  --blue: #3b5bdb;
+  --text: #1e1b4b;
+  --text-sub: #4c4878;
+  --text-muted: #9691c4;
+  --radius: 10px;
+  --shadow: 0 2px 10px rgba(91,79,207,0.09);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Noto Sans SC', -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* ── Banner ── */
+.banner {
+  background: linear-gradient(125deg, #3d35a8 0%, #6b5ce7 40%, #a78bfa 75%, #c4b5fd 100%);
+  color: #fff;
+  padding: 34px 28px 30px;
+  position: relative;
+  overflow: hidden;
+}
+.banner::before {
+  content: '';
+  position: absolute;
+  right: -50px; top: -50px;
+  width: 220px; height: 220px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.07);
+}
+.banner::after {
+  content: '';
+  position: absolute;
+  right: 80px; top: 50px;
+  width: 130px; height: 130px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.05);
+}
+.banner-deco {
+  position: absolute;
+  left: -30px; bottom: -40px;
+  width: 160px; height: 160px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.04);
+  pointer-events: none;
+}
+.banner-tag {
+  display: inline-block;
+  background: rgba(255,255,255,0.18);
+  border-radius: 20px;
+  padding: 2px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .08em;
+  margin-bottom: 10px;
+}
+.banner-title {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: .02em;
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+.banner-title-en {
+  font-size: 12px;
+  opacity: .55;
+  margin-bottom: 12px;
+  letter-spacing: .04em;
+}
+.banner-sub {
+  font-size: 12.5px;
+  opacity: .78;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  align-items: center;
+}
+.banner-divider { opacity: .5; margin: 0 2px; }
+
+/* ── 速览卡 ── */
+.quick-nums {
+  display: flex;
+  gap: 10px;
+  padding: 16px 16px 0;
+  overflow-x: auto;
+  flex-wrap: wrap;
+}
+.qnum {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 14px 16px 12px;
+  min-width: 90px;
+  flex: 1;
+  text-align: center;
+  box-shadow: var(--shadow);
+  border-top: 3px solid var(--primary);
+}
+.qnum:nth-child(2) { border-top-color: #7c3aed; }
+.qnum:nth-child(3) { border-top-color: #06b6d4; }
+.qnum:nth-child(4) { border-top-color: #d97706; }
+.qnum:nth-child(5) { border-top-color: #e53e3e; }
+.qnum-val {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--primary);
+  line-height: 1.1;
+}
+.qnum-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 3px;
+}
+
+/* ── Section 标题 ── */
+.section-wrap { padding: 18px 16px 0; }
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  color: var(--primary);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.section-title::before {
+  content: '';
+  display: block;
+  width: 4px;
+  height: 14px;
+  background: linear-gradient(180deg,#5b4fcf,#a78bfa);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+.section-title::after {
+  content: '';
+  display: block;
+  flex: 1;
+  height: 1px;
+  background: var(--bg-sub);
+}
+
+/* ── 今日结论 ── */
+.conclusion-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  border-left: 4px solid var(--primary);
+  box-shadow: var(--shadow);
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.7;
+}
+.conclusion-card .conclusion-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  margin-bottom: 6px;
+}
+
+/* ── P0 核心摘要 ── */
+.summary-card {
+  background: linear-gradient(135deg, #ede9fe 0%, #f0f4ff 100%);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  border: 1px solid #d4d0f5;
+  font-size: 13.5px;
+  line-height: 1.8;
+  color: var(--text);
+}
+.summary-card strong { color: var(--red); }
+
+/* ── 新闻列表 ── */
+.news-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.news-item {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  display: flex;
+  gap: 12px;
+  box-shadow: var(--shadow);
+  border: 1px solid transparent;
+}
+.news-item.new-item {
+  border-color: #d4c5fd;
+  background: linear-gradient(135deg, #faf8ff 0%, #f5f0ff 100%);
+}
+.news-num {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #5b4fcf, #7c6fe8);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  letter-spacing: .03em;
+}
+.news-item.new-item .news-num {
+  background: linear-gradient(135deg, #7c3aed, #a78bfa);
+}
+.news-content { flex: 1; min-width: 0; }
+.news-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.tag {
+  display: inline-block;
+  padding: 1px 7px;
+  border-radius: 10px;
+  font-size: 10px;
+  font-weight: 600;
+}
+.tag-new {
+  background: #ede9fe;
+  color: #6d28d9;
+  box-shadow: 0 1px 3px rgba(109,40,217,0.15);
+}
+.news-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  margin-bottom: 6px;
+}
+.news-date { font-size: 11px; color: var(--text-muted); }
+.news-source { font-size: 11px; color: var(--text-muted); }
+.news-source::before { content: '· '; }
+.news-impact {
+  font-size: 10.5px;
+  font-weight: 600;
+  padding: 1px 8px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+.news-impact .dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: .7;
+}
+.lv-high   { background: #ede9fe; color: #5b21b6; }
+.lv-policy { background: #fce7f3; color: #9d174d; }
+.lv-warn   { background: #fee2e2; color: #991b1b; }
+.lv-med    { background: #fef3c7; color: #92400e; }
+.lv-tech   { background: #cffafe; color: #155e75; }
+.lv-info   { background: #e0e7ff; color: #3730a3; }
+.lv-channel{ background: #e0f2fe; color: #075985; }
+
+.news-summary {
+  font-size: 13px;
+  color: var(--text-sub);
+  line-height: 1.65;
+}
+a.highlight {
+  color: var(--blue);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(59,91,219,0.3);
+}
+a.highlight:hover { color: var(--primary); }
+.highlight-red { color: var(--red); font-weight: 700; }
+
+/* ── 产品动作建议 ── */
+.action-list { display: flex; flex-direction: column; gap: 10px; }
+.action-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  border-left: 4px solid var(--primary);
+  box-shadow: var(--shadow);
+}
+.action-card.p0 { border-left-color: var(--red); }
+.action-card.p1 { border-left-color: var(--primary); }
+.action-card.p2 { border-left-color: var(--primary-mid); }
+.action-priority {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  margin-bottom: 5px;
+}
+.p0 .action-priority { color: var(--red); }
+.p1 .action-priority { color: var(--primary); }
+.p2 .action-priority { color: var(--primary-mid); }
+.action-oneliner {
+  font-size: 13.5px;
+  color: var(--text);
+  line-height: 1.65;
+}
+.action-oneliner em {
+  font-style: normal;
+  font-weight: 700;
+}
+
+/* ── 腾讯游戏美术力 ── */
+.tencent-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+@media (max-width: 480px) { .tencent-grid { grid-template-columns: 1fr; } }
+.tencent-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  border-left: 3px solid var(--primary);
+  box-shadow: var(--shadow);
+}
+.tencent-tag {
+  display: inline-block;
+  background: var(--primary-light);
+  color: var(--primary);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 1px 8px;
+  border-radius: 10px;
+  margin-bottom: 5px;
+}
+.tencent-title {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+.tencent-oneliner {
+  font-size: 12.5px;
+  color: var(--text-sub);
+  line-height: 1.6;
+}
+.tencent-oneliner em {
+  font-style: normal;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+/* ── 风险清单 ── */
+.risk-list { display: flex; flex-direction: column; gap: 9px; }
+.risk-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 10px 14px;
+  box-shadow: var(--shadow);
+}
+.risk-icon {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 6px;
+}
+.risk-icon.red   { background: #ef4444; }
+.risk-icon.amber { background: #f59e0b; }
+.risk-icon.green { background: #7c3aed; }
+.risk-oneliner {
+  font-size: 13px;
+  color: var(--text-sub);
+  line-height: 1.65;
+}
+.risk-oneliner em {
+  font-style: normal;
+  font-weight: 700;
+  color: var(--text);
+}
+
+/* ── 页脚 ── */
+.footer {
+  text-align: center;
+  padding: 24px 16px 32px;
+  font-size: 11.5px;
+  color: var(--text-muted);
+}
+.footer strong { color: var(--primary); }
+
+/* 通用间距 */
+.gap-b { margin-bottom: 16px; }
+</style>
+</head>
+<body>
+
+<!-- ── Banner ── -->
+<div class="banner">
+  <div class="banner-deco"></div>
+  <div class="banner-tag">竞品简报</div>
+  <div class="banner-title">未来美术坊</div>
+  <div class="banner-title-en">Art Education · Competitive Intelligence Report</div>
+  <div class="banner-sub">
+    <span>新闻覆盖：2026年4月21日 — 4月27日</span>
+    <span class="banner-divider">·</span>
+    <span>生产时间：2026年4月27日 09:30</span>
+    <span class="banner-divider">·</span>
+    <span>第19期</span>
+  </div>
+</div>
+
+<!-- ── 数字速览 ── -->
+<div class="quick-nums">
+  <div class="qnum"><div class="qnum-val">8</div><div class="qnum-label">竞品动态</div></div>
+  <div class="qnum"><div class="qnum-val">5</div><div class="qnum-label">今日新增</div></div>
+  <div class="qnum"><div class="qnum-val">5</div><div class="qnum-label">行业趋势</div></div>
+  <div class="qnum"><div class="qnum-val">3</div><div class="qnum-label">产品建议</div></div>
+  <div class="qnum"><div class="qnum-val">6</div><div class="qnum-label">风险项</div></div>
+</div>
+
+<!-- ── 今日结论 ── -->
+<div class="section-wrap">
+  <div class="section-title">今日一句话结论</div>
+  <div class="conclusion-card gap-b">
+    <div class="conclusion-label">核心判断</div>
+    Canva AI 2.0推出专属教育平台Learn Grid（4/16）、无锡市政府主办AI美育师资培训落地（4/23），美育AI工具正式进入政府主导的教育体系；即梦一月三涨价暴露盈利压力，垂直教育工具低价策略窗口期开启。
+  </div>
+</div>
+
+<!-- ── 核心摘要 P0 ── -->
+<div class="section-wrap">
+  <div class="section-title">核心摘要 / 今日必做 P0</div>
+  <div class="summary-card gap-b">
+    <strong>【P0 本周必做】</strong> 研究Canva AI 2.0 Learn Grid教育平台功能架构，拆解其"AI差异化教学生成"核心逻辑，形成未来美术坊与Canva在美术垂直赛道的功能差异化文档，确定"乡村低门槛+美术专项"的差异化壁垒点。<br><br>
+    📌 <strong>Canva AI 2.0 + Learn Grid（4/16发布）</strong>：Canva 13年最大产品革新，正式从设计平台转型教育平台，2.65亿月活+270亿次AI交互加持，Learn Grid支持AI一键生成差异化教学课件，直接覆盖全球美术教师群体，是迄今最强的直接竞品升级动作。<br>
+    📌 <strong>无锡市"AI赋能·智绘美育"教师培训（4/23）</strong>：由无锡市教育局主办、无锡市少年宫承办，面向全市中小学艺术教师，标志着AI美育工具培训已进入地市级政府主办的常态化体系，正式脱离民间自发阶段。<br>
+    📌 <strong>即梦（Seedance）一月三次涨价（4/13）</strong>：字节AI视频平台快速从补贴获客转向商业变现，价格敏感型乡村教师用户面临更高使用门槛，为未来美术坊提供了"低门槛工具"差异化的时间窗口。
+  </div>
+</div>
+
+<!-- ── 竞品动态 ── -->
+<div class="section-wrap">
+  <div class="section-title">竞品动态</div>
+  <ul class="news-list gap-b">
+
+    <li class="news-item new-item">
+      <div class="news-num">01</div>
+      <div class="news-content">
+        <div class="news-title">Canva AI 2.0正式发布，推出教育平台Learn Grid<span class="tag tag-new">新</span></div>
+        <div class="news-meta">
+          <span class="news-date">2026-04-16</span>
+          <span class="news-source">Canva Create大会 / IT之家</span>
+          <span class="news-impact lv-warn"><span class="dot"></span>直接竞品升级</span>
+        </div>
+        <div class="news-summary">
+          <a class="highlight" href="https://www.ithome.com/0/940/192.htm" target="_blank">Canva AI 2.0</a> 在Canva Create 2026大会发布，为该公司13年来最大产品更新，正式从在线设计平台转型为"一体化生产力系统"。核心功能：①持久记忆能力自动应用用户品牌风格；②全新教育平台<strong>Learn Grid</strong>支持AI一键生成差异化教学课件；③整合Affinity设计套件。平台坐拥2.65亿月活用户，已累计270亿次AI交互。<span class="highlight-red">Canva正面进军美育教师备课赛道，未来美术坊须立即明确"乡村本土化+美术垂直"差异化定位，避免被通用大平台碾压。</span>
+        </div>
+      </div>
+    </li>
+
+    <li class="news-item new-item">
+      <div class="news-num">02</div>
+      <div class="news-content">
+        <div class="news-title">无锡市教育局主办AI美育师资专项培训落地<span class="tag tag-new">新</span></div>
+        <div class="news-meta">
+          <span class="news-date">2026-04-23</span>
+          <span class="news-source">无锡市教育局 / jy.wuxi.gov.cn</span>
+          <span class="news-impact lv-channel"><span class="dot"></span>渠道信号</span>
+        </div>
+        <div class="news-summary">
+          由<a class="highlight" href="https://jy.wuxi.gov.cn/doc/2026/04/23/4764458.shtml" target="_blank">无锡市教育局主办、无锡市少年宫承办</a>的"AI赋能·智绘美育"中小学艺术教师人工智能专题培训活动圆满结束，面向全市中小学艺术教师，聚焦AI技术与美育教学深度融合，提升教师数字教学能力。这是可查的首例由地市级教育行政部门主办的AI美育专项师资培训。<span class="highlight-red">地市政府级AI美育培训常态化，意味着各地教育局将成为AI美育工具的重要B端采购方，未来美术坊应尽快布局政府渠道对接策略。</span>
+        </div>
+      </div>
+    </li>
+
+    <li class="news-item new-item">
+      <div class="news-num">03</div>
+      <div class="news-content">
+        <div class="news-title">即梦Seedance一月三次涨价，创作者生态震荡<span class="tag tag-new">新</span></div>
+        <div class="news-meta">
+          <span class="news-date">2026-04-13 持续</span>
+          <span class="news-source">新浪财经 / 澎湃新闻</span>
+          <span class="news-impact lv-med"><span class="dot"></span>竞争侧漏</span>
+        </div>
+        <div class="news-summary">
+          <a class="highlight" href="https://finance.sina.com.cn/wm/2026-04-13/doc-inhukefa4728806.shtml" target="_blank">字节旗下即梦（Seedance）</a>在4月内连续三次调整价格与积分规则：取消老用户折扣、推行VIP加速通道、大幅削减会员月度积分，引发AI短剧从业者强烈反弹。东方证券分析指出此举反映AI视频平台商业化提速。<span class="highlight-red">即梦快速提价意味着字节AI创作生态对普通用户（含乡村教师）的门槛升高，未来美术坊可以"教育专用、低门槛、免费核心功能"为差异化切入点，在价格战中占据有利位置。</span>
+        </div>
+      </div>
+    </li>
+
+    <li class="news-item new-item">
+      <div class="news-num">04</div>
+      <div class="news-content">
+        <div class="news-title">南京江宁"AI聚力美术课堂"区级教研落地<span class="tag tag-new">新</span></div>
+        <div class="news-meta">
+          <span class="news-date">2026-04-16</span>
+          <span class="news-source">南京市诚信小学 / 江宁区教育局</span>
+          <span class="news-impact lv-policy"><span class="dot"></span>政策落地</span>
+        </div>
+        <div class="news-summary">
+          <a class="highlight" href="http://cxxx.jnjy.net.cn/html/202604/NewShow-043f56a35e.html" target="_blank">江宁区小学美术何建宏名师工作室活动</a>在空港小学举行，以"AI聚力美术课堂，实践启智美育新程"为主题，聚焦AI工具融入小学美术课堂教学实践。这是国家政策落地的区级教研典型案例，AI美术教研活动已从高校/城市重点校向区县基层快速扩散。<span class="highlight-red">区县级美术教研活动密集落地，是未来美术坊触达基层美术教师的最自然渠道，可考虑与名师工作室建立联合共创关系。</span>
+        </div>
+      </div>
+    </li>
+
+    <li class="news-item new-item">
+      <div class="news-num">05</div>
+      <div class="news-content">
+        <div class="news-title">腾讯混元Hy3 preview开源，API定价极具竞争力<span class="tag tag-new">新</span></div>
+        <div class="news-meta">
+          <span class="news-date">2026-04-23</span>
+          <span class="news-source">腾讯云开发者 / 21世纪经济报道</span>
+          <span class="news-impact lv-info"><span class="dot"></span>内部机会</span>
+        </div>
+        <div class="news-summary">
+          <a class="highlight" href="https://cloud.tencent.com/developer/article/2660040" target="_blank">腾讯混元Hy3 preview</a>已开源发布，API定价低至1.2元/百万Tokens，推理效率较上代优化40%，在代码、Agent和复杂推理能力上实现突破。21经济报道指出这是首席AI科学家姚顺雨加入腾讯后的首次正式亮相。<span class="highlight-red">Hy3 API极低定价为未来美术坊AI功能成本控制提供了有力保障，腾讯内部项目接入成本可进一步优化，应加快技术选型决策。</span>
+        </div>
+      </div>
+    </li>
+
+    <li class="news-item">
+      <div class="news-num">06</div>
+      <div class="news-content">
+        <div class="news-title">《"人工智能+教育"行动计划》各省持续落地</div>
+        <div class="news-meta">
+          <span class="news-date">2026-04-10发布 / 持续</span>
+          <span class="news-source">教育部 / 央视新闻</span>
+          <span class="news-impact lv-policy"><span class="dot"></span>政策红利</span>
+        </div>
+        <div class="news-summary">
+          <a class="highlight" href="https://edu.cctv.com/2026/04/16/ARTIlFTPd66T4oujTjkqggA3260416.shtml" target="_blank">央视"教与学，都在变"</a>系列报道持续跟进，各省学校、职业院校密集落地"人工智能+教育"行动计划，AI能力纳入教师资格考试持续推进。财新网分析指出相关AI教育工具将迎来确定性政策红利。<span class="highlight-red">未来美术坊应持续以"AI备课合规工具"身份对齐政策话语，争取省级教育局认证背书，这是未来进入政府采购目录的前提条件。</span>
+        </div>
+      </div>
+    </li>
+
+    <li class="news-item">
+      <div class="news-num">07</div>
+      <div class="news-content">
+        <div class="news-title">湖南师大"识—导—创"数智美育平台持续竞争</div>
+        <div class="news-meta">
+          <span class="news-date">2025-10报道 / 持续跟踪</span>
+          <span class="news-source">中国教育报 / 新华网湖南</span>
+          <span class="news-impact lv-warn"><span class="dot"></span>直接竞品</span>
+        </div>
+        <div class="news-summary">
+          湖南师范大学美术学院「<a class="highlight" href="https://news.hunnu.edu.cn/info/1011/72265.htm" target="_blank">识—导—创数智美育平台</a>」以AI精准识读学生画作、实时生成个性化分析报告为核心，已获评2025年湖南省教学成果奖，具备高校品牌背书。平台持续向乡村学校推广，功能定位与未来美术坊AI美育助教高度重叠，是需持续跟踪的直接竞品。
+        </div>
+      </div>
+    </li>
+
+    <li class="news-item">
+      <div class="news-num">08</div>
+      <div class="news-content">
+        <div class="news-title">中国儿童中心"AI+儿童美育"工作坊5月开营</div>
+        <div class="news-meta">
+          <span class="news-date">2026-04-14发布 / 5月19日线下</span>
+          <span class="news-source">中国儿童中心 / ccc.org.cn</span>
+          <span class="news-impact lv-channel"><span class="dot"></span>渠道机会</span>
+        </div>
+        <div class="news-summary">
+          <a class="highlight" href="https://www.ccc.org.cn/art/2026/4/14/art_711_231850.html" target="_blank">中国儿童中心</a>联合北京昇腾创新人工智能有限公司举办"AI+儿童美育"教师工作坊（5月18日报到，5月19日—21日线下，北京门头沟京西智谷AI研学基地），面向中小学美术教师，以AI视频创作全流程为核心课程，研修费2750元/人，报名截止5月15日。<span class="highlight-red">工作坊报名窗口仅剩约20天，未来美术坊若希望申请合作展示机会，需本周内启动接触流程。</span>
+        </div>
+      </div>
+    </li>
+
+  </ul>
+</div>
+
+<!-- ── 行业趋势 ── -->
+<div class="section-wrap">
+  <div class="section-title">行业趋势</div>
+  <ul class="news-list gap-b">
+
+    <li class="news-item new-item">
+      <div class="news-num">T1</div>
+      <div class="news-content">
+        <div class="news-title">Canva加速教育化：通用设计平台抢占备课赛道<span class="tag tag-new">新</span></div>
+        <div class="news-meta">
+          <span class="news-date">2026-04 观察</span>
+          <span class="news-impact lv-warn"><span class="dot"></span>竞争升维</span>
+        </div>
+        <div class="news-summary">
+          Canva AI 2.0推出Learn Grid教育模块，标志着全球头部通用设计平台对AI教育市场发起正面攻势。其核心逻辑是"用海量用户基数×AI教育功能"快速占领教师备课场景。对垂直AI教育工具而言，这意味着竞争环境急剧恶化：差异化只能在"深度垂直场景（如美育）""本土化适配（如乡村/中文）""与学校/政府的合作关系"三个维度寻求突破。
+        </div>
+      </div>
+    </li>
+
+    <li class="news-item new-item">
+      <div class="news-num">T2</div>
+      <div class="news-content">
+        <div class="news-title">AI美育培训政府化：地市级教育局成为重要B端<span class="tag tag-new">新</span></div>
+        <div class="news-meta">
+          <span class="news-date">2026-04-23 信号</span>
+          <span class="news-impact lv-policy"><span class="dot"></span>政策红利</span>
+        </div>
+        <div class="news-summary">
+          无锡市教育局主办AI美育培训，中国儿童中心（国家级）5月工作坊即将开营，多地区级美术教研活动密集报道——三个层级（国家/省市/区县）的政府机构同步将AI美育培训纳入常规教研体系。这意味着AI美育工具的政府采购需求将在2026下半年快速释放，谁能率先进入政府白名单，谁就掌握了规模化推广的最低成本渠道。
+        </div>
+      </div>
+    </li>
+
+    <li class="news-item new-item">
+      <div class="news-num">T3</div>
+      <div class="news-content">
+        <div class="news-title">字节AI平台商业化提速，价格敏感用户面临迁移机会<span class="tag tag-new">新</span></div>
+        <div class="news-meta">
+          <span class="news-date">2026-04 观察</span>
+          <span class="news-impact lv-tech"><span class="dot"></span>结构性机会</span>
+        </div>
+        <div class="news-summary">
+          即梦（Seedance）一月三涨、豆包高端订阅推进，字节系AI平台集体从"补贴获客"转向"商业变现"。这对B站教程驱动的免费用户群（含乡村教师）产生实质性压力。对垂直教育工具而言，这是一个窗口期：打"免费核心功能+低门槛+教育专属"的定位，可在字节系用户迁移潮中精准截流美育教师群体。
+        </div>
+      </div>
+    </li>
+
+    <li class="news-item">
+      <div class="news-num">T4</div>
+      <div class="news-content">
+        <div class="news-title">乡村美术AI教研向区县基层快速扩散</div>
+        <div class="news-meta">
+          <span class="news-date">2026-04 观察</span>
+          <span class="news-impact lv-channel"><span class="dot"></span>渠道机会</span>
+        </div>
+        <div class="news-summary">
+          本周可见南京江宁区级AI美术教研、无锡市AI美育培训等多起案例，AI美术教育教研活动已从重点城市重点学校扩散至区县级普通学校。"名师工作室"是核心组织节点：一个工作室通常辐射全区50-200名美术教师。未来美术坊可将"与名师工作室联合"作为最高性价比的种子用户获取路径。
+        </div>
+      </div>
+    </li>
+
+    <li class="news-item">
+      <div class="news-num">T5</div>
+      <div class="news-content">
+        <div class="news-title">腾讯AI模型成本竞争力提升，内部接入壁垒持续降低</div>
+        <div class="news-meta">
+          <span class="news-date">2026-04-23 技术</span>
+          <span class="news-impact lv-info"><span class="dot"></span>内部机会</span>
+        </div>
+        <div class="news-summary">
+          混元Hy3 preview API定价1.2元/百万Tokens，较主流竞品有显著成本优势，推理效率优化40%。腾讯内部AI基础设施持续完善（混元语言模型+混元图像3.0），形成"低成本+高能力+内部优先接入"的技术三角，是未来美术坊作为腾讯内部项目的核心护城河。外部竞品无法在同等成本下复制这一优势。
+        </div>
+      </div>
+    </li>
+
+  </ul>
+</div>
+
+<!-- ── 产品动作建议 ── -->
+<div class="section-wrap">
+  <div class="section-title">产品动作建议</div>
+  <div class="action-list gap-b">
+
+    <div class="action-card p0">
+      <div class="action-priority">P0 · 本周</div>
+      <div class="action-oneliner">拆解<em>Canva Learn Grid</em>核心功能（AI差异化教学生成、课件模板逻辑），与未来美术坊做功能对比分析，输出"美育垂直×乡村低门槛"差异化定位文档，确定Canva进入后我们的核心护城河是什么。</div>
+    </div>
+
+    <div class="action-card p1">
+      <div class="action-priority">P1 · 本月</div>
+      <div class="action-oneliner">联系<em>中国儿童中心"AI+儿童美育"工作坊</em>主办方（报名截止5月15日），申请工具平台合作展示机会；同步梳理各省市AI美育培训渠道名单，优先布局3-5个地市级教育局合作接触点。</div>
+    </div>
+
+    <div class="action-card p2">
+      <div class="action-priority">P2 · 下阶段</div>
+      <div class="action-oneliner">在<em>即梦/豆包涨价引发用户迁移</em>的窗口期，策划"未来美术坊免费核心功能开放计划"，以免费AI美术备课模板为钩子，精准触达因字节系涨价而寻找替代工具的乡村美术教师群体。</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── 腾讯游戏美术力 ── -->
+<div class="section-wrap">
+  <div class="section-title">腾讯游戏美术力</div>
+  <div class="tencent-grid gap-b">
+
+    <div class="tencent-card">
+      <div class="tencent-tag">新开源</div>
+      <div class="tencent-title">混元 Hy3 preview · 强化Agent模型</div>
+      <div class="tencent-oneliner">4/23开源，API仅1.2元/百万Tokens，<em>推理效率优化40%</em>，是未来美术坊AI备课Agent的最优腾讯内部底层选项，成本优势显著。</div>
+    </div>
+
+    <div class="tencent-card">
+      <div class="tencent-tag">持续迭代</div>
+      <div class="tencent-title">混元图像 3.0 · 国风美术底座</div>
+      <div class="tencent-oneliner">支持国风/水墨等<em>20+美术风格</em>，已开源，是AI美术助教功能的核心图像技术底座，内部接入路径可控，外部竞品无法等效复制。</div>
+    </div>
+
+    <div class="tencent-card">
+      <div class="tencent-tag">渠道资源</div>
+      <div class="tencent-title">触梦计划 · 乡村学校入口</div>
+      <div class="tencent-oneliner">覆盖1842所乡村学校，专注学生侧/硬件侧，与未来美术坊<em>教师工具侧互补</em>，是最天然的乡村学校渠道合作来源。</div>
+    </div>
+
+    <div class="tencent-card">
+      <div class="tencent-tag">内部平台</div>
+      <div class="tencent-title">腾讯元器 · Agent发布平台</div>
+      <div class="tencent-oneliner">AI备课Agent MVP的<em>首选发布平台</em>，生态完善、审批路径内部可控，Hy3已在元器首发，可实现最快速的功能验证迭代。</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── 风险观察 ── -->
+<div class="section-wrap">
+  <div class="section-title">风险观察清单</div>
+  <div class="risk-list gap-b">
+
+    <div class="risk-item">
+      <div class="risk-icon red"></div>
+      <div class="risk-oneliner"><em>Canva全面进军教育赛道</em>：2.65亿月活+AI 2.0+Learn Grid，Canva的资源体量和全球覆盖力远超任何垂直竞品，未来美术坊若没有足够深的本土化和垂直壁垒，可能在用户认知上完全被碾压。</div>
+    </div>
+
+    <div class="risk-item">
+      <div class="risk-icon red"></div>
+      <div class="risk-oneliner"><em>政府培训渠道先占风险</em>：无锡教育局、中国儿童中心等已开始主导AI美育培训，若未能在政府渠道早期布局，未来美术坊将失去最低成本的大规模种子用户触达机会。</div>
+    </div>
+
+    <div class="risk-item">
+      <div class="risk-icon red"></div>
+      <div class="risk-oneliner"><em>湖南师大直接竞品学术背书积累</em>：湖南师大"识—导—创"平台已获省级教学成果奖，学术认可度持续建立，若未来美术坊不加速学术与官方合作，公信力差距将扩大。</div>
+    </div>
+
+    <div class="risk-item">
+      <div class="risk-icon amber"></div>
+      <div class="risk-oneliner"><em>即梦涨价窗口期有限</em>：字节系AI平台涨价引发的用户迁移机会存在时效性，若未能在3-6个月内推出有效的替代产品方案，用户将适应新价格体系或转向其他平台，窗口关闭。</div>
+    </div>
+
+    <div class="risk-item">
+      <div class="risk-icon amber"></div>
+      <div class="risk-oneliner"><em>区县教研渠道碎片化</em>：乡村美术教师分散在数万所区县学校，通过名师工作室渠道触达效率高但规模有限，若不建立可复制的渠道模板，用户增长将长期受限于人工拓展速度。</div>
+    </div>
+
+    <div class="risk-item">
+      <div class="risk-icon green"></div>
+      <div class="risk-oneliner"><em>腾讯内部生态协同优势</em>：混元Hy3超低成本API+触梦计划渠道+腾讯元器发布平台，形成外部竞品不可复制的"技术×渠道×成本"三角优势，<em>是核心护城河</em>，需尽快通过产品落地将这一优势转化为用户感知。</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── 页脚 ── -->
+<div class="footer">
+  <strong>未来美术坊竞品简报</strong> · 第 19 期 · 2026年4月27日<br>
+  本简报由 AI 自动生成，供内部参考。数据来源：公开网络信息，部分经事实核查。
+</div>
+
+</body>
+</html>
